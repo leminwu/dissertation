@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
         bool persongender = gender();
         bool personsmoker = smoker();
 //for loop for each year, 
-        float i = 0.05f;
+        float i = 0.04f;
         float m = 12.0f;
         float delta = std::log(1+i);
         float pvuap = PVUnitAnnualPayment2(personage, A, B, c, i, t[persongender][personsmoker], 0, fudgeFactor[persongender][personsmoker]);

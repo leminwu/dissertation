@@ -7,7 +7,13 @@ float SurvivalRateUltimate(int k, int x, float A, float B, float c) {
 }
 
 float SurvivalRateSelect(int k, int x, float A, float B, float c) {
-	return exp(pow(0.9,2-k) * ((1-pow(0.9,k)) * A) / log(0.9) + (pow(c,k) - pow(0.9,k) * B * pow(c,x)) / log(0.9/c));
+    float out = pow(0.9f,2-k);
+    float first = ((1.0f-pow(0.9f,k)) * A) / log(0.9f);
+    float second = ((pow(c,k) - pow(0.9f,k)) * B * pow(c,x)) / log(0.9f/c);
+    //std::cout << "out = " << out << "\n";
+    //std::cout << "first = " << first << "\n";
+    //std::cout << "second = " << second << "\n";
+	return exp(out * (first + second));
 }
 
 
@@ -34,6 +40,7 @@ float PVUnitAnnualPayment2(float age, float A, float B, float c, float i, vector
 	}
 	for(int k=std::max(2,t); k<int(peoplesAreDead-age); k++) {
         float term = std::pow(V, k) * fudgeFactor
+            * SurvivalRateSelect(2, age, A, B, c)
             * SurvivalRateUltimate(k, age+2, A, B, c);
         sum += term;
         std::cout << term << " + ";
