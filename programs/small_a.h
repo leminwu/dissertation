@@ -12,7 +12,7 @@ float SurvivalRateSelect(int k, int x, float A, float B, float c) {
 
 
 
-float PVUnitAnnualPayment(float age, float A, float B, float c, float i, vector<float> duration[3], int t) {
+float PVUnitAnnualPayment(float age, float A, float B, float c, float i, vector<float> duration[3], int t, float fudgeFactor) {
 	float peoplesAreDead = 130.0f;
 	float sum = 0.0f;
 	float V = 1.0f/(1.0f+i);
@@ -22,7 +22,7 @@ float PVUnitAnnualPayment(float age, float A, float B, float c, float i, vector<
     return sum;
 }
     
-float PVUnitAnnualPayment2(float age, float A, float B, float c, float i, vector<float> duration[3], int t) {
+float PVUnitAnnualPayment2(float age, float A, float B, float c, float i, vector<float> duration[3], int t, float fudgeFactor) {
         float peoplesAreDead = 130.0f;
         float sum = 0.0f;
         float V = 1.0f/(1.0f+i);

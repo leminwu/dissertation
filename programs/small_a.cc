@@ -21,6 +21,11 @@ int main(int argc, char** argv) {
         {"female_non-smokers_two_years_select", "female_smokers_two_years_select"}, // female
         {"male_non-smokers_two_years_select", "male_smokers_two_years_select"}, // male
     };
+    
+    float fudgeFactor[2][2] = {
+        {0.85f, 0.8f},
+        {0.75f, 0.7f}
+    };
 
     std::vector<float> t[2][2][3]; // gender, smoker, duration
 
@@ -61,7 +66,7 @@ int main(int argc, char** argv) {
         float i = 0.05f;
         float m = 12.0f;
         float delta = std::log(1+i);
-        float pvuap = PVUnitAnnualPayment(personage, A, B, c, i, t[persongender][personsmoker], 0);
+        float pvuap = PVUnitAnnualPayment2(personage, A, B, c, i, t[persongender][personsmoker], 0, fudgeFactor[persongender][personsmoker]);
         float fom = ForceOfMortality(personage, A, B, c);
         float a = small_a(pvuap, m, delta, fom);
         float bigA = big_a(a, m, i);
