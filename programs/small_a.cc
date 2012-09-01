@@ -16,6 +16,22 @@ int main(int argc, char** argv) {
     const float B = 0.0000027f;
     const float c = 1.124f;
 
+    // testing
+    std::cout << "SurvivalRateUltimate(0, 76.0f, A, B, c) is "
+        << SurvivalRateUltimate(0, 76.2945f, A, B, c) << "\n";
+    std::cout << "SurvivalRateUltimate(1, 76.0f, A, B, c) is "
+        << SurvivalRateUltimate(1, 76.2945f, A, B, c) << "\n";
+    std::cout << "SurvivalRateUltimate(2, 76.0f, A, B, c) is "
+        << SurvivalRateUltimate(2, 76.2945f, A, B, c) << "\n";
+    std::cout << "\n";
+
+    std::cout << "SurvivalRateSelect(0, 76.0f, A, B, c) is "
+        << SurvivalRateSelect(0, 76.2945f, A, B, c) << "\n";
+    std::cout << "SurvivalRateSelect(1, 76.0f, A, B, c) is "
+        << SurvivalRateSelect(1, 76.2945f, A, B, c) << "\n";
+    std::cout << "SurvivalRateSelect(2, 76.0f, A, B, c) is "
+        << SurvivalRateSelect(2, 76.2945f, A, B, c) << "\n";
+    std::cout << "\n";
 
     const char* files[2][2] = {
         {"female_non-smokers_two_years_select", "female_smokers_two_years_select"}, // female
