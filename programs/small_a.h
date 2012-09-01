@@ -28,11 +28,17 @@ float PVUnitAnnualPayment2(float age, float A, float B, float c, float i, vector
         float V = 1.0f/(1.0f+i);
 
 	for(int k=t; k<std::min(2,int(peoplesAreDead-age)); k++) {
-		sum += std::pow(V, k) *SurvivalRateSelect(k,age,A,B,c) ; 
+        float term = std::pow(V, k) * SurvivalRateSelect(k,age,A,B,c);
+        sum += term;
+        std::cout << term << " + ";
 	}
 	for(int k=std::max(2,t); k<int(peoplesAreDead-age); k++) {
-        sum += std::pow(V, k) * fudgeFactor * SurvivalRateUltimate(k, age+2, A, B, c);
+        float term = std::pow(V, k) * fudgeFactor
+            * SurvivalRateUltimate(k, age+2, A, B, c);
+        sum += term;
+        std::cout << term << " + ";
 	}
+    std::cout << "\n";
 	return sum;
 }
 
