@@ -5,42 +5,62 @@
 #include <boost/random.hpp>
 #include "small_a.h"
 
-float reserve(float age, float premium, float A, float a) {
-	return 100000.0f * A - (1.0f-0.01f)*premium*a;
+void policy(float personage, bool persongender, bool personsmoker, float A, float B, float c, float i, float m, const float fudgeFactor[2][2], std::vector<float> t[2][2][3]) {
+    float delta = std::log(1+i);
+    float pvuap = PVUnitAnnualPayment2(personage, A, B, c, i, t[persongender][personsmoker], 0, fudgeFactor[persongender][personsmoker]);
+    float fom = ForceOfMortality(personage, A, B, c);
+    float a = small_a(pvuap, m, delta, fom);
+    float bigA = big_a(a, m, i);
+    
+    float pvAnnuity = PVUnitAnnuity(personage, A, B, c, i, t[persongender][personsmoker], 0, fudgeFactor[persongender][personsmoker]);
+    
+    float a_reserve = small_a(pvAnnuity, m, delta, fom);
+    float bigA_reserve = big_a(a_reserve, m, i);
+    
+    float premium = Premium(pvuap, fom, delta, m, a, bigA);
+    float res = reserve(personage, premium, bigA_reserve, a_reserve);
+    float annres = AnnualReserve(res, premium, personage, i, A, B, c, fudgeFactor[persongender][personsmoker]);
+    std::cout << personage << ' '
+    << (persongender?'M':'F') << ' '
+    << (personsmoker?'Y':'N') << ' '
+    << premium << ' '
+    << res << ' '
+    << annres
+    << std::endl;
+    std::cout << "areserve="<< a_reserve<<  std::endl;
+    std::cout << "Areserve="<< bigA_reserve<<  std::endl;
+    std::cout << "a="<< a<<  std::endl;
+    std::cout << "A="<< bigA<<  std::endl;
 }
-
 
 int main(int argc, char** argv) {
 	
     const float A = 0.0f;
     const float B = 0.0000027f;
     const float c = 1.124f;
+    
+    const float i = 0.05f;
+    const float m = 12.0f;
+
+    const float fudgeFactor[2][2] = {
+        {0.98f, 0.95f},
+        {0.97f, 0.93f}
+    };
+    
+    const float testages[] = {60.0f, 65.0f, 70.0f, 75.0f, 80.0f};
 
     // testing
-    std::cout << "SurvivalRateUltimate(0, 76.0f, A, B, c) is "
-        << SurvivalRateUltimate(0, 76.2945f, A, B, c) << "\n";
-    std::cout << "SurvivalRateUltimate(1, 76.0f, A, B, c) is "
-        << SurvivalRateUltimate(1, 76.2945f, A, B, c) << "\n";
-    std::cout << "SurvivalRateUltimate(2, 76.0f, A, B, c) is "
-        << SurvivalRateUltimate(2, 76.2945f, A, B, c) << "\n";
-    std::cout << "\n";
-
-    std::cout << "SurvivalRateSelect(0, 76.0f, A, B, c) is "
-        << SurvivalRateSelect(0, 76.2945f, A, B, c) << "\n";
-    std::cout << "SurvivalRateSelect(1, 76.0f, A, B, c) is "
-        << SurvivalRateSelect(1, 76.2945f, A, B, c) << "\n";
-    std::cout << "SurvivalRateSelect(2, 76.0f, A, B, c) is "
-        << SurvivalRateSelect(2, 76.2945f, A, B, c) << "\n";
-    std::cout << "\n";
+    for(int ai=0; ai<(sizeof(testages)/sizeof(testages[0])); ai++) {
+        for(int gi=0; gi<2; gi++) {
+            for(int si=0; si<2; si++) {
+                policy(testages[ai], gi, si, A, B, c, i, m, fudgeFactor, 0);
+            }
+        }
+    }
 
     const char* files[2][2] = {
         {"female_non-smokers_two_years_select", "female_smokers_two_years_select"}, // female
         {"male_non-smokers_two_years_select", "male_smokers_two_years_select"}, // male
-    };
-    
-    float fudgeFactor[2][2] = {
-        {0.85f, 0.8f},
-        {0.75f, 0.7f}
     };
 
     std::vector<float> t[2][2][3]; // gender, smoker, duration
@@ -78,25 +98,7 @@ int main(int argc, char** argv) {
         float personage = age();
         bool persongender = gender();
         bool personsmoker = smoker();
-//for loop for each year, 
-        float i = 0.04f;
-        float m = 12.0f;
-        float delta = std::log(1+i);
-        float pvuap = PVUnitAnnualPayment2(personage, A, B, c, i, t[persongender][personsmoker], 0, fudgeFactor[persongender][personsmoker]);
-        float fom = ForceOfMortality(personage, A, B, c);
-        float a = small_a(pvuap, m, delta, fom);
-        float bigA = big_a(a, m, i);
-        
-        float a_reserve = small_a(pvuap, 1.0f, delta, fom);
-        float bigA_reserve = big_a(a_reserve, 1.0f, i);
-        float premium = Premium(pvuap, fom, delta, m, a, bigA);
-        std::cout << personage << ' '
-                << (persongender?'M':'F') << ' '
-                << (personsmoker?'Y':'N') << ' '
-                << premium << ' '
-                << reserve(personage, premium, bigA_reserve, a_reserve)
-                << std::endl;
-        std::cout << "a="<< a_reserve<<  std::endl;
+        policy(personage, persongender, personsmoker, A, B, c, i, m, fudgeFactor, t);
     }
 }
 
