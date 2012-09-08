@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <boost/random.hpp>
 #include <cmath>
@@ -5,31 +6,31 @@
 using namespace std;
 
 float survival_rate[] = {
-1,
-1,
-0.8955,
-0.8462475,
-0.842016263,
-0.837806181,
-0.83361715,
-0.829449065,
-0.825301819,
-0.82117531,
-0.817069434,
+    1,
+    1,
+    0.8955,
+    0.8462475,
+    0.842016263,
+    0.837806181,
+    0.83361715,
+    0.829449065,
+    0.825301819,
+    0.82117531,
+    0.817069434,
 };
 
 float test_data[] = {
-0.0f,
-0.95518f,
--2.45007f,
--1.23376f,
-0.55824f,
--0.62022f,
-0.01353f,
--1.22754f,
-0.07758f,
--0.61893f,
--0.25283f,
+    0.0f,
+    0.95518f,
+    -2.45007f,
+    -1.23376f,
+    0.55824f,
+    -0.62022f,
+    0.01353f,
+    -1.22754f,
+    0.07758f,
+    -0.61893f,
+    -0.25283f,
 };
 
 bool negative(float i) { return i < 0.0f; }
@@ -54,17 +55,17 @@ int main(int argc, const char *argv[]) {
     boost::mt19937 generator;
     boost::normal_distribution<> distribution;
     boost::variate_generator<boost::mt19937&, boost::normal_distribution<> > generate(generator, distribution);
-
+    
     vector<float> npvs;
-
+    
     for(int i=0; i<1000; i++) {
         write_header();
-        write_row(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, -(0.1f*5200.0f), -(0.1f*5200.0f), -520.0f);
+        write_row(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, -(150.0f+0.1f*5000.0f), -(150.0f+0.1f*5000.0f), -650.0f);
         float lastFund = 0.0f;
         float NPV = -520.0f; //initial expense change
         for(int t=1; t<=10; t++) {
-            //float zt = test_data[t];
-            float zt = generate();
+            float zt = test_data[t];
+            //float zt = generate();
             float rt = exp(0.074928f + 0.15f*zt);
             float P = 5200.0f;
             float allocP = (t==1) ? 0.95f*P : 0.99f*P;
@@ -78,7 +79,7 @@ int main(int argc, const char *argv[]) {
             float profit = (P - allocP) * (1.0f+0.065f) * two2nine + management - fundT*0.005f*0.1f; //renewal expense change
             float oldprofit = profit;
             if(t == 10) {
-                profit -= 0.995f * (max(52000.0f*0.9f - fundT, 0.0f));
+                profit -= 0.995f * (max(52000.0f - fundT, 0.0f));
             }
             float pit = profit * survival_rate[t];
             NPV += pit * pow(1.0f + 0.15f, -t);
@@ -87,14 +88,14 @@ int main(int argc, const char *argv[]) {
                 write_row(t, zt, rt, P, allocP, fundTminus, management, fundT, oldprofit, pit, NPV);
             }
             write_row(t, zt, rt, P, allocP, fundTminus, management, fundT, profit, profit * survival_rate[t], NPV);
-
+            
         }
         //cout << NPV << '\n';
         npvs.push_back(NPV);
     }
-
+    
     sort(npvs.begin(), npvs.end());
-
+    
     cout << "NPV median = " << ((npvs[499]+npvs[500])/2.0f) << '\n';
     cout << "NPV fifth percentile = " << ((npvs[49]+npvs[50])/2.0f) << '\n';
     cout << "NPV ninety fifth percentile = " << ((npvs[949]+npvs[950])/2.0f) << '\n';
@@ -102,6 +103,6 @@ int main(int argc, const char *argv[]) {
     cout << "NPV sd = " << whatevs(npvs) << '\n';
     cout << "NPV count negative values = " << count_if(npvs.begin(), npvs.end(), negative) << '\n';
     cout << "95% CI for NPV = " << '(' << accumulate(npvs.begin(), npvs.end(), 0.0f)/1000.0f - 1.96f * whatevs(npvs)/sqrt(npvs.size()) << "," << accumulate(npvs.begin(), npvs.end(), 0.0f)/1000.0f + 1.96f * whatevs(npvs)/sqrt(npvs.size()) << ')' << '\n';
-     
+    
     return 0;
 }

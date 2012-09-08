@@ -74,6 +74,28 @@ float PVUnitAnnualPayment2(float age, float A, float B, float c, float i, vector
 	return sum;
 }
 
+
+float PVUnitAnnualPayment3(float age, float A, float B, float c, float i, vector<float> duration[3], int t, float fudgeFactor) {
+    float peoplesAreDead = 120.0f;
+    float sum = 0.0f;
+    float V = 1.0f/(1.0f+i);
+    
+	for(int k=t; k<std::min(2,int(peoplesAreDead-age)); k++) {
+        float term = std::pow(V, k) * SurvivalRateSelect(k,age,A,B,c, fudgeFactor);
+        sum += term;
+        //       std::cout << term << " + ";
+	}
+	for(int k=std::max(2,t), j=1; k<int(peoplesAreDead-age); k++, j++) {
+        float term = std::pow(V, k) 
+        * SurvivalRateSelect(2, age, A, B, c, fudgeFactor)
+        * SurvivalRateSelect(k, age+j*2, A, B, c, fudgeFactor);
+        sum += term;
+        //        std::cout << term << " + ";
+	}
+    std::cout << "\n";
+	return sum;
+}
+
 float PVUnitAnnuity(float age, float A, float B,float c, float i, vector<float> duration[3], int t, float fudgeFactor) {
     float sum = 0.0f;
     float peoplesAreDead = 120.0f;

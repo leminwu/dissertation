@@ -25,7 +25,8 @@ void policy(float personage, bool persongender, bool personsmoker, float A, floa
     << (personsmoker?'Y':'N') << ' '
     << premium << ' '
     << res << ' '
-    << annres
+    << annres << ' '
+    << premium*a
     << std::endl;
     std::cout << "areserve="<< a_reserve<<  std::endl;
     std::cout << "Areserve="<< bigA_reserve<<  std::endl;
