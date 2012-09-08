@@ -1,0 +1,287 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For the thesis there is no need for any special style file.              %
+% This shows how to do the title page and handles the contents page,       %
+% chapter headings, numbering of theorems, bibliographic references, etc.  %
+% Note that to get references right it will normally be necessary          %
+% to run LaTeX twice.                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{report}
+\usepackage{amsmath}                                                            
+\usepackage{amsfonts}
+
+%\usepackage[notcite,notref]{showkeys} 
+%Use the showkeys package to view labels. For draft version only!
+
+                                                           
+\setlength{\textwidth}{5.5in} 
+\setlength{\textheight}{8.5in}
+\topmargin 1.5in 
+\oddsidemargin 0.3in 
+\evensidemargin 0.3in
+
+\begin{document}
+
+\begin{titlepage}\phantom{|}\vspace{-0.75in}
+
+\begin{center}
+    \underline{PUT THE TITLE OF THE THESIS HERE }
+\end{center}
+\begin{center}
+    \underline{WITH A SECOND LINE IF IT IS VERY LONG}
+\end{center}
+
+\vspace{1.5in}%{2.0in}
+
+\begin{center}
+    Thesis submitted at the University of Leicester \\
+    in partial fulfilment of the requirements for \\ 
+    the MSc degree in Financial Mathematics and Computation \\
+\end{center}
+
+\vspace{.5in}
+
+\begin{center}
+    by
+\end{center}
+
+\vspace{.5in}
+
+\begin{center}
+    Candidate's Full Name \\
+    Department of Mathematics \\
+    University of Leicester \\
+\end{center}
+
+\vspace{0.5in}
+
+\begin{center}
+    Month and Year of Submission
+\end{center}
+
+\end{titlepage}
+
+\topmargin 0in
+\pagenumbering{roman}
+\tableofcontents
+
+\global\baselineskip24pt plus2pt minus2pt
+
+
+
+\newtheorem{ttt}{THEOREM}[chapter]  %Theorem: use "\begin{ttt} ... \end{ttt}"
+\newtheorem{lll}[ttt]{LEMMA}        %Lemma: use "\begin{lll} ... \end{lll}" 
+\newtheorem{ccc}[ttt]{COROLLARY}                                                
+\newtheorem{ppp}[ttt]{PROPOSITION}                                              
+\newtheorem{conj}[ttt]{CONJECTURE}  %Conjecture: "\begin{conj} ... \end{conj}"
+\newtheorem{rmdef}[ttt]{DEFINITION} %Definition: "\begin{ddd} ... \end{ddd}"
+\newtheorem{rmexa}[ttt]{EXAMPLE}    %Example: "\begin{eee} ... \end{eee}" 
+\newtheorem{rmrem}[ttt]{REMARK}     %Remark: "\begin{rrr} ... \end{rrr}" 
+                                     
+\newenvironment{ddd}{\begin{rmdef}\rm}{\end{rmdef}}                             
+\newenvironment{eee}{\begin{rmexa}\rm}{\end{rmexa}}                             
+\newenvironment{rrr}{\begin{rmrem}\rm}{\end{rmrem}}                             
+                                              
+					                                        
+\newenvironment{pf}[1][Proof]{                                                  
+\par\noindent{\em #1}. }{\hfill\framebox(6,6)\par\medskip}                      
+                                                                               
+% use \begin{pf} ...Your proof here... \end{pf}
+% or \begin{pf}[Proof of the lemma]  ... \end{pf}"
+% or \begin{pf}[Proof of Theorem \ref{mytheorem}]  ... \end{pf}"
+
+
+
+
+
+\chapter*{Declaration}                % The * means no number for this chapter
+\addcontentsline{toc}{chapter}{\hspace{0.2in}Declaration}
+All sentences or passages quoted in this project dissertation from other
+people's work have been specifically acknowledged by clear cross referencing
+to author, work and page(s).  I understand that failure to do this amounts
+to plagiarism and will be considered grounds for failure in this module and
+the degree examination as a whole.
+
+\bigskip
+
+\noindent
+Name:
+
+
+\bigskip
+
+\noindent
+Signed:
+
+
+\bigskip
+
+\noindent
+Date:
+
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{\hspace{0.2in}Abstract}
+
+A summary of the thesis in about 200 words.
+
+
+\chapter*{Introduction}
+\pagenumbering{arabic}
+\addcontentsline{toc}{chapter}{\hspace{0.2in}Introduction}
+
+In this thesis we consider the work of Gauss \cite[ch 2]{bib:Gauss}
+and Hilbert \cite{bib:Hilbert1} on the subject of the title.
+
+
+\section*{Gauss's work}
+\addcontentsline{toc}{section}{\hspace{0.2in}Gauss's Work}
+
+We will discuss Gauss's work in Chapter \ref{chapter-on-Gauss}.
+
+
+\section*{Hilbert's work}
+\addcontentsline{toc}{section}{\hspace{0.2in}Hilbert's Work}
+
+We will discuss Hilbert's work in Chapter \ref{chapter-on-Hilbert}.
+
+\chapter{Results of Gauss}    \label{chapter-on-Gauss}
+
+In \cite{bib:Gauss} Gauss proved the following very important result.
+
+\begin{ttt}[Gauss]    \label{Gauss'sTheorem}
+Some very profound result.
+\end{ttt}
+
+
+Later on in Chapter \ref{chapter-on-Hilbert}
+we will have more to say about Theorem \ref{Gauss'sTheorem}.
+
+
+\section{Gauss's youthful work}
+
+
+
+
+\section{Gauss's mature work}
+
+
+
+\chapter{Results of Hilbert}     \label{chapter-on-Hilbert}
+
+In \cite{bib:Hilbert1} Hilbert considered these questions from a
+more abstract point of view. He proved the following result.
+
+\begin{ttt}[Hilbert]      \label{Hilbert'sTheorem}
+Some even more profound result.
+\end{ttt}
+
+In Chapter \ref{chapter-on-Gauss}
+a special case of Theorem \ref{Hilbert'sTheorem} was proved.
+We can prove an even more general result.
+
+\begin{ttt}    \label{mytheorem}
+An extremely profound result.
+\end{ttt}
+
+\begin{pf} As any fool can plainly see, it's true! 
+\end{pf}
+
+
+
+\begin{thebibliography}{99}             %Any other two digit number will do
+\addcontentsline{toc}{chapter}{\hspace{0.2in}Bibliography}
+
+\bibitem{bib:Gauss} Gauss, C.F.,
+    ``Disquisitiones Arithmeticae'', Leipzig, 1801.
+
+\bibitem{bib:Hilbert1}  Hilbert, D., 
+    {\em \"{U}ber tern\"{a}re definite Formen},
+    Acta Math., {\bf 17} (1893), 169--197.
+
+\end{thebibliography}
+
+
+\chapter*{Appendix 1: Optional Extra}
+\addcontentsline{toc}{chapter}{\hspace{0.2in}Appendix 1: Optional Extra}
+
+\begin{center}
+   {\Large A PROGRAM TO COMPUTE EIGENVALUES}
+\end{center}
+
+\begin{verbatim}    
+100 GOTO 200
+200 END
+\end{verbatim}    
+
+\chapter*{Appendix 2: More Extra}
+\addcontentsline{toc}{chapter}{\hspace{0.2in}Appendix 2: More Extra}
+
+
+%
+% Symbol Entry for Math Symbol Tables
+%
+\newcommand{\X}[1]{$#1$&\texttt{\string#1}\hspace*{1ex}}
+\newsavebox{\symbbox}
+\newenvironment{symbols}[1]%
+{\par\vspace*{2ex}
+\begin{lrbox}{\symbbox}
+\hspace*{4ex}\begin{tabular}{@{}#1@{}}}%
+{\end{tabular}\end{lrbox}\makebox[\textwidth]{\usebox{\symbbox}}\par\medskip}
+
+
+
+\begin{table}[!h]
+\caption{Lowercase Greek Letters.}
+\begin{symbols}{*4{cl}}
+ \X{\alpha}     & \X{\theta}     & \X{o}          & \X{\upsilon}  \\
+ \X{\beta}      & \X{\vartheta}  & \X{\pi}        & \X{\phi}      \\
+ \X{\gamma}     & \X{\iota}      & \X{\varpi}     & \X{\varphi}   \\
+ \X{\delta}     & \X{\kappa}     & \X{\rho}       & \X{\chi}      \\
+ \X{\epsilon}   & \X{\lambda}    & \X{\varrho}    & \X{\psi}      \\
+ \X{\varepsilon}& \X{\mu}        & \X{\sigma}     & \X{\omega}    \\
+ \X{\zeta}      & \X{\nu}        & \X{\varsigma}  & &             \\
+ \X{\eta}       & \X{\xi}        & \X{\tau} 
+\end{symbols}
+\end{table}
+
+\begin{table}[!h]
+\caption{Uppercase Greek Letters.}
+\begin{symbols}{*4{cl}}
+ \X{\Gamma}     & \X{\Lambda}    & \X{\Sigma}     & \X{\Psi}      \\
+ \X{\Delta}     & \X{\Xi}        & \X{\Upsilon}   & \X{\Omega}    \\
+ \X{\Theta}     & \X{\Pi}        & \X{\Phi} 
+\end{symbols}
+\end{table}
+
+
+\begin{table}[!tbp]
+\caption{Math Alphabets.}
+\begin{symbols}{@{}*3l@{}}
+Example& Command &Required package\\
+\hline
+\rule{0pt}{1.05em}$\mathrm{ABCDE abcde 1234}$
+        & \verb|\mathrm{ABCDE abcde 1234}|
+        &       \\
+$\mathit{ABCDE abcde 1234}$
+        & \verb|\mathit{ABCDE abcde 1234}|
+        &       \\
+$\mathnormal{ABCDE abcde 1234}$
+        & \verb|\mathnormal{ABCDE abcde 1234}|
+        &  \\
+$\mathcal{ABCDE abcde 1234}$
+        & \verb|\mathcal{ABCDE abcde 1234}|
+        &  \\
+$\mathfrak{ABCDE abcde 1234}$
+        & \verb|\mathfrak{ABCDE abcde 1234}|
+        &\textsf{amsfonts}  or \textsf{amssymb}  \\
+$\mathbb{ABCDE abcde 1234}$
+        & \verb|\mathbb{ABCDE abcde 1234}|
+        &\textsf{amsfonts}  or \textsf{amssymb} \\
+\end{symbols}
+\end{table}
+
+
+
+\end{document} 
+ 
