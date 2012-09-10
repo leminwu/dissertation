@@ -73,7 +73,7 @@ int main(int argc, const char *argv[]) {
             float management = fundTminus*0.008f; //management charge change
             float fundT = fundTminus-management;
             // 0.5 is because expense is 0.5%P, and unallocated premium is 1%P
-            float two2nine = (t > 1) ? 0.5f : 1.0f;
+            float two2nine = (t > 1) ? 0.3f : 1.0f;
             //add ii, the interest rate for insurer, which equal 0.06 for now
             float profit = (P - allocP) * (1.0f+0.05f) * two2nine + management - fundT*0.005f*0.1f; //expected death benefit
             float oldprofit = profit;

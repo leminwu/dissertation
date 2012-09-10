@@ -296,7 +296,7 @@ Once the insurer receive the premium, it will be payed into policy holder's fund
 Before we establish the model, we need some assumptions, the following are some ideas from  \cite{bib:unitlinkeg} book {\em Actuarial Mathematics for Life Contingent Risks,} and some online sources \cite{bib:unitlinkegonline}. 
 
 
-A company is going to issue a new 10 years unit-linked contract to people from 55 to 60 years old. In the contract, it stated that the annual premium is \textsterling 5200, with an un-allocated rate of 5\% in the first year and 1\% in the subsequent years. Expenses occurs the same time as the premium payed in, which is 10\% (including commision) and 0.5\% repectively. At the end of each year, there is a further management charge of 0.8\% of policy holder's fund. All the above deductions from policy holder's account will be transferred to insurer's account.
+A company is going to issue a new 10 years unit-linked contract to people from 55 to 60 years old. In the contract, it stated that the annual premium is \textsterling 5200, with an un-allocated rate of 5\% in the first year and 1\% in the subsequent years. Expenses occurs the same time as the premium payed in, which is 13\% (including commision) and 0.7\% repectively. At the end of each year, there is a further management charge of 0.8\% of policy holder's fund. All the above deductions from policy holder's account will be transferred to insurer's account.
 
 When the contract mature, the policy holder can received the greater of policy holder's fund and accumulation of premiums payed in. But if the death happens before the mature date, policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer's account.
 
@@ -316,10 +316,9 @@ For deterministic pricing, we used conservative interest rates for both accounts
 
 \subsection{Cash flow analysis}
 
-Now from all the assumptions, we can create the cash flow tables for both policy holder and insurer's account for the  10 years term. 
+Now from all the assumptions, we can create the cash flow tables for both policy holder and insurer's account for the  10 years term. First let us explore the policy holder's account. 
 
 
-BABE~~ I solve the flying around table probelm, but still this table down here doesn't have a number, eg. talbe2.1, why is that?
 
 \begin{figure}[h]
 \begin{tabular}{c c c c c c c c c c}
@@ -327,7 +326,7 @@ BABE~~ I solve the flying around table probelm, but still this table down here d
 \multicolumn{8}{c}{Cash flow for policy holder's account} \\
 \cmidrule(r){3-7}
 
-Year t & A & All & Fur & int & Fu $t^-$ & mast & Fundr (\$) \\
+Year t & Annual premium & Allocated premium & Fund brought forward & Interest & Fund at time $t^-$ & Management cost & Fund bring forward \\
 \midrule
 1	&5200	&4940	&0&	395.2	&5335.2	&42.68	&5292.52\\
 2	&5200	&5148	&5292.52	 &   835.24	&11275.76 &	90.21	&11185.55\\
@@ -373,7 +372,7 @@ Year t & A & All & Fur & int & Fu $t^-$ & mast & Fundr (\$) \\
 
 
 
-Here are the method used to calculate the table from colum to column.  (BABE, I DON'T MEAN METHOD HERE, WHAT WORD CAN I USE?)
+Here are the method used to calculate the table above from colum to column.  (BABE, I DON'T MEAN METHOD HERE, WHAT WORD CAN I USE?)
 
 \textbf{Allocated premium:} For the first year, the premium allocated in the policy holder's fund will be (1-5\%) of the premium payed, where 5\% is the agreed un-allocated premium which will be payed into insurer's account. For the subsequent years, the un-allocated rate decrease to 1\%, hence there will be 99\% premium payed into policy holder's fund.
 
@@ -394,37 +393,80 @@ eg.  year t=5, interest = (5,148 + 24263.21) $\times$ 0.08 = 2,352.89
 \textbf{Fund bring forward:} It is the fund left in policy holder's account after deduction of management cost. 
 
 
+Table SIMON!!!! HOW TO NUMBER THE TABLE???!? is showing the insurer's account cash flow for one policy holder. 
 
 
 \begin{figure}[ht]
 \hfill
 \begin{tabular}{c c c c c c c c c c}
 \toprule
-\multicolumn{8}{c}{Cash flow for insurer's account} \\
+\multicolumn{9}{c}{Cash flow for insurer's account} \\
 \cmidrule(r){3-7}
 
-Year t & A & All & Fur & int & Fu $t^-$ & mast & Fundr (\$) \\
+Year t & Annual premium & Un-allocated premium & Expenses & Interest &Management & Expected death benefit & Profit  \\
 \midrule
 
-0&0&0&670&0&0&0&-670\\
-1&5200&260&0&13&42.68&3.18&312.51\\
-2&5200&52&39&0.65&90.21&6.71&97.14\\
-3&5200&52&39&0.65&141.12&10.50&144.27\\
-4&5200&52&39&0.65&195.67&14.56&194.76\\
-5&5200&52&39&0.65&254.11&18.91&248.86\\
-6&5200&52&39&0.65&316.73&23.56&306.81\\
-7&5200&52&39&0.65&383.81&28.56&368.90\\
-8&5200&52&39&0.65&455.67&33.90&435.42\\
-9&5200&52&39&0.65&532.67&39.63&506.69\\
-10&5200&52&39&0.65&615.16&45.77&583.04\\
+0&0&0&676&0&0&0&-676&-676\\
+1&5200&260&36.4&11.18&42.686&3.18&274.29&274.29\\
+2&5200&52&36.4&0.78&90.21&6.71&99.87&89.35\\
+3&5200&52&36.4&0.78&141.12&10.50&147.00&124.14\\
+4&5200&52&36.4&0.78&195.67&14.56&197.49&165.78\\
+5&5200&52&36.4&0.78&254.11&18.91&251.59&209.92\\
+6&5200&52&36.4&0.78&316.73&23.56&309.54&256.73\\
+7&5200&52&36.4&0.78&383.81&28.56&371.63&306.38\\
+8&5200&52&36.4&0.78&455.67&33.90&438.15&359.05\\
+9&5200&52&36.4&0.78&532.67&39.63&509.42&414.95\\
+10&5200&52&36.4&0.78&615.16&45.77&585.77&474.28\\
 
 \bottomrule
 \end{tabular}
 \end{figure}
 
 
+In insurer's account, un-allocated premium, expense, interest and management cost are calculated in the same way as in policy holder's account. You may notice there is an extra row in the table, year 0 in insurer's cash flow, this is because the expenses will always occurs before receive the premium, eg. renting, stationary cost and employees' salary. 
+
+For expected death benefit, profit and profit signature are calculated as below:
+
+\textbf{Expected death benefit:} If the death occurs before the contract mature, the policy holder's estate will receive the fund from policy holder's account with extra 10\% from insurer account. The death benefit we calculate here is the 10\% from insurer's account. 
+
+At time 0, there policy holder just enter the contract, so the probability in force is 1.
+
+In year 1, policy holders pay the first premium right after sign the contract, so the probability in force is still 1. 
+
+During the first year, by our assumption, there will be 10\% policy holders surender the contract, and the mortality rate for the other 90\% is 0.006. Therefore, at the beginning of the second calandar year, insurer will be expecting $p_2=$ (1-0.006) $\times$(1-0.1) =0.8946 of policy holders renew their contracts. 
+
+Same as in the first year, the insurer is expecting $p_3$= (1-0.006-0.5) $\times$$p_2$= 0.8445024 will renew the contract, since by assumption there are 5\% policy holder will surender during the second year.
+
+From the third year, the probability in force will be $p_t$ = (1-0.006) $\times$ $p_{t-1}$. (Showing in table !!!SIMON ADD TABLE NUMBER FOR ME!!)
 
 
+\begin{figure}[h]
+\begin{tabular}{|l|l|}
+  \hline
+  \multicolumn{2}{|c|}{Survival Rate} \\
+  \hline
+t=	&probability in force\\
+0	&1\\
+1	&1\\
+2	&0.8946\\
+3	&0.8445024\\
+4	&0.839435386\\
+5	&0.834398773\\
+6	&0.829392381\\
+7	&0.824416026\\
+8	&0.81946953\\
+9	&0.814552713\\
+10	&0.809665397\\
+  \hline
+\end{tabular}
+\end{figure}
+
+
+\textbf{Profit:} For each year, profit is calculated by the fomula
+
+Profit = Un-allocated premium - Expenses + Interest + Management cost - Death benefit
+
+\textbf{Profit signature:} This is profit the insurer can make with probality the contracts are still in force, which is defined as $\Pi_t = p_x \times$ Profit$_t$
 
 
 \subsection{Profitability}
