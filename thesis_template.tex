@@ -9,6 +9,7 @@
 \documentclass{report}
 \usepackage{amsmath}                                                            
 \usepackage{amsfonts}
+\usepackage{booktabs}
 
 %\usepackage[notcite,notref]{showkeys} 
 %Use the showkeys package to view labels. For draft version only!
@@ -309,7 +310,86 @@ BABE!!! HOW CAN I MAKR A EQUATION AT THE BOTTOM OF THE PAGE? ??
 
 \section{Deterministic pricing and reserving}
 
-Last section we introduce the unit-linked contract and have some assumptions to help us establish the model. But here is something we did not count in, the uncertainty in the investment return in both policy holder's account ans insurer's account. For deterministic pricing, we used conservative interest rates for both accounts, 8\% for policy holder's account and 5\% for insurer's account, and assume no reserve holds in this case. Since the mortality rate is a constant, as well as and conservative interest rates, the cash flow for different policy holders will be exactly the same. 
+Last section we introduce the unit-linked contract and have some assumptions to help us establish the model. But here is something we did not count in, the uncertainty in the investment return in both policy holder's account ans insurer's account. 
+
+For deterministic pricing, we used conservative interest rates for both accounts, 8\% for policy holder's account and 5\% for insurer's account, and assume no reserve holds in this case. Since the mortality rate is a constant, as well as the conservative interest rates, the cash flow for different policy holders will be exactly the same. Now we set one as an example.
+
+\subsection{Cash flow analysis}
+
+Now from all the assumptions, we can create the cash flow tables for both policy holder and insurer's account for the  10 years term. 
+
+
+
+\begin{tabular}{c c c c c c c c c c}
+\toprule
+\multicolumn{8}{c}{Cash flow for policy holder's account} \\
+\cmidrule(r){3-7}
+
+Year t & A & All & Fur & int & Fu $t^-$ & mast & Fundr (\$) \\
+\midrule
+1	&5200	&4940	&0&	395.2	&5335.2	&42.68	&5292.52\\
+2	&5200	&5148	&5292.52	 &   835.24	&11275.76 &	90.21	&11185.55\\
+3	&5200	&5148	&11185.55&  1306.68	&17640.24	&141.12  &17499.12\\
+4&	5200	&5148	&17499.12&  1811.77&	24458.89	&    195.67       &24263.21\\
+5&	5200	&5148&	24263.21	&    2352.89&	31764.11	&   254.11	&31509.99\\
+6&	5200	&5148&	31509.99	&   2932.64&	39590.64	&   316.73	&39273.91\\
+7&	5200	&5148&	39273.91	&   3553.75&	47975.67	&   383.81	&47591.86\\
+8&	5200	&5148&	47591.86	&   4219.189&	56959.05	&  455.67	    &56503.38\\
+9&	5200	&5148&	56503.38	&   4932.11&	66583.49	&  532.67 	&66050.82\\
+10&	5200	&5148	&66050.82	&5695.91	&76894.73	&615.16	&76279.57\\
+\bottomrule
+\end{tabular}
+
+
+
+
+
+%\begin{table}[ht]
+%\caption{Cash flow in policy holder's account} % title of Table
+%\centering  % used for centering table
+%\begin{tabular}{c c c c c c c c c c} % centered columns (4 columns)
+%\hline                     %inserts double horizontal lines
+%Year t & Ann& A & Fear & it & F at $t^-$ & mst & Fuear (\$) \\ [0.5ex] % inserts table 
+%heading
+%\hline                  % inserts single horizontal line
+%1   & 5200    &    4940  &	0  &	395.2   &	5384.6  & 43.0768	&5341.5232 \\
+%2	&5200	&5148	&5341.52	   &  835.24	   &11433.58	     & 91.47   	&11342.11\\
+%3	&5200	&5148	&11342.11	  &1306.68	    &17974.22	   &143.80	    &17830.43\\
+%4	&5200	&5148	&17830.43	  &1811.77	  & 25046.49	   &200.37	   &24846.11\\
+%5	&5200	&5148	&24846.11	  &2352.90  	&32693.58   &261.55	   &32432.04\\
+%6	&5200	&5148	&32432.04   &	3382.20   &	40962.24	&   327.70 	&40634.54\\
+%7	&5200	&5148	&40634.54	   &4120.43   	&49902.97	   &399.22	 &  49503.75\\
+%8	&5200	&5148	&49503.75   &4918.66   	&59570.40	   &476.56   	&59093.84\\
+%9	&5200	&5148	&59093.84	   &5781.77   	&70023.60   &	560.19	  & 69463.42\\
+%10	&5200	&5148	&69463.42&	6715.03   	&81326.44   &650.61	   &80675.83\\ [1ex]      % [1ex] %adds vertical space
+%\hline 
+
+%\end{tabular}
+%\label{table:nonlin} % is used to refer this table in the text
+%\end{table}
+
+
+
+
+Here are the method used to calculate the table from colum to column.  (BABE, I DON'T MEAN METHOD HERE, WHAT WORD CAN I USE?)
+
+\textbf{Allocated premium:} For the first year, the premium allocated in the policy holder's fund will be (1-5\%) of the premium payed, where 5\% is the agreed un-allocated premium which will be payed into insurer's account. For the subsequent years, the un-allocated rate decrease to 1\%, hence there will be 99\% premium payed into policy holder's fund.
+
+First year allocated premium:                5,200 $\times$ 0.95= 4,940
+
+Subsequent years allocated premium:   5,200 $\times$ 0.99= 5,148
+
+\textbf{Interest:} It is the profit policy holder obtain from the the accumulation of premium payed in at the beginning of the year and fund brought forward from end of last year with the assumed interest rate 8\%.
+
+eg.  year t=5, interest = (5,148 + 24263.21) $\times$ 0.08 = 2,352.89
+
+\textbf{Fund at time $t^-$:} It is the accumulation of premium payed in at the beginning of the year, fund brought forward from end of last year and interest earned.
+
+\textbf{Management cost:} In our assumption, the management cost is 0.08\% of the policy holder's fund, which is the fund at time $t^-$ here. 
+
+\textbf{Fund bring forward:} It is the fund left in policy holder's account after deduction of management cost. 
+
+
 
 
 
