@@ -220,7 +220,7 @@ We will discuss Hilbert's work in Chapter \ref{chapter-on-Hilbert}.
 
 
 
-\chapter{Results of Gauss}    \label{chapter-on-Gauss}
+\chapter{Results of Gauss}    \label{annuity}
 
 In \cite{bib:Gauss} Gauss proved the following very important result.
 
@@ -290,13 +290,31 @@ Once the insurer receive the premium, it will be payed into policy holder's fund
  \cite{bib:GMMB}If the policy holder survival to the maturity date, he/she will receive the greater value of total premiums payed in or the fund in policy holder's account. This is called guranteed minimum maturity benefit (GMMB). But the if the death happens first, there is a guaranteed minimum death benefit, which allows policy holder's estate to receive the policy holder's fund with an extra amount. 
 
 
-\subsection{Some assumptions}
+\subsection{Some assumptions *** change variables!!} 
+
+Before we establish the model, we need some assumptions, the following are some ideas from  \cite{bib:unitlinkeg} book {\em Actuarial Mathematics for Life Contingent Risks,} and some online sources \cite{bib:unitlinkegonline}. 
 
 
-babe, how should i start introduce my assumptions for unit-linked contract?
+A company is going to issue a new 10 years unit-linked contract to people from 55 to 60 years old. In the contract, it stated that the annual premium is \textsterling 5200, with an un-allocated rate of 5\% in the first year and 1\% in the subsequent years. Expenses occurs the same time as the premium payed in, which is 10\% (including commision) and 0.5\% repectively. At the end of each year, there is a further management charge of 0.8\% of policy holder's fund. All the above deductions from policy holder's account will be transferred to insurer's account.
+
+When the contract mature, the policy holder can received the greater of policy holder's fund and accumulation of premiums payed in. But if the death happens before the mature date, policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer's account.
+
+The insurance company is also prepared to have 10\% of policy holders surrender the contract in the first year and 5\% in the second year, but no more in the subsequent years. The policy holders who surrender the contract will received their premium(s) after deduction of management cost at the end of the year.
+
+In the Chapter \ref{annuity}, we had introduce different methods to calculate the mortality rate, but here we are going to use a constant force of mortality, $\mu_x=2.2218$, for people aged 55 to 60, which means the mortality rate of policy holders $q_x=0.006$ is a constant in each year. The reason we set the mortality rate to a constant will be explained later in this chapter.  
+
+BABE!!! HOW CAN I MAKR A EQUATION AT THE BOTTOM OF THE PAGE? ??
+
 
 
 \section{Deterministic pricing and reserving}
+
+Last section we introduce the unit-linked contract and have some assumptions to help us establish the model. But here is something we did not count in, the uncertainty in the investment return in both policy holder's account ans insurer's account. For deterministic pricing, we used conservative interest rates for both accounts, 8\% for policy holder's account and 5\% for insurer's account, and assume no reserve holds in this case. Since the mortality rate is a constant, as well as and conservative interest rates, the cash flow for different policy holders will be exactly the same. 
+
+
+
+
+
 \subsection{Profitability}
 
 
@@ -322,9 +340,26 @@ babe, how should i start introduce my assumptions for unit-linked contract?
     ``Disquisitiones Arithmeticae'', Leipzig, 1801.
 
 \bibitem{bib:GMMB}  David C. M. Dickson, Mary R. Hardy and Howard R. Waters,
-    {\em \"Actuarial Mathematics for Life Contingent Risks,},
+    {\em Actuarial Mathematics for Life Contingent Risks,},
     3rd edition, 2011, 
-    page 374-275.
+    page 374-375.
+
+\bibitem{bib:unitlinkeg}  David C. M. Dickson, Mary R. Hardy and Howard R. Waters,
+    {\em Actuarial Mathematics for Life Contingent Risks,},
+    3rd edition, 2011, 
+    page 375.
+
+
+%\bibitem{bib:unitlinkeg}  Hans U. Gerber,  James C. Hickman, Donald A. Jones and Cecil J. Nesbitt,
+%   {\em Actuarial Mathematics,},
+%  3rd edition, 2011, 
+%    page 375.
+
+\bibitem{bib:unitlinkegonline}  Mrs Giselle du Toit
+    {\em Actuarial Mathematics for Life Contingent Risks,},
+    2nd edition, 2011, 
+    page 375.
+
 
 
 

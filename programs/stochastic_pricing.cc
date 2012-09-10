@@ -7,15 +7,15 @@ using namespace std;
 float survival_rate[] = {
 1,
 1,
-0.8955,
-0.8462475,
-0.842016263,
-0.837806181,
-0.83361715,
-0.829449065,
-0.825301819,
-0.82117531,
-0.817069434,
+0.8946,
+0.8445024,
+0.839435386,
+0.834398773,
+0.829392381,
+0.824416026,
+0.81946953,
+0.814552713,
+0.809665397,
 };
 
 float test_data[] = {
@@ -75,7 +75,7 @@ int main(int argc, const char *argv[]) {
             // 0.5 is because expense is 0.5%P, and unallocated premium is 1%P
             float two2nine = (t > 1) ? 0.5f : 1.0f;
             //add ii, the interest rate for insurer, which equal 0.06 for now
-            float profit = (P - allocP) * (1.0f+0.065f) * two2nine + management - fundT*0.005f*0.1f; //renewal expense change
+            float profit = (P - allocP) * (1.0f+0.05f) * two2nine + management - fundT*0.005f*0.1f; //expected death benefit
             float oldprofit = profit;
             if(t == 10) {
                 profit -= 0.995f * (max(52000.0f*0.9f - fundT, 0.0f));
