@@ -59,7 +59,7 @@ int main(int argc, const char *argv[]) {
 
     for(int i=0; i<1000; i++) {
         write_header();
-        write_row(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, -(0.1f*5200.0f), -(0.1f*5200.0f), -520.0f);
+        write_row(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, -(0.13f*5200.0f), -(0.13f*5200.0f), -(0.13f*5200.0f));
         float lastFund = 0.0f;
         float NPV = -520.0f; //initial expense change
         for(int t=1; t<=10; t++) {
@@ -72,13 +72,13 @@ int main(int argc, const char *argv[]) {
             float fundTminus = (allocP + lastFund) * rt;
             float management = fundTminus*0.008f; //management charge change
             float fundT = fundTminus-management;
-            // 0.5 is because expense is 0.5%P, and unallocated premium is 1%P
+            // 0.3 is because expense is 0.7%P, and unallocated premium is 1%P
             float two2nine = (t > 1) ? 0.3f : 1.0f;
             //add ii, the interest rate for insurer, which equal 0.06 for now
-            float profit = (P - allocP) * (1.0f+0.05f) * two2nine + management - fundT*0.005f*0.1f; //expected death benefit
+            float profit = (P - allocP) * (1.0f+0.05f) * two2nine + management - fundT*0.006f*0.1f; //expected death benefit
             float oldprofit = profit;
             if(t == 10) {
-                profit -= 0.995f * (max(52000.0f*0.9f - fundT, 0.0f));
+                profit -= 0.994f * (max(52000.0f - fundT, 0.0f));
             }
             float pit = profit * survival_rate[t];
             NPV += pit * pow(1.0f + 0.15f, -t);
