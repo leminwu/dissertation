@@ -225,12 +225,12 @@ $_t p_x$\\
 
 \chapter{Annuity and Assurance}    \label{annuity}
 
-An annuity offers a series of payment to the policy holders, if it is conditioned on the survival of the policy holder\footnote{Or sometimes called annuitant.}, then it is called a life annuity. If the annuity is payed for a fixed period, it is called term annuity, but if it continous till the death 
+An annuity offers a series of payment to the policy holders, if it is conditioned on the survival of the policy holder (sometimes called annuitant), then it is called a life annuity. If the annuity is payed for a fixed period, it is called term annuity, but if it continous till the death.
 
 
 
 
-In this chapter we are going to explore how will the insurance company\footnote{Insurance company is also called insurer.} gather all the available information 
+In this chapter we are going to explore how will the insurance company gathers all the available information.
 
 \section{Background}
 
@@ -292,16 +292,18 @@ In this chapter we are going to explore how will the insurance company\footnote{
 
 %In the previous chapter we used different method to obtain mortality rate
 
-In this chapter we are going to introduce the unit-linked insurance contract. Starting from some assumptions to construct a deterministic pricing model, and demonstrate that the deterministic pricing test is not accurate enough for this contract. This is because the uncertainty, or in other words risk, in the investment is not diversifiable.  
+In this chapter we are going to introduce the unit-linked insurance contract. Starting from some assumptions to construct a deterministic pricing model, and demonstrate that the deterministic pricing test is not accurate enough for this contract.
+% Do not understand.
+This is because the uncertainty, or in other words risk, in the investment is not diversifiable.  
 
 To solve this problem, a stochastic pricing test will be considered, with the future return on the investment modelled as a random variable, then sensitivity test will be used again to find the best assumption for this contract as well as determine the reserve. 
 
 
 \section{Background}
 
-In some countries unit-linked contract is also called equity-linked contract, it is because the single or regular premium paid by the policy holder will be invested on units of Equity or bonds on their own behalf. Once the insurer receive the premium, it will be payed into policy holder's fund after deduction of expenses and management costs in that year, and the deduction goes to insurer's account. In UK, there is an un-allocated percentage, which is another agreed regular deduction from policy holder's fund to insurer's account.
+In some countries unit-linked contract is also called equity-linked contract, it is because the single or regular premium paid by the policy holder will be invested on units of Equity or bonds on their own behalf. Once the insurer receives the premium, it will be payed into policy holder's fund after deduction of expenses and management costs in that year, and the deduction goes to insurer's account. In UK, there is an un-allocated percentage, which is another agreed regular deduction from policy holder's fund to insurer's account.
 
-If the policy holder survival to the maturity date, he/she will receive the greater value between accumulated premiums payed and the fund in policy holder's account. This is called guranteed minimum maturity benefit (GMMB) \cite{bib:GMMB}. But the if the death happens first, there is a guaranteed minimum death benefit, which allows policy holder's estate to receive the policy holder's fund with an extra amount, eg. 10\% extra of the policy holder's fund. 
+If the policy holder survival to the maturity date, they will receive the greater value between accumulated premiums payed and the fund in policy holder's account. This is called guranteed minimum maturity benefit (GMMB) \cite{bib:GMMB}. But the if the death happens first, there is a guaranteed minimum death benefit, which allows policy holder's estate to receive the policy holder's fund with an extra amount, eg. 10\% extra of the policy holder's fund. 
 
 
 \subsection{Some assumptions}  \label{unit-link-basic-assumptions}
@@ -309,9 +311,9 @@ If the policy holder survival to the maturity date, he/she will receive the grea
 Before we establish the model, we need some assumptions, the following are some ideas from  \cite{bib:unitlinkeg} book {\em Actuarial Mathematics for Life Contingent Risks,} and some online sources \cite{bib:unitlinkedonline}. 
 
 
-A company is going to issue a new 10 years unit-linked contract to people aged 55 to 60. In the contract, it stated that the annual premium is \textsterling 5200, with an un-allocated rate of 5\% in the first year and 1\% in the subsequent years, this will be deducted immediately after receive the premium. Expenses occurs the same time as the premium payed in, which is 13\% (including commision) and 0.7\% repectively. At the end of each year, there is a further management charge of 0.8\%  discounted from policy holder's fund. The deductions from policy holder's account will be transferred to insurer's account.
+A company is going to issue a new 10 year unit-linked contract to people aged 55 to 60. In the contract, it stated that the annual premium is \textsterling 5200, with an un-allocated rate of 5\% in the first year and 1\% in the subsequent years, this will be deducted immediately after receive the premium. Expenses occurs the same time as the premium payed in, which is 13\% (including commision) and 0.7\% repectively. At the end of each year, there is a further management charge of 0.8\%  discounted from policy holder's fund. The deductions from policy holder's account will be transferred to insurer's account.
 
-When the contract mature, the policy holder can received the greater value between policy holder's fund and accumulation of premiums payed. But if the death happens before the mature date, policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer's account.
+When the contract matures, the policy holder can received the greater value between policy holder's fund and accumulation of premiums payed. But if the death happens before the mature date, policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer's account.
 
 The insurance company is also prepared to have 10\% of policy holders surrender the contract in the first year and 5\% in the second year, but no more in the subsequent years. The policy holders who surrender the contract will received their premium(s) after deducted management cost at the end of the year.
 
@@ -323,6 +325,7 @@ In the Chapter \ref{annuity}, we had introduce different methods to calculate th
 
 \section{Deterministic pricing and reserving}
 
+% Needs rephrasing
 Last section we introduce the unit-linked contract, and have some assumptions to construct the model. But here is something has not been counted in, the uncertainty in the investment return in policy holder's account and insurer's account. 
 
 For deterministic pricing, we used conservative interest rates for both accounts, 8\% for policy holder's account and 5\% for insurer's account, and assume no reserve holds in this case. Since the mortality rate is a constant, as well as the conservative interest rates, the cash flow for different policy holders will be exactly the same. Here is one example.
@@ -646,8 +649,8 @@ So far everything looks fine, but is this a good model for unit-linked contract?
 
 \section{Stochastic pricing}
 
-From the sensitivity test in last section, we conclude that the change in interest rate is non-diversifiable and extremely sensitive, which a constant assumption is not suitable. So now we are going to introduce stochastic test which can model the interest rate as a random variable, so that it can reflect the reality realistically.  (simon! I DON'T LIKE THE LAST SENTENSE, CAN YOU FIGURE OUT SOMETHING BETTER??? )
-
+From the sensitivity test in last section, we conclude that the change in interest rate is non-diversifiable and extremely sensitive, which a constant assumption is not suitable. 
+For a more realistic model we introduce the stochastic price test. Here, we model the interest rate as a random variable, avoiding the constant assumption of the previous section.
 
 
 \subsection{Central Limit Theorem and Monte Carlo simulation}
@@ -916,7 +919,7 @@ This is an ideal contract for the insuer, but may not be ideal for the policy ho
 \subsection{Reserving}
 
 
-From the scenario test 4 in last section, we have a model which enable the insurer have less risk to make profit on the contract. But even the risk is much lower, if the number of contracts issued is large, the insurer may still have a probability to lose. In this case, the insurer may have the following solutions\cite{bib:reserve}:
+From the scenario test 4 in last section, we have a model which enables the insurer to have less risk to make a profit on the contract. But even the risk is much lower, if the number of contracts issued is large, the insurer may still have a probability to lose. In this case, the insurer may have the following solutions\cite{bib:reserve}:
 
 1. Hedge the risk in the financial market.
 
