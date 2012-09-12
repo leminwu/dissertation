@@ -12,7 +12,8 @@
 \usepackage{booktabs}
 \usepackage{color}
 \usepackage{float}
-
+\usepackage{courier}
+\usepackage{setspace} 
 
 %\usepackage[notcite,notref]{showkeys} 
 %Use the showkeys package to view labels. For draft version only!
@@ -225,20 +226,23 @@ $_t p_x$\\
 \chapter{Annuity and Assurance}    \label{annuity}
 
 
-\begin{ttt}[Gauss]    \label{Gauss'sTheorem}
-Some very profound result.
-\end{ttt}
+\section{Background}
+
+\section{Pricing}
+
+\subsection{Mortality rate}
+
+\subsection{annuity}
+
+\subsection{Premium}
+
+\section{Reserving}
 
 
-we will have more to say about Theorem \ref{Gauss'sTheorem}.
-
-
-\section{Gauss's youthful work}
+\section{Sensitivity test}
 
 
 
-
-\section{Gauss's mature work}
 
 
 
@@ -521,7 +525,7 @@ Year t & Annual premium & Un-allocated premium & Expenses & Interest &Management
 7&5,200&52&36.4&0.78&383.81&23.80&376.39&312.20\\
 8&5,200&52&36.4&0.78&455.67&28.25&443.80&366.27\\
 9&5,200&52&36.4&0.78&532.67&33.03&516.02&423.74\\
-10&5,200&52&36.4&0.78&615.16&38.14&\color{red}593.40&\color{red}484.85\\
+10&5,200&52&36.4&0.78&615.16&38.14&\textbf{593.40}&\textbf{484.85}\\
 
 \bottomrule
 \end{tabular}
@@ -565,7 +569,7 @@ Year t & Interest &Fund at time $t^-$ & Management cost  & Fund bring forward & 
 7&4,120.43&49,902.97&399.22&49,503.75&&385.9&318.14\\
 8&4,918.66&59,570.4&476.56&59,093.84&&457.49&374.9\\
 9&5,781.77&70,023.6&560.19&69,463.42&&534.89&435.67\\
-10&6,715.03&81,326.44&650.61&\color{red}80675.83&&\color{red}618.59&500.85\\
+10&6,715.03&81,326.44&650.61&\textbf{80,675.83}&&\text{618.59}&500.85\\
 \bottomrule
 \end{tabular}
 \end{figure}
@@ -646,7 +650,7 @@ Year t & $\xi_t$ &$R_t$ & Prem-ium & Alloc-ated Premium & Fund at $t^-$ &Manage-
 1&0.213436&1.11287&5,200&4,940&5,497.58&43.9807&5,453.6&313.709&313.71\\
 2&-0.49558&1.00059&5,200&5,148&10,607.9&84.863&10,523&94.9292&84.92\\
 3&1.57538&1.36511&5,200&5,148&21,392.6&171.141&21,221.5&174.788&147.61\\
-4&-1.0592&\color{red}0.919475&5,200&5,148&\color{red}24,246.1&193.969&\color{red}24,052.1&195.917&164.46\\
+4&-1.0592&\textbf{0.919475}&5,200&5,148&\textbf{24,246.1}&193.969&\textbf{24,052.1}&195.917&164.46\\
 5&1.83927&1.42023&5,200&5,148&41,470.8&331.767&41,139.1&323.463&269.90\\
 6&1.88577&1.43017&5,200&5,148&66,198.4&529.587&65,668.8&506.566&420.14\\
 7&0.604675&1.18014&5,200&5,148&83,573.4&668.588&82,904.9&635.225&523.69\\
@@ -667,28 +671,234 @@ Year t & $\xi_t$ &$R_t$ & Prem-ium & Alloc-ated Premium & Fund at $t^-$ &Manage-
 \textbf{Other columns in the table:} The table was calculated using the same method in deterministic cash flow, the only difference is the interest rate.
 
 
-From this single table we can see that, the annual accumulation factor is sometimes less than one, which indecates that annual interest $R_t$-1 is negative in that year, then there is a loss in the policy holder's fund. But for this policy holder, the net present value of profit and profit margin are: 
+From this single table we can see that, the annual accumulation factor is sometimes less than one, which indecates that annual interest $R_t$-1 is negative in that year, then there is a loss in the policy holder's fund. But for this policy holder, the net present value of profit and profit margin\footnote{Profit margin is calculated using risk discount factor 15\%} are: 
 
 \[
 NPV=\pounds 1,011.86\ \ \ \   \   \& \    \ \ \ \       Profit margin = 2.6\%
 \]
 
-which is ideal for the insure. Now we are showing another example from the 1,000 which is not that idea.
+which is ideal for the insure. Now showing another example from the 1,000 which is not that idea.
+
+\begin{figure}[H]
+\begin{tabular}{p{0.5cm} p{1.5cm} p{1.3cm} p{1cm} p{1.5cm} p{1.2cm} p{1.3cm} p{1.3cm}p{1.6cm}p{1.5cm}p{1.3cm} }
+\toprule
+\multicolumn{10}{c}{Cash flow for policy holder and insurer's fund} \\
+\cmidrule(r){3-8}
+
+Year t & $\xi_t$ &$R_t$ & Prem-ium & Alloc-ated Premium & Fund at $t^-$ &Manage-ment & Fund at t& Profit& $\Pi_t$ \\
+\midrule
+0&0&0&0&0&0&0&0&-676&-676\\
+1&-1.33578&0.88211&5,200&4,940&4357.62&34.86&4,322.76&305.27&305.27\\
+2&-0.412251&1.01318&5,200&5,148&9,595.55&76.76&9518.79&87.43&78.22\\
+3&-1.09414&0.91467&5,200&5,148&13,415.3&107.32&13,307.9&115.72&97.72\\
+4&0.847198&1.22386&5,200&5,148&22,587.4&180.7&22,406.7&183.64&154.15\\
+5&-0.581987&0.987706&5,200&5,148&27,216&217.73&26,998.3&217.91&181.82\\
+6&0.43257&1.15006&5,200&5148&36,970.1&295.76&36,674.3&290.14&240.64\\
+7&0.0178033&1.08069&5,200&5148&45,196.9&361.58&44,835.4&351.05&289.412\\
+8&-2.10093&0.786462&5,200&5148&39,310&314.48&38,995.5&307.46&251.96\\
+9&-1.4693&0.864618&5,200&5148&38,167.3&305.34&37,862&299.00&243.55\\
+\textbf{10$^*$}&-0.207703&1.04474&5,200&5148&44,934.4&359.48&\textbf{44,575}&\textbf{349.11}&-4,609.47\\
+\textbf{10}&-0.207703&1.04474&5,200&5148&44,934.4&359.48&\textbf{44,575}&\textbf{-7,031.38}&-5,693.06\\
+
+\bottomrule
+\end{tabular}
+\end{figure}
+
+
+\textbf{Note:}
+
+
+\textbf{Row 10$^*$ \& 10:} It is showing that the fund in policy holder's account at the mature date, \pounds 4,4575, is less than the accumalation of 10 premiums, \pounds 52,000, therefore the difference will be deducted to pay off the insurer's liability with probability 0.994\footnote{The probability that the contract is still in force from year 9}. 
+\[
+(52,000- 44,575)\times 0.994= \pounds 7,380.45 
+\]
+The profit showing in row $10^*$ is before the deduction, the actual profit the insurer obtaind in year 10 is \pounds349.11 - \pounds7,380.45 = -\pounds 7031.3 showing in row 10. And the net present value of the profit in this case is -\pounds995.422.
 
 
 
+Now there are two examples for both situation, making profit and lossing, it will be really important for the company to know the statistic numbers, eg. how many contracts have negative profit for insurer, how much profit can the company make, what is the probability for the company to lose etc..
+
+\subsection{Statistic analysis}
+
+In the C$^{++}$ program, the NPV can be sorted in order, and counted how many negative values are there, the table below showing the statistic results. 
+
+{\renewcommand\baselinestretch{1}\selectfont
+\texttt{NPV median = 677.104}
+
+\texttt{NPV fifth percentile = \textbf{-927.485}}
+
+\texttt{NPV ninety fifth percentile = 1035.04}
+
+\texttt{NPV mean = 534.232}
+
+\texttt{NPV sd = 687.702}
+
+\texttt{NPV count negative values = \textbf{85}}
+
+\texttt{95\% CI for NPV = (491.607,576.856)}
+\par}
+
+\textbf{Notes:} 
+
+\textbf{NPV median:} This is the sample median of all NPV values.
+
+\textbf{NPV 5$^{th}$ percentile:} The 50$^{th}$ in the ascending sorted 1,000 NPV values.
+
+\textbf{NPV 95$^{th}$ percentile:} The 950$^{th}$ in the ascending sorted 1,000 NPV values.
+
+\textbf{NPV mean:} This is the sample mean, which calculated by $\frac{\sum_{i=1}^{1000} NPV_i}{1000}$
+
+\textbf{NPV sd:} This is the sample standard deviation. 
+
+\textbf{NPV count negative values:} This is the number of negative net present value of profit out of 1,000.
+
+\textbf{95\% CI for NPV:} The 95\% of all NPV of profit will drop in this interval.
+
+
+There are 85 negative NPV of profit out of 1,000, which means the probability for this company to lose on this contract is 8.5\%, which is too high. And the 5$^{th}$ percentile, ${-\pounds927.485}$, is a very large lose as well. In conclusion, this contract has a high probability of losing a large amount of money, which should not be issued in reality. This is caused by the gauranteed benefit increasing the risk in the contracts. In the next section we are going to disscuss how to lower the risk of loss and make a profit.
+
+
+\subsection{Stochastic pricing}
+
+Recall in Chapter \ref{annuity}, the equivalence principle were used to find the premium, but it can not be used in this unit-linked contract since there is a high non-diversifiable risk. But instead, we can use stochastic simulation with quantile premium principle\cite{bib:quantile-premium}. 
+
+For quantile premium principle, the idea is to obtain a profit with a certain probability. If the $5^{th}$ percentile is positive and probability of loss is no greater than 5\% then it is a good model and can be taken to practice. Based on the previous model, changing in some assumptions may let us achieve this target. 
+
+\textbf{Scenario 1: Increase the premium}
+
+Increase the premium from \pounds5,200 to \pounds5,400
+
+\texttt{NPV median = 703.147}
+
+{\renewcommand\baselinestretch{1}\selectfont
+
+\texttt{NPV fifth percentile = \textbf{-963.16}}
+
+\texttt{NPV ninety fifth percentile = 1074.85}
+
+\texttt{NPV mean = 554.779}
+
+\texttt{NPV sd = 714.152}
+
+\texttt{NPV count negative values = \textbf{85}}
+
+\texttt{95\% CI for NPV = (510.515,599.042)}
+
+\par}
+
+
+There is an increase on the NPV sample mean and median but the number of negative NPV of profit did not change, and there is even a decrease on $5^{th}$ percentile. This is because when we increase the premium, we increase the guaranteed minimum maturity benefit as well, which means we increase the liability on the mature date of the contract.
+
+
+\textbf{Scenario 2: Increase the expenses deduction}
+
+Initial expenses increase from 13\% to 15\%, renewal expenses increase from 0.7\% to 0.9\%
+
+
+\texttt{NPV median = 638.943}
+
+{\renewcommand\baselinestretch{1}\selectfont
+
+\texttt{NPV fifth percentile = \textbf{-965.646}}
+
+\texttt{NPV ninety fifth percentile = 996.881}
+
+\texttt{NPV mean = 496.07}
+
+\texttt{NPV sd = 687.702}
+
+\texttt{NPV count negative values = \textbf{86}}
+
+\texttt{95\% CI for NPV = (453.446,538.695)}
+\par}
 
 
 
+\textbf{Scenario 3: Lower the mortality rate}
+
+Mortality rate decreases from 0.006 to 0.005
+
+\texttt{NPV median = 689.194}
+
+{\renewcommand\baselinestretch{1}\selectfont
+
+\texttt{NPV fifth percentile = \textbf{-919.938}}
+
+\texttt{NPV ninety fifth percentile = 1051.93}
+
+\texttt{NPV mean = 546.463}
+
+\texttt{NPV sd = 689.761}
+
+\texttt{NPV count negative values = \textbf{85}}
+
+\texttt{95\% CI for NPV = (503.711,589.214)}
+\par}
+
+In the above two sensitivity tests, we can see a growth in the sample mean and median too, but the number of negative NPV of profit did not change or even raise a little. The $5^{th}$ percentiles are still negative, or even decreased.
 
 
-\subsection{Pricing}
+\textbf{Scenario 4: Lower the GMMB}
+
+The guaranteed minimum maturity benefit decrease from 100\% to 91\% premiums paid.
+
+\texttt{NPV median = 677.337}
+
+{\renewcommand\baselinestretch{1}\selectfont
+
+\texttt{NPV fifth percentile = \textbf{3.53572}}
+
+\texttt{NPV ninety fifth percentile = 1035.04}
+
+\texttt{NPV mean = 617.827}
+
+\texttt{NPV sd = 480.784}
+
+\texttt{NPV count negative values = \textbf{50}}
+
+\texttt{95\% CI for NPV = (588.028,647.627)}
+\par}
+
+In this scenario, we lowered the guaranteed minimum maturity benefit in order to decrease the liability to meet on the date of mature. The new assumption will enable the insurer to have 5\% to lose with a positive $5^{th}$ percentile. This is a ideal contract for the insuer, but may not be ideal for the policy holders since the decrement on maturity benefit.
+
 
 \subsection{Reserving}
 
 
+From the scenario test 4 in last section, we have a model which enable the insurer have less risk to make profit on the contract. Even the risk is much lower but if the number of contracts issued is large, the insurer may still have a probability to lose. In this case, the insurer may have the following solutions\cite{bib:reserve}:
+
+1. Hedge the risk in the financial market.
+
+2. Reinsure (purchase insurance from one or more other insurance companies to pass on the risk) \cite{bib:reserve-wiki}.
+
+3. Reserving.
+
+In this section, we are going to disscuss the third option, reserving. To calculate the reserve for the contract, the non-diversifiable risk should be taken into account, the methodology which enable us to do this is called risk measure\cite{bib:VaR}. One popular type is called Value at Risk, it is defined in terms of a parameter $\alpha$ which is the probability that the loss $L$ will not exceed $\ell$. Therefore, we have
+
+\[
+P[L\leq \ell] = \alpha
+\]
+
+Continue on scenario 4, set $\alpha$ = 0.95, the reserve $_0V$ at time t = 0 will equal to the $95^{th}$ percentile\footnote{if the $95^{th}$ percentile is negative, the reserve will be set to zero.} of the distribution of $L_i$ where
+
+\[
+L_i = - \sum_{\textbf{t=1}}^{10}\frac{_{t-1}p_x Pr_{t,i}}{(1+j)^t}
+\]
+
+It is calculated similar to NPV of profit, but with different discount rate $j = 0.05$ and the first acquisition cost will not be included.
+
+\[
+_0V = \pounds 1,552.99
+\]
+
+
+In practice, the insurer may review the reserve annually, and make adjust based on change in different factors. 
+
+
 
 \section{Deterministic VS Stochastic test}
+
+For unit-linked contract, there is an uncertainty factor on the investment return, where the interest rate is non-diversifiable, so the simple deterministic test will not be able to model the profit realistically. But instead, the stochastic model will fit better. In the sensitivity test, we can also see that the mortality rate, initial/renewal expence, management cost changes can only affect the profit in a certain amount, but the little change in interest rate is very sensitive, which means a better model is essential in this case.
 
 
 
@@ -738,16 +948,35 @@ which is ideal for the insure. Now we are showing another example from the 1,000
     page 19, 24-25.
 
 
+\bibitem{bib:quantile-premium}  David C. M. Dickson, Mary R. Hardy and Howard R. Waters,
+    3rd edition, 2011, 
+    {\em Actuarial Mathematics for Life Contingent Risks,}
+    page 389.
 
 
+\bibitem{bib:reserve}  David C. M. Dickson, Mary R. Hardy and Howard R. Waters,
+    3rd edition, 2011, 
+    {\em Actuarial Mathematics for Life Contingent Risks,},
+    page 390.
 
+\bibitem{bib:reserve-wiki}  no auther specified,
+    {\em wikipedia,},
+    reinsurance.
 
-
-
-\bibitem{bib:riskfactor}  Andrey Mudrov,
+\bibitem{bib:VaR}  Andrey Mudrov,
     {\em Financial Risk, Lecture 7},
-    page 1-6.
+    page 1-8.
 
+
+
+
+
+
+
+
+
+
+quantile-premium
 
 
 
