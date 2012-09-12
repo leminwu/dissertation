@@ -225,16 +225,24 @@ $_t p_x$\\
 
 \chapter{Annuity and Assurance}    \label{annuity}
 
+An annuity offers a series of payment to the policy holders, if it is conditioned on the survival of the policy holder, then it is called a life annuity. In this chapter we are going to explore how will the insurance company\footnote{Insurance company is also called insurer.}
 
 \section{Background}
 
+\section{Methodology}
+
+\subsection{Equivalence priciple}
+\subsection{Annuity and assurance factors}
+\subsection{Some assumptions}
+
+\section{Mortality rate}
+
+\subsection{Gomperzt's law}
+\subsection{Life table}
+
+\subsection{}
+
 \section{Pricing}
-
-\subsection{Mortality rate}
-
-\subsection{annuity}
-
-\subsection{Premium}
 
 \section{Reserving}
 
@@ -279,19 +287,16 @@ $_t p_x$\\
 
 %In the previous chapter we used different method to obtain mortality rate
 
-In this chapter we introduce the unit-linked insurance contract. We start from some assumptions to establish a deterministic pricing model, and demonstrate that the deterministic pricing test is not accurate enough for this contract, which is caused by the uncertainty, or in other words risk, in the investment is not diversifiable.  
+In this chapter we are going to introduce the unit-linked insurance contract. Starting from some assumptions to construct a deterministic pricing model, and demonstrate that the deterministic pricing test is not accurate enough for this contract. This is because the uncertainty, or in other words risk, in the investment is not diversifiable.  
 
-To solve this problem, we consider to use a stochastic pricing test with future investment return as an random variable, then testify the stochastic test will determine a better premium and reserve. 
+To solve this problem, a stochastic pricing test will be considered, with the future return on the investment modelled as a random variable, then sensitivity test will be used again to find the best assumption for this contract as well as determine the reserve. 
 
 
 \section{Background}
 
-In some countries unit-linked contract is also called equity-linked contract, it is because the single or regular premium paid by the policy holder will be invested on units of Equity or bonds on their own behalf.
+In some countries unit-linked contract is also called equity-linked contract, it is because the single or regular premium paid by the policy holder will be invested on units of Equity or bonds on their own behalf. Once the insurer receive the premium, it will be payed into policy holder's fund after deduction of expenses and management costs in that year, and the deduction goes to insurer's account. In UK, there is an un-allocated percentage, which is another agreed regular deduction from policy holder's fund to insurer's account.
 
-
-Once the insurer receive the premium, it will be payed into policy holder's fund after deduction of expenses and management costs, and the deduction goes to insurer's account. In UK, there is an un-allocated percentage, which is another agreed regular deduction from policy holder's fund to insurer's account.
-
- \cite{bib:GMMB}If the policy holder survival to the maturity date, he/she will receive the greater value of total premiums payed in or the fund in policy holder's account. This is called guranteed minimum maturity benefit (GMMB). But the if the death happens first, there is a guaranteed minimum death benefit, which allows policy holder's estate to receive the policy holder's fund with an extra amount. 
+If the policy holder survival to the maturity date, he/she will receive the greater value between accumulated premiums payed and the fund in policy holder's account. This is called guranteed minimum maturity benefit (GMMB) \cite{bib:GMMB}. But the if the death happens first, there is a guaranteed minimum death benefit, which allows policy holder's estate to receive the policy holder's fund with an extra amount, eg. 10\% extra of the policy holder's fund. 
 
 
 \subsection{Some assumptions}  \label{unit-link-basic-assumptions}
@@ -299,27 +304,27 @@ Once the insurer receive the premium, it will be payed into policy holder's fund
 Before we establish the model, we need some assumptions, the following are some ideas from  \cite{bib:unitlinkeg} book {\em Actuarial Mathematics for Life Contingent Risks,} and some online sources \cite{bib:unitlinkedonline}. 
 
 
-A company is going to issue a new 10 years unit-linked contract to people from 55 to 60 years old. In the contract, it stated that the annual premium is \textsterling 5200, with an un-allocated rate of 5\% in the first year and 1\% in the subsequent years. Expenses occurs the same time as the premium payed in, which is 13\% (including commision) and 0.7\% repectively. At the end of each year, there is a further management charge of 0.8\% of policy holder's fund. All the above deductions from policy holder's account will be transferred to insurer's account.
+A company is going to issue a new 10 years unit-linked contract to people aged 55 to 60. In the contract, it stated that the annual premium is \textsterling 5200, with an un-allocated rate of 5\% in the first year and 1\% in the subsequent years, this will be deducted immediately after receive the premium. Expenses occurs the same time as the premium payed in, which is 13\% (including commision) and 0.7\% repectively. At the end of each year, there is a further management charge of 0.8\%  discounted from policy holder's fund. The deductions from policy holder's account will be transferred to insurer's account.
 
-When the contract mature, the policy holder can received the greater of policy holder's fund and accumulation of premiums payed in. But if the death happens before the mature date, policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer's account.
+When the contract mature, the policy holder can received the greater value between policy holder's fund and accumulation of premiums payed. But if the death happens before the mature date, policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer's account.
 
-The insurance company is also prepared to have 10\% of policy holders surrender the contract in the first year and 5\% in the second year, but no more in the subsequent years. The policy holders who surrender the contract will received their premium(s) after deduction of management cost at the end of the year.
+The insurance company is also prepared to have 10\% of policy holders surrender the contract in the first year and 5\% in the second year, but no more in the subsequent years. The policy holders who surrender the contract will received their premium(s) after deducted management cost at the end of the year.
 
-In the Chapter \ref{annuity}, we had introduce different methods to calculate the mortality rate, but here we are going to use a constant force of mortality, $\mu_x=2.2218$, for people aged 55 to 60, which means the mortality rate of policy holders $q_x=0.006$ is a constant in each year. The reason we set the mortality rate to a constant will be explained later in this chapter.  
+In the Chapter \ref{annuity}, we had introduce different methods to calculate the mortality rate, but here we are going to use a constant force of mortality, $\mu_x=2.2218$, for people aged 55 to 60, which means the mortality rate of policy holders is $q_x=0.006$ \footnote{$q_x$= exp $\left\{-\int_0^1 \mu_{x+s}ds\right\}$} in each year. The reason we set the mortality rate to a constant will be explained later in this chapter.  
 
-BABE!!! HOW CAN I MAKR A EQUATION AT THE BOTTOM OF THE PAGE? ??
+
 
 
 
 \section{Deterministic pricing and reserving}
 
-Last section we introduce the unit-linked contract and have some assumptions to help us establish the model. But here is something we did not count in, the uncertainty in the investment return in both policy holder's account ans insurer's account. 
+Last section we introduce the unit-linked contract, and have some assumptions to construct the model. But here is something has not been counted in, the uncertainty in the investment return in policy holder's account and insurer's account. 
 
-For deterministic pricing, we used conservative interest rates for both accounts, 8\% for policy holder's account and 5\% for insurer's account, and assume no reserve holds in this case. Since the mortality rate is a constant, as well as the conservative interest rates, the cash flow for different policy holders will be exactly the same. Now we set one as an example.
+For deterministic pricing, we used conservative interest rates for both accounts, 8\% for policy holder's account and 5\% for insurer's account, and assume no reserve holds in this case. Since the mortality rate is a constant, as well as the conservative interest rates, the cash flow for different policy holders will be exactly the same. Here is one example.
 
 \subsection{Cash flow}
 
-Now from all the assumptions, we can create the cash flow tables for both policy holder and insurer's account for the  10 years term. First let us explore the policy holder's account. 
+From all the assumptions, cash flow tables for both policy holder and insurer's account for the  10 years term can be easily construct. Let us explore the policy holder's account first. 
 
 
 
@@ -343,62 +348,37 @@ Year t & Annual premium & Allocated premium & Fund brought forward & Interest & 
 10&	5,200	&5,148	&66,050.82	&5,695.91	&76,894.73	&615.16	&76,279.57\\
 \bottomrule
 \end{tabular}
-\label{fig:cashflow}
-\caption{Cash flow}
+\label{determ-PHcashflow}
+\caption{Deterministic cash flow in one policy holder's account}
 \end{figure}
 
 
 
 
-%\begin{table}[h]
-%\caption{Cash flow in policy holder's account} % title of Table
-%\centering  % used for centering table
-%\begin{tabular}{c c c c c c c c c c} % centered columns (4 columns)
-%\hline                     %inserts double horizontal lines
-%Year t & Ann& A & Fear & it & F at $t^-$ & mst & Fuear (\$) \\ [0.5ex] % inserts table 
-%heading
-%\hline                  % inserts single horizontal line
-%1   & 5200    &    4940  &	0  &	395.2   &	5384.6  & 43.0768	&5341.5232 \\
-%2	&5200	&5148	&5341.52	   &  835.24	   &11433.58	     & 91.47   	&11342.11\\
-%3	&5200	&5148	&11342.11	  &1306.68	    &17974.22	   &143.80	    &17830.43\\
-%4	&5200	&5148	&17830.43	  &1811.77	  & 25046.49	   &200.37	   &24846.11\\
-%5	&5200	&5148	&24846.11	  &2352.90  	&32693.58   &261.55	   &32432.04\\
-%6	&5200	&5148	&32432.04   &	3382.20   &	40962.24	&   327.70 	&40634.54\\
-%7	&5200	&5148	&40634.54	   &4120.43   	&49902.97	   &399.22	 &  49503.75\\
-%8	&5200	&5148	&49503.75   &4918.66   	&59570.40	   &476.56   	&59093.84\\
-%9	&5200	&5148	&59093.84	   &5781.77   	&70023.60   &	560.19	  & 69463.42\\
-%10	&5200	&5148	&69463.42&	6715.03   	&81326.44   &650.61	   &80675.83\\ [1ex]      % [1ex] %adds vertical space
-%\hline 
+\textbf{Notes:} Here is how the cash flow table been calculated
 
-%\end{tabular}
-%\label{table:nonlin} % is used to refer this table in the text
-%\end{table}
-
-
-
-
-Here are the method used to calculate the table above from colum to column.  (BABE, I DON'T MEAN METHOD HERE, WHAT WORD CAN I USE?)
-
-\textbf{Allocated premium:} For the first year, the premium allocated in the policy holder's fund will be (1-5\%) of the premium payed, where 5\% is the agreed un-allocated premium which will be payed into insurer's account. For the subsequent years, the un-allocated rate decrease to 1\%, hence there will be 99\% premium payed into policy holder's fund.
+\textbf{Allocated premium:} For the first year, the allocated premium in the policy holder's fund will be (1-5\%) of the total premium payed, and the other 5\% is the agreed un-allocated premium which will be payed into insurer's account. For the subsequent years, the un-allocated rate decrease to 1\%, hence there will be 99\% premium payed into policy holder's fund.
 
 BABE!! CAN YOU PLEASE LINE UP THE TWO EQUATIONS BELOW? THX!! XXX
 
-First year allocated premium:                5,200 $\times$ 0.95= 4,940
 
-Subsequent years allocated premium:   5,200 $\times$ 0.99= 5,148
+First year allocated premium:                5,200 $\times$ 0.95 = 4,940
 
-\textbf{Interest:} It is the profit policy holder obtain from the the accumulation of premium payed in at the beginning of the year and fund brought forward from end of last year with the assumed interest rate 8\%.
+Subsequent years allocated premium:   5,200 $\times$ 0.99 = 5,148
+
+
+\textbf{Interest:} It is the 8\% interest policy holder obtain from the the accumulation of premium payed in at the beginning of the year and fund brought forward from last year.
 
 eg.  year t=5, interest = (5,148 + 24263.21) $\times$ 0.08 = 2,352.89
 
-\textbf{Fund at time $t^-$:} It is the accumulation of premium payed in at the beginning of the year, fund brought forward from end of last year and interest earned.
+\textbf{Fund at time $t^-$:} It is the fund in policy holder's account after interest payed in.
 
-\textbf{Management cost:} In our assumption, the management cost is 0.08\% of the policy holder's fund, which is the fund at time $t^-$ here. 
+\textbf{Management cost:} In our assumption, the management cost is 0.08\% of the policy holder's fund, which is the fund at time $t^-$ in our case. 
 
 \textbf{Fund bring forward:} It is the fund left in policy holder's account after deduction of management cost. 
 
 
-Table SIMON!!!! HOW TO NUMBER THE TABLE???!? is showing the insurer's account cash flow for one policy holder. 
+Table \ref{determ-insurer} is showing the insurer's account cash flow for \textbf{one} policy holder\footnote{If there are $N$ numbers of policy holders exist, then the numbers in the table times $N$ will be the cash flow for insurer in 10 years}. 
 
 
 \begin{figure}[H]
@@ -425,24 +405,27 @@ Year t & Annual premium & Un-allocated premium & Expenses & Interest &Management
 
 \bottomrule
 \end{tabular}
+\caption{Deterministic cash flow in insurer's account}
+\label{determ-insurer}
 \end{figure}
 
+\textbf{Notes:}
 
-In insurer's account, un-allocated premium, expense, interest and management cost are calculated in the same way as in policy holder's account. You may notice there is an extra row in the table, year 0 in insurer's cash flow, this is because the expenses will always occurs before receive the premium, eg. renting, stationary cost and employees' salary. 
+In insurer's account, un-allocated premium, expense, interest and management cost are calculated in the same way as in policy holder's account. You may notice there is an extra row in the table, year 0 in insurer's cash flow, it is the acquisition expense which will always occur before insurer receive premium, eg. commision, renting, employees' salary etc..
 
 For expected death benefit, profit and profit signature are calculated as below:
 
-\textbf{Expected death benefit:} If the death occurs before the contract mature, the policy holder's estate will receive the fund from policy holder's account with extra 10\% from insurer account. The death benefit we calculate here is the 10\% from insurer's account. 
+\textbf{Expected death benefit:} If the death occurs before the contract mature, the policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer account. The death benefit we calculate here is the 10\% from insurer's account. 
 
-At time 0, there policy holder just enter the contract, so the probability in force is 1.
+\textbf{At time 0}, there policy holder just enter the contract, so the probability for the contract in force is 1.
 
-In year 1, policy holders pay the first premium right after sign the contract, so the probability in force is still 1. 
+\textbf{In year 1}, policy holders pay the first premium right after sign the contract, so the probability for the contract in force is still 1. 
 
-During the first year, by our assumption, there will be 10\% policy holders surender the contract, and the mortality rate for the other 90\% is 0.006. Therefore, at the beginning of the second calandar year, insurer will be expecting $p_2=$ (1-0.006) $\times$(1-0.1) =0.8946 of policy holders renew their contracts. 
+\textbf{During the first year}, by our assumption, there will be 10\% policy holders surender the contract, and the mortality rate for the other 90\% is 0.006. Therefore, at the beginning of the second calandar year, insurer will be expecting $p_2=$ (1-0.006) $\times$(1-0.1) =0.8946 of policy holders to renew their contracts. 
 
-Same as in the first year, the insurer is expecting $p_3$= (1-0.006-0.5) $\times$$p_2$= 0.8445024 will renew the contract, since by assumption there are 5\% policy holder will surender during the second year.
+\textbf{Beginning of third year}, the insurer will be expecting $p_3$= (1-0.006-0.5) $\times$$p_2$= 0.8445024 of policy holders come to renew the contract, since by assumption there are 5\% policy holder will surender during the second year.
 
-From the third year, the probability in force will be $p_t$ = (1-0.006) $\times$ $p_{t-1}$. (Showing in table !!!SIMON ADD TABLE NUMBER FOR ME!!)
+From the third year, the probability for the contract in force will be $p_t$ = (1-0.006) $\times$ $p_{t-1}$. (Showing in table \ref{determ-prob-in-force}.)
 
 
 \begin{figure}[H]
@@ -465,6 +448,8 @@ t=	& $_t p_x$\\
 10	&0.809665397\\
   \hline
 \end{tabular}
+\caption{Probability for the contract in force}
+\label{determ-prob-in-force}
 \end{figure}
 
 
@@ -472,25 +457,25 @@ t=	& $_t p_x$\\
 
 Profit = Un-allocated premium - Expenses + Interest + Management cost - Death benefit
 
-\textbf{Profit signature:} This is profit the insurer can make with probality the contracts are still in force, which is defined as $\Pi_t = p_x \times$ Profit$_t$
+\textbf{Profit signature:} This is profit the insurer can make with probality that the contracts are still in force, which is defined as $\Pi_t = p_x \times$ Profit$_t$
 
 
 \subsection{Profitability}
 
 
-From the table !!!!!! and table!!!!!! we can see that policy holder's fund is increasing every year, and on the date the contract mature, it has \pounds 76,279, which is approximately 1.47 times of the accumulation of all premiums. This means, if the policy holder survive to the mature date, he/she will withdraw the fund from policy holder fund since it will always be the greater one compares to the accumulation of all the premiums. \footnote{GMMB policy: on the mature date policy holders can withdraw the greater value between policy holder's fund and the accumulation of all the premiums.} This means the insurer will have the probability of 0.81 \footnote{the probability of this contract in force till the mature date, table!?!?!?!?!?!!?} to make profit of \pounds 585.77 on each policy holder. And if we discount the profit signature with discount rate of interest of 15\%, the net present value of the profit will be 
+From the table \ref{determ-PHcashflow}, it is obviously a ascending trend on policy holder's fund, and on the contract mature date, it reaches \pounds 76,279, which is approximately 1.47 times of the accumulation of all premiums. This means, if the policy holder survive to the mature date, he/she will withdraw the policy holder's fund since it will always be the greater one compares to the accumulation of all the premiums. \footnote{GMMB policy: on the mature date policy holders can withdraw the greater value between policy holder's fund and the accumulation of all the premiums payed.} This means the insurer will have the probability of 0.81 \footnote{the probability of this contract in force till the mature date, table \ref{determ-prob-in-force}} to make profit of \pounds 585.77 on each policy holder. And if we discount the profit signature with the risk discount rate of interest, 15\%, the net present value of the profit will be 
 \[
  NPV=\sum_{i=1}^{10} \Pi_t \times (1+0.15)^{-t} = \pounds 489.59
 \]
  
-And the profit margin is 
+And the profit margin will be
 
 
 \[
 Profit\ Margin =  \frac{NPV}{P \ddot{a}_x}\footnote{$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$}  = \frac{489.59}{5200 \times 7.619285226} = 1.24\%
 \]
 
-Since in the very beginning, we used conservative assumption, such as expenses, mortality rate, interest rate for insurer's fund etc., so if in reality the expense and mortality rate are lower than modelled, but interest rate is higher then the profit the insurer can obtain will be higher. Sensitivity test can be used to predict the profit the insurance company can obtain with changes in different factors.
+Since in the very beginning, we used conservative assumption, eg. expenses, mortality rate, interest rate for insurer's fund, so if in reality the expense and mortality rate are lower than modelled and interest rate is higher, then more profit that the insurer will obtain. Sensitivity test can be used to here to how will the profit change with changing in different factors. 
 
 \subsection{Sensitivity test}
 
@@ -498,11 +483,60 @@ Now we change our previous assumptions one by one and see what will happen.
 
 \textbf{Scenario 1: Lower expenses} 
 
-We had 
+The initial expense deduction changed from 13\% to 10\%, and the renewal changed from 0.7\% to 0.5\%.
+
+
+
+
+\begin{figure}[H]
+\hfill
+\begin{tabular}{p{0.8cm} p{1.5cm} p{1.5cm} p{1.2cm} p{1cm} p{2cm}p{1.5cm} p{1.5cm} p{1.5cm} }
+\toprule
+\multicolumn{9}{c}{Cash flow for insurer's account} \\
+\cmidrule(r){3-7}
+
+Year t & Annual premium & Un-allocated premium & Expenses & Interest &Management cost& Expected death benefit & Profit& $\Pi_t$  \\
+\midrule
+
+0&0&0&520&0&0&0&-520&-520\\
+1&5200&260&26&11.7&42.68&3.18&285.21&285.21\\
+2&5200&52&26&1.3&90.21&6.71&110.80&99.12\\
+3&5200&52&26&1.3&141.12&10.50&157.92&133.37\\
+4&5200&52&26&1.3&195.67&14.56&208.41&174.95\\
+5&5200&52&26&1.3&254.11&18.91&262.51&219.035\\
+6&5200&52&26&1.3&316.73&23.56&320.46&265.79\\
+7&5200&52&26&1.3&383.81&28.56&382.55&315.38\\
+8&5200&52&26&1.3&455.67&33.90&449.07&367.99\\
+9&5200&52&26&1.3&532.67&39.63&520.34&423.84\\
+10&5200&52&26&1.3&615.16&45.77&\textbf{596.69}&\textbf{483.12}\\
+
+\bottomrule
+\end{tabular}
+\caption{Sensitivity test for lower expense rate}
+\label{determ-sensi-expense}
+\end{figure}
+
+The table shows the profit increased about \pounds 10 the mature date, and the new NPV of profit becomes 
+
+\[
+ NPV=\sum_{i=1}^{10} \Pi_t \times (1+0.15)^{-t} = \pounds693.24 
+\]
+ 
+and the profit margin is:
+
+\[
+Profit\ Margin =  \frac{NPV}{P \ddot{a}_x}\footnote{$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$}  = \frac{693.24 }{5200 \times 7.619285226} = 1.7\%
+\]
+
+
+This shows if we can lower the cost in the company, the more profit we can make, but in reality, this is really hard to achieve, since some certain cost is unavoidable, eg. renting, salary etc..
+
+
+
 
 \textbf{Scenario 2: Lower mortality rate} 
 
- Constant mortality rate change from 0.006 to 0.005.
+Constant mortality rate change from 0.006 to 0.005.
 
 
 
@@ -529,6 +563,8 @@ Year t & Annual premium & Un-allocated premium & Expenses & Interest &Management
 
 \bottomrule
 \end{tabular}
+\caption{Sensitivity test for mortality rate change}
+\label{determ-sensi-morta}
 \end{figure}
 
 Here are the new net present value of profit and profit margin obtianed from the new cash flow:
@@ -542,7 +578,7 @@ Here are the new net present value of profit and profit margin obtianed from the
 Profit\ Margin =  \frac{NPV}{P \ddot{a}_x}\footnote{$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$}  = \frac{491.43}{5200 \times 7.619285226} = 1.24\%
 \]
 
-The lower mortality rate will only affect the insurer's account. From the table we can see that the profit will increase from \pounds585.77 to \pounds 593.40, but the net present value of the profit will increase less than \pounds2, and the profit margin will not change. This means the change in mortality rate is not sensitive, and should not be count as a important factor in our model, so a constant assumption for the mortality rate is acceptable.
+The lower mortality rate will only affect the insurer's account. The table shows that the profit will increase from \pounds585.77 to \pounds 593.40, the raise in net present value of the profit is less than \pounds2, and the profit margin will not change. This means the change in mortality rate is not sensitive, and should not be count as a important factor in our model, so a constant assumption for the mortality rate is acceptable.
 
 
 
@@ -572,23 +608,25 @@ Year t & Interest &Fund at time $t^-$ & Management cost  & Fund bring forward & 
 10&6,715.03&81,326.44&650.61&\textbf{80,675.83}&&\text{618.59}&500.85\\
 \bottomrule
 \end{tabular}
+\caption{Sensitivity test for interest rate change}
+\label{determ-sensi-interest}
 \end{figure}
 
 
-In the table, it shows that once interest change 1\%, the fund in the policy holder's account will increase about 4.6\% every year, and the profit for insurer will increase 5.3\%. And the new net present value of profit and profit margin will be as following:
+In the table, it shows that once interest change 1\%, the fund in the policy holder's account will increase about 4.6\% every year, the profit for insurer will increase 5.3\% on the date of mature. And the new net present value of profit and will be:
 
 \[
  NPV=\sum_{i=1}^{10} \Pi_t \times (1+0.15)^{-t} = \pounds522.72
 \]
  
-And the profit margin is 
+The profit margin becomes:
 
 
 \[
 Profit\ Margin =  \frac{NPV}{P \ddot{a}_x} = \frac{522.72}{5200 \times 7.619285226} = 1.3\%
 \]
 
-There is a big raise for both of the factors, NPV of profit increases from \pounds489.59 to \pounds522.72, and the profit margin shoots up from 1.24\% to 1.3\%. This is a very sensitive case, little change in interest will have huge impact in profit. A good interest model will be very essential in this case.
+There is a big raise in both NPV of profit and profit margin. NPV of profit increases from \pounds489.59 to \pounds522.72, and the profit margin shoots up from 1.24\% to 1.3\%. This is a very sensitive case, little change in interest will have huge impact in profit. Therefore a good interest model will be very essential in this case.
  
 
 
@@ -596,14 +634,14 @@ There is a big raise for both of the factors, NPV of profit increases from \poun
 
 
 \subsection{Little summary for deterministic test}
-So far everything looks fine, but is this a good model for unit-linked contract? The answer will be no, from our sensitivity test, we can see that the interest rate change will lead to an fluctuate in profit, so the asssumption of constant interest rate is not good enough in this case. This is because the constant interest rate does not contain  enough information in our model, the uncertainty of investment on equity and bond is not diversifiable. By law, we do not have an arbitrage market, no one can make profit without risk, and the interest on return will be affected by a few different factors, \cite{bib:riskfactor} eg. inflation, quality of information, governmental policy etc., change in bond market or equity market etc., and none of the factors is predictable. So now we should consider to model the interest rate non-linearly, eg. a random variable. 
+So far everything looks fine, but is this a good model for unit-linked contract? The answer will be no, from our sensitivity test, we can see that the interest rate change will lead to a huge fluctuate in profit, so the asssumption of constant interest rate is not good enough in this case. This is because the constant interest rate does not contain  enough information when modelling, since the uncertainty of investment on equity and bond is not diversifiable. By law, we do not have an arbitrage market, no one can make profit without risk, and the interest on return will be affected by a few different factors, \cite{bib:riskfactor} eg. inflation, quality of information, governmental policy, change in bond market or equity market etc.. And once the factors affecting the market at the same time, the risk will be non-diversifiable. So now we should consider to model the interest rate non-linearly, eg. as a random variable. 
 
 
 
 
 \section{Stochastic pricing}
 
-From the sensitivity test in last section, we conclude that the change in interest rate is non-diversifiable and extremely sensitive, which a constant assumption is not suitable. So now we are going to introduce stochastic test which can model the interest rate as a random variable, such that it can realistically reflect the reality.  (BABE! I DON'T LIKE THE LAST SENTENSE, CAN YOU FIGURE OUT SOMETHING BETTER??? XXX)
+From the sensitivity test in last section, we conclude that the change in interest rate is non-diversifiable and extremely sensitive, which a constant assumption is not suitable. So now we are going to introduce stochastic test which can model the interest rate as a random variable, so that it can reflect the reality realistically.  (BABE! I DON'T LIKE THE LAST SENTENSE, CAN YOU FIGURE OUT SOMETHING BETTER??? XXX)
 
 
 
@@ -611,7 +649,7 @@ From the sensitivity test in last section, we conclude that the change in intere
 
 In our basic assumptions \footnote{assumption in \ref{unit-link-basic-assumptions}}, we assume that the policy holders will be able to choose different units of equities or bonds or portfolios \footnote{Portfolio: mixed equities and bonds} to invest their premium. Which means the the more equities and bonds available, the less similarity in the interest return each year for different policy holders. 
 
-By \cite{bib:CLT}Central Limit Theorem, which obtained by Mood, Graybill, and Boes in 1974, if we have a number of independent identically distributed random variables \footnote{the random variables can follow any distribution}, we can observe a new series of random variables following normal distribution by summing or multiplying the old ones. The theorem can be used in finance, compound return or equity return follows a log-normal distribution\footnote{log-normal distribution is also called Galton's distribution, after Francis Galton}, which means the logarithm of interest return $I_t$ follows a normal distribution with mean $\mu$ and variance $\sigma^2$. We can apply this theorem in our model, then we will have
+By \cite{bib:CLT}Central Limit Theorem, which obtained by Mood, Graybill, and Boes in 1974, if we have a number of independent identically distributed random variables \footnote{The random variables can follow any distribution}, we can observe a new series of random variables following normal distribution by summing or multiplying the old ones. The theorem can be used in finance, compound return or equity return follows a log-normal distribution\footnote{log-normal distribution is also called Galton's distribution, after Francis Galton}, which means the logarithm of interest return $I_t$ follows a normal distribution with mean $\mu$ and variance $\sigma^2$. This theorem can be applied in the new model, then we will have
 \[
 logI_t = \xi \sim N(\mu,\sigma^2)
 \]
@@ -619,11 +657,11 @@ logI_t = \xi \sim N(\mu,\sigma^2)
 where\   \mu= 0.74928, \sigma= 0.15 
 \]
 
-Now we can use Monte Carlo simulation\cite{bib:MCS}, generate some random numbers \footnote{I used $C^{++}$ boost random number generator, } $\xi'_t$ from normal distribution with mean 0 and variance 1, and transform them to the specified Normal distribution $N(0.74928,0.15^2)$ via   
+Now we can use Monte Carlo simulation\cite{bib:MCS}, generate some random numbers \footnote{I used $C^{++}$ boost random number generator, } $\xi'_t$ from the Standard Normal distribution with mean 0 and variance 1, and transform them to the specified Normal distribution $N(0.74928,0.15^2)$ via   
 \[
 \xi_t = 0.74928 + 0.15\times \xi'_t
 \]
-then, our interest will be simulated by 
+then, our annual accumulation\footnote{It is the interest rate $r_t$ + 1} factor will be simulated by 
 \[
 I_t=exp\{\xi_t\} 
 \]
@@ -632,7 +670,7 @@ I_t=exp\{\xi_t\}
 
 \subsection{Modelling}
 
-Now we assume there are 1,000 policy holders \footnote{The larger number the better statistic result we will get, here we just set 1,000 as an example.} purchased unit-linked contract with different portfolios. Using the generated random variable from Standard Normal distribution, we can construct our new cash flow tables. I used $C^{++}$ to help me with constructing the tables \footnote{codes will be included in the appendix} since there are 1,000 of them and the interest rate will be simulated differently for each policy holder and different years.
+Now we assume there are 1,000 policy holders \footnote{The larger number the better statistic result we will get, here we just set 1,000 as an example.} purchased unit-linked contract with different portfolios. Using the generated random variable from the Standard Normal distribution, we can construct our new cash flow tables. I used $C^{++}$ to help me with constructing the tables \footnote{codes will be included in the appendix}. Since there are 1,000 policy holdders and interest rate will be different from year to year for all of them. Therefore, 10,000  $\xi'_t$ need to be generated from the Standard Normal distribution.
 
 
 Here is an example we get from the program. \footnote{To curious readers, this is the 1st cash flow table we get from the program.}
@@ -660,24 +698,26 @@ Year t & $\xi_t$ &$R_t$ & Prem-ium & Alloc-ated Premium & Fund at $t^-$ &Manage-
 
 \bottomrule
 \end{tabular}
+\caption{Stochastic cash flow 1}
+\label{stoch-cashflow}
 \end{figure}
 
 \textbf{Notes:}
 
 \textbf{$\xi_t$:} This column is the generated random variables from Standard Normal distribution.
 
-\textbf{$R_t$:} This is simulated annual accumulation factor, \textbf{the annual interest rate is $R_t$-1}.
+\textbf{$R_t$:} This is simulated annual accumulation factor, \textbf{the annual interest rate} is $r_t = R_t -1$.
 
-\textbf{Other columns in the table:} The table was calculated using the same method in deterministic cash flow, the only difference is the interest rate.
+\textbf{Other columns in the table:} The table was calculated using the same method in deterministic cash flow, the only difference is the interest rate had changed.
 
 
-From this single table we can see that, the annual accumulation factor is sometimes less than one, which indecates that annual interest $R_t$-1 is negative in that year, then there is a loss in the policy holder's fund. But for this policy holder, the net present value of profit and profit margin\footnote{Profit margin is calculated using risk discount factor 15\%} are: 
+From the table \ref{stoch-cashflow} we can see that, the annual accumulation factor is sometimes less than one, which indecates that annual interest $r_t = R_t - 1$ is negative, then there is a loss in the policy holder's fund in that year. But for the insurer in this case, the net present value of profit and profit margin\footnote{Profit margin is calculated using risk discount factor 15\%.} are ideal: 
 
 \[
-NPV=\pounds 1,011.86\ \ \ \   \   \& \    \ \ \ \       Profit margin = 2.6\%
+NPV=\pounds 1,011.86\ \ \ \   \   \& \    \ \ \ \       Profit \  margin = 2.6\%
 \]
 
-which is ideal for the insure. Now showing another example from the 1,000 which is not that idea.
+Now showing another example from the 1,000 which is not that ideal for the insurer.
 
 \begin{figure}[H]
 \begin{tabular}{p{0.5cm} p{1.5cm} p{1.3cm} p{1cm} p{1.5cm} p{1.2cm} p{1.3cm} p{1.3cm}p{1.6cm}p{1.5cm}p{1.3cm} }
@@ -702,28 +742,32 @@ Year t & $\xi_t$ &$R_t$ & Prem-ium & Alloc-ated Premium & Fund at $t^-$ &Manage-
 
 \bottomrule
 \end{tabular}
+\caption{Stochastic cash flow2}
+\label{stoch-cashflow}
 \end{figure}
 
 
 \textbf{Note:}
 
 
-\textbf{Row 10$^*$ \& 10:} It is showing that the fund in policy holder's account at the mature date, \pounds 4,4575, is less than the accumalation of 10 premiums, \pounds 52,000, therefore the difference will be deducted to pay off the insurer's liability with probability 0.994\footnote{The probability that the contract is still in force from year 9}. 
+\textbf{Row 10$^*$ \& 10:} It is showing that the fund in policy holder's account at the mature date, \pounds 4,4575, is less than the accumalation of 10 premiums, \pounds 52,000, therefore the difference will be deducted to pay off the insurer's liability with probability 0.994\footnote{The probability that the contract is still in force from year 9, table \ref{determ-prob-in-force}.}. 
 \[
 (52,000- 44,575)\times 0.994= \pounds 7,380.45 
 \]
-The profit showing in row $10^*$ is before the deduction, the actual profit the insurer obtaind in year 10 is \pounds349.11 - \pounds7,380.45 = -\pounds 7031.3 showing in row 10. And the net present value of the profit in this case is -\pounds995.422.
+The profit showing in row $10^*$ is the profit in year 10 before the deduction, the actual profit the insurer obtaind at the mature date is \pounds349.11 - \pounds7,380.45 = -\pounds 7031.3 showing in row 10. And the NPV of the profit in this case is -\pounds995.422, and the profit margin is $-2.5\%$.
 
 
 
-Now there are two examples for both situation, making profit and lossing, it will be really important for the company to know the statistic numbers, eg. how many contracts have negative profit for insurer, how much profit can the company make, what is the probability for the company to lose etc..
+Now there are two examples for both situation, making profit and lossing, it will be really important for the company to know the statistic numbers, eg. how many contracts have negative NPV of profit, how much profit can the company make, what is the probability for the company to lose etc..
 
 \subsection{Statistic analysis}
 
 In the C$^{++}$ program, the NPV can be sorted in order, and counted how many negative values are there, the table below showing the statistic results. 
 
-{\renewcommand\baselinestretch{1}\selectfont
 \texttt{NPV median = 677.104}
+
+{\renewcommand\baselinestretch{1}\selectfont
+
 
 \texttt{NPV fifth percentile = \textbf{-927.485}}
 
@@ -740,27 +784,27 @@ In the C$^{++}$ program, the NPV can be sorted in order, and counted how many ne
 
 \textbf{Notes:} 
 
-\textbf{NPV median:} This is the sample median of all NPV values.
+\textbf{NPV median:} This is the sample median of all NPV of profit.
 
-\textbf{NPV 5$^{th}$ percentile:} The 50$^{th}$ in the ascending sorted 1,000 NPV values.
+\textbf{NPV 5$^{th}$ percentile:} The 50$^{th}$ in the ascending order 1,000 NPV of profit.
 
-\textbf{NPV 95$^{th}$ percentile:} The 950$^{th}$ in the ascending sorted 1,000 NPV values.
+\textbf{NPV 95$^{th}$ percentile:} The 950$^{th}$ in the ascending order 1,000 NPV of profit.
 
 \textbf{NPV mean:} This is the sample mean, which calculated by $\frac{\sum_{i=1}^{1000} NPV_i}{1000}$
 
 \textbf{NPV sd:} This is the sample standard deviation. 
 
-\textbf{NPV count negative values:} This is the number of negative net present value of profit out of 1,000.
+\textbf{NPV count negative values:} This is the number of negative NPV of profit out of 1,000.
 
 \textbf{95\% CI for NPV:} The 95\% of all NPV of profit will drop in this interval.
 
 
-There are 85 negative NPV of profit out of 1,000, which means the probability for this company to lose on this contract is 8.5\%, which is too high. And the 5$^{th}$ percentile, ${-\pounds927.485}$, is a very large lose as well. In conclusion, this contract has a high probability of losing a large amount of money, which should not be issued in reality. This is caused by the gauranteed benefit increasing the risk in the contracts. In the next section we are going to disscuss how to lower the risk of loss and make a profit.
+There are 85 negative NPV of profit out of 1,000, which means the probability for this company to lose on this contract is 8.5\%, which is considerablely high. And the 5$^{th}$ percentile, ${-\pounds927.485}$, is a very large lose as well. In conclusion, this contract has a high probability of losing a large amount of money, which should not be issued in reality. This is caused by the gauranteed benefit increased the risk for insurer. In the next section we are going to disscuss how to lower the risk and make a profit.
 
 
 \subsection{Stochastic pricing}
 
-Recall in Chapter \ref{annuity}, the equivalence principle were used to find the premium, but it can not be used in this unit-linked contract since there is a high non-diversifiable risk. But instead, we can use stochastic simulation with quantile premium principle\cite{bib:quantile-premium}. 
+Recall in Chapter \ref{annuity}, the equivalence principle were used to find the premium, but it can not be used in this unit-linked contract since there is a non-diversifiable risk. But instead, we can use stochastic simulation with quantile premium principle\cite{bib:quantile-premium}. 
 
 For quantile premium principle, the idea is to obtain a profit with a certain probability. If the $5^{th}$ percentile is positive and probability of loss is no greater than 5\% then it is a good model and can be taken to practice. Based on the previous model, changing in some assumptions may let us achieve this target. 
 
@@ -787,7 +831,7 @@ Increase the premium from \pounds5,200 to \pounds5,400
 \par}
 
 
-There is an increase on the NPV sample mean and median but the number of negative NPV of profit did not change, and there is even a decrease on $5^{th}$ percentile. This is because when we increase the premium, we increase the guaranteed minimum maturity benefit as well, which means we increase the liability on the mature date of the contract.
+There is an increase on the NPV sample mean and median but the number of negative NPV of profit did not change, and there is a decrease on $5^{th}$ percentile. This is because when we increase the premium, we increase the guaranteed minimum maturity benefit (GMMB) as well, which means we increase the liability on the mature date of the contract.
 
 
 \textbf{Scenario 2: Increase the expenses deduction}
@@ -835,7 +879,7 @@ Mortality rate decreases from 0.006 to 0.005
 \texttt{95\% CI for NPV = (503.711,589.214)}
 \par}
 
-In the above two sensitivity tests, we can see a growth in the sample mean and median too, but the number of negative NPV of profit did not change or even raise a little. The $5^{th}$ percentiles are still negative, or even decreased.
+In the above two sensitivity tests, we can see a growth in the sample mean and median too, but the number of negative NPV of profit did not change or even raise a little. The $5^{th}$ percentiles are still negative.
 
 
 \textbf{Scenario 4: Lower the GMMB}
@@ -859,13 +903,15 @@ The guaranteed minimum maturity benefit decrease from 100\% to 91\% premiums pai
 \texttt{95\% CI for NPV = (588.028,647.627)}
 \par}
 
-In this scenario, we lowered the guaranteed minimum maturity benefit in order to decrease the liability to meet on the date of mature. The new assumption will enable the insurer to have 5\% to lose with a positive $5^{th}$ percentile. This is a ideal contract for the insuer, but may not be ideal for the policy holders since the decrement on maturity benefit.
+In this scenario, we lowered the guaranteed minimum maturity benefit in order to decrease the liability to meet on the date of mature. The new assumption will enable the insurer to have 5\% probability to lose, and the $5^{th}$ percentile becomes positive. 
+
+This is an ideal contract for the insuer, but may not be ideal for the policy holders because of the decrement on maturity benefit. In order to be more competitive, the insurer can hedge partial risk in the financial market at the same time lower the  GMMB.
 
 
 \subsection{Reserving}
 
 
-From the scenario test 4 in last section, we have a model which enable the insurer have less risk to make profit on the contract. Even the risk is much lower but if the number of contracts issued is large, the insurer may still have a probability to lose. In this case, the insurer may have the following solutions\cite{bib:reserve}:
+From the scenario test 4 in last section, we have a model which enable the insurer have less risk to make profit on the contract. But even the risk is much lower, if the number of contracts issued is large, the insurer may still have a probability to lose. In this case, the insurer may have the following solutions\cite{bib:reserve}:
 
 1. Hedge the risk in the financial market.
 
@@ -873,13 +919,13 @@ From the scenario test 4 in last section, we have a model which enable the insur
 
 3. Reserving.
 
-In this section, we are going to disscuss the third option, reserving. To calculate the reserve for the contract, the non-diversifiable risk should be taken into account, the methodology which enable us to do this is called risk measure\cite{bib:VaR}. One popular type is called Value at Risk, it is defined in terms of a parameter $\alpha$ which is the probability that the loss $L$ will not exceed $\ell$. Therefore, we have
+In this section, we are going to disscuss the third option, reserving. To calculate the reserve for the contract, the non-diversifiable risk should be taken into account, the methodology which enable us to do this is risk measure\cite{bib:VaR}, one popular type is called Value at Risk, it is defined in terms of a parameter $\alpha$ which is the probability that the loss $L$ will not exceed $\ell$. Therefore, we have
 
 \[
 P[L\leq \ell] = \alpha
 \]
 
-Continue on scenario 4, set $\alpha$ = 0.95, the reserve $_0V$ at time t = 0 will equal to the $95^{th}$ percentile\footnote{if the $95^{th}$ percentile is negative, the reserve will be set to zero.} of the distribution of $L_i$ where
+Continue on scenario 4, set $\alpha$ = 0.95, the reserve $_tV$ at time t = 0 will equal to the $95^{th}$ percentile\footnote{if the $95^{th}$ percentile is negative, the reserve will be set to zero.} of the distribution of $L_i$ where
 
 \[
 L_i = - \sum_{\textbf{t=1}}^{10}\frac{_{t-1}p_x Pr_{t,i}}{(1+j)^t}
@@ -892,13 +938,15 @@ _0V = \pounds 1,552.99
 \]
 
 
-In practice, the insurer may review the reserve annually, and make adjust based on change in different factors. 
+In practice, the insurer may review the reserve annually, and make adjustment based on changes in that year. 
 
 
 
 \section{Deterministic VS Stochastic test}
 
-For unit-linked contract, there is an uncertainty factor on the investment return, where the interest rate is non-diversifiable, so the simple deterministic test will not be able to model the profit realistically. But instead, the stochastic model will fit better. In the sensitivity test, we can also see that the mortality rate, initial/renewal expence, management cost changes can only affect the profit in a certain amount, but the little change in interest rate is very sensitive, which means a better model is essential in this case.
+For unit-linked contract, the mortality rate is diversifiable and using simple assumption will save the insurer money in terms of time and cost\footnote{Of course you can use more accurate mortality rate, but it is not that important comparing with the investment risk factor.}. But there is an uncertainty factor on the investment performance, then risk on interest rate is non-diversifiable. In this case, the simple deterministic test will not be able to model the profit realistically. Therefore, the stochastic model should be used. 
+
+Once the stochastic model has been found, the insurer will be interested to know the statistical numbers which reflect the protential risk, and then try different test to reduce or even eliminate the risk. None of these can not be achieved by deterministic pricing, so in unit-linked contract, the stochastic test is very essential! The better model the insurer can find, the more money they are going to make.
 
 
 
@@ -971,41 +1019,6 @@ For unit-linked contract, there is an uncertainty factor on the investment retur
 
 
 
-
-
-
-
-
-quantile-premium
-
-
-
-
-\bibitem{bib:lognormal-online}  Mike Mulholland,
-    2005, 
-    {\em Lognormal Random Walk Model for Stock Prices (Part I) },
-    page 3-5.
-
-\bibitem{bib:lognormal-book}  Jonathan D. Cryer, Kung-Sik Chan,
-    2nd, 2008, 
-    {\em Time Series Analysis With Applications in R},
-    page 211.
-
-\bibitem{bib:lognormal-stats-notes}  No Auther specified,
-    1st, January 2012, 
-    {\em  Lecture notes: Further Statistics },
-    page 65,95.
-
-
-\bibitem{bib:lognormal-fm1-notes}  M. Tretyakov,
-    2005-2011,
-    {\em Financial Mathematics I},
-    page 12,79.
-
-
-\bibitem{bib:monte carlo}  Andrey Mudrov,
-    {\em Financial Risk},
-    page 8-9.
 
 
 

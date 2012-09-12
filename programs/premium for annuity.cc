@@ -27,7 +27,7 @@ void policy(float personage, bool persongender, bool personsmoker, float A, floa
     << (persongender?'M':'F') << ' '
     << (personsmoker?'Y':'N') << ' '
     << premium << ' '
-    << res << ' '
+    //<< res << ' '
     << annres << ' '
     << premium*a
     << std::endl;
