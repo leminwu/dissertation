@@ -865,45 +865,45 @@ The profit margin becomes:
 
 
 \[
-Profit\ Margin =  \frac{NPV}{P \ddot{a}_x} = \frac{522.72}{5200 \times 7.619285226} = 1.3\%
+\text{Profit Margin} =  \frac{NPV}{P \ddot{a}_x} = \frac{522.72}{5200 \times 7.619285226} = 1.3\%
 \]
 
-There is a big raise in both NPV of profit and profit margin. NPV of profit increases from \pounds489.59 to \pounds522.72, and the profit margin shoots up from 1.24\% to 1.3\%. This is a very sensitive case, little change in interest will have huge impact in profit. Therefore a good interest model will be very essential in this case.
+There is a big raise in both NPV of profit and profit margin. NPV of profit increases from \pounds489.59 to \pounds522.72, and the profit margin shoots up from 1.24\% to 1.3\%. This is a very sensitive case, where a small change in interest will have a huge impact in profit. Therefore a good interest model will be very essential in this case.
  
 
 
 
 
 
-\subsection{Little summary for deterministic test}
-So far everything looks fine, but is this a good model for unit-linked contract? The answer will be no, from our sensitivity test, we can see that the interest rate change will lead to a huge fluctuate in profit, so the asssumption of constant interest rate is not good enough in this case. This is because the constant interest rate does not contain  enough information when modelling, since the uncertainty of investment on equity and bond is not diversifiable. By law, we do not have an arbitrage market, no one can make profit without risk, and the interest on return will be affected by a few different factors, \cite{bib:riskfactor} e.g. inflation, quality of information, governmental policy, change in bond market or equity market etc.. And once the factors affecting the market at the same time, the risk will be non-diversifiable. So now we should consider to model the interest rate non-linearly, e.g. as a random variable. 
+\subsection{Short summary for deterministic test}
+So far everything looks fine, but is this a good model for a unit-linked contract? The answer will be no, since from our sensitivity test, we can see that the interest rate change will lead to a huge fluctuation in profit, so the assumption of a constant interest rate is not good enough in this case. This is because the constant interest rate does not contain  enough information when modelling, since the uncertainty of investment on equity and bond is not diversifiable. By law, we do not have an arbitrage market, no one can make profit without risk, and the interest on return will be affected by a few different factors, \cite{bib:riskfactor} e.g. inflation, quality of information, governmental policy, change in bond market or equity market. Once the factors  are affecting the market at the same time, the risk will be non-diversifiable. So now we should consider modelling the interest rate non-linearly, e.g. as a random variable. 
 
 
 
 
 \section{Stochastic pricing}
 
-From the sensitivity test in last section, we conclude that the change in interest rate is non-diversifiable and extremely sensitive, which a constant assumption is not suitable. 
+From the sensitivity test in the last section, we conclude that the change in interest rate is non-diversifiable and extremely sensitive, so a constant assumption is not suitable. 
 For a more realistic model we introduce the stochastic price test. Here, we model the interest rate as a random variable, avoiding the constant assumption of the previous section.
 
 
 \subsection{Central Limit Theorem and Monte Carlo simulation}
 
-In our basic assumptions \footnote{assumption in \ref{unit-link-basic-assumptions}}, we assume that the policy holders will be able to choose different units of equities or bonds or portfolios \footnote{Portfolio: mixed equities and bonds} to invest their premium. Which means the the more equities and bonds available, the less similarity in the interest return each year for different policy holders. 
+In our basic assumptions \footnote{assumption in \ref{unit-link-basic-assumptions}}, we assume that the policy holders will be able to choose different units of equities or bonds or portfolios \footnote{Portfolio: mixed equities and bonds} to invest their premium. This means that the more equities and bonds available, the less similarity in the interest return each year for different policy holders. 
 
-By \cite{bib:CLT}Central Limit Theorem, which obtained by Mood, Graybill, and Boes in 1974, if we have a number of independent identically distributed random variables \footnote{The random variables can follow any distribution}, we can observe a new series of random variables following normal distribution by summing or multiplying the old ones. The theorem can be used in finance, compound return or equity return follows a log-normal distribution\footnote{log-normal distribution is also called Galton's distribution, after Francis Galton}, which means the logarithm of interest return $I_t$ follows a normal distribution with mean $\mu$ and variance $\sigma^2$. This theorem can be applied in the new model, then we will have
+By \cite{bib:CLT}the Central Limit Theorem, which obtained by Mood, Graybill, and Boes in 1974, if we have a number of independent identically distributed random variables \footnote{The random variables can follow any distribution}, we can observe a new series of random variables following the normal distribution by summing or multiplying the old ones. The theorem can be used in finance, compound return or equity return which follows a log-normal distribution\footnote{log-normal distribution is also called Galton's distribution, after Francis Galton}, which means the logarithm of interest return $I_t$ follows a normal distribution with mean $\mu$ and variance $\sigma^2$. This theorem can be applied in the new model, then we will have
 \[
-logI_t = \xi \sim N(\mu,\sigma^2)
+logI_t  \sim N(\mu,\sigma^2)
 \]
 \[
-where\   \mu= 0.74928, \sigma= 0.15 
+\text{where}   \mu= 0.74928, \sigma= 0.15 
 \]
 
-Now we can use Monte Carlo simulation\cite{bib:MCS}, generate some random numbers \footnote{I used $C^{++}$ boost random number generator, } $\xi'_t$ from the Standard Normal distribution with mean 0 and variance 1, and transform them to the specified Normal distribution $N(0.74928,0.15^2)$ via   
+Now we can use Monte Carlo simulation\cite{bib:MCS}, generate some (pseudo) random numbers \footnote{I used C++ boost random number generator.} $\xi'_t$ from the Standard Normal distribution with mean 0 and variance 1, and transform them to the specified Normal distribution $N(0.74928,0.15^2)$ via   
 \[
 \xi_t = 0.74928 + 0.15\times \xi'_t
 \]
-then, our annual accumulation\footnote{It is the interest rate $r_t$ + 1} factor will be simulated by 
+Then, our annual accumulation\footnote{It is the interest rate $r_t$ + 1} factor will be simulated by 
 \[
 I_t=exp\{\xi_t\} 
 \]
@@ -912,7 +912,7 @@ I_t=exp\{\xi_t\}
 
 \subsection{Modelling}
 
-Now we assume there are 1,000 policy holders \footnote{The larger number the better statistic result we will get, here we just set 1,000 as an example.} purchased unit-linked contract with different portfolios. Using the generated random variable from the Standard Normal distribution, we can construct our new cash flow tables. I used $C^{++}$ to help me with constructing the tables \footnote{codes will be included in the appendix}. Since there are 1,000 policy holdders and interest rate will be different from year to year for all of them. Therefore, 10,000  $\xi'_t$ need to be generated from the Standard Normal distribution.
+Now we assume there are 1,000 policy holders \footnote{The larger number the better statistic result we will get, here we just set 1,000 as an example.} purchased unit-linked contract with different portfolios. Using the generated random variable from the Standard Normal distribution, we can construct our new cash flow tables. I used C++ to help me with constructing the tables \footnote{codes will be included in the appendix}. Since there are 1,000 policy holdders and interest rate will be different from year to year for all of them. Therefore, 10,000  $\xi'_t$ need to be generated from the Standard Normal distribution.
 
 
 Here is an example we get from the program. \footnote{To curious readers, this is the 1st cash flow table we get from the program.}
