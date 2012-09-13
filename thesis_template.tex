@@ -14,6 +14,7 @@
 \usepackage{float}
 \usepackage{courier}
 \usepackage{setspace} 
+\usepackage{graphicx}
 
 %\usepackage[notcite,notref]{showkeys} 
 %Use the showkeys package to view labels. For draft version only!
@@ -235,10 +236,10 @@ $d$
 
 \chapter{Annuity and Assurance}    \label{annuity}
 
-An annuity offers a series of payment to the annuitant\footnote{The person who bought the annuity}; if it is conditioned on the survival of the annuitant, then it is called a life annuity. If the annuity is paid for a fixed period, it is called the term annuity, but if it continuouse untill the death of the annuitant, then it is a whole life annuity.
+An annuity offers a series of payment to the annuitant\footnote{The person who bought the annuity}; if it is conditioned on the survival of the annuitant, then it is called a life annuity. If the annuity is paid for a fixed period, it is called the term annuity, but if it continues until the death of the annuitant, then it is a whole life annuity.
 
 
-Annuities is popular in older age group, since they want to receive an income after the retirement. This is a very important factor, because the mortality rate for this age group is different from other groups and there are a few different ways to model it. 
+Annuities are popular in older age groups, since they want to receive an income after the retirement. This is a very important factor, because the mortality rate for this age group is different from other groups and there are a few different ways to model it. 
 
 
 \section{Background}
@@ -249,13 +250,14 @@ The life annuity is a contract between a insurance company(the insurer) and an a
 There are some other special annuities, such as joint life annuity and last survivor annuity etc.. For joint life annuity, there are two annuitant in the contract, and the payment from the insurer will stop on the first death of the two. Similar to the joint life annuity, last survivor annuity payment will not stop untill the second death of the annuitants. Other annuities are all similar, the differences are the premium(s) receiving time and when the payments cease. 
 
 
-In another word, the insurer will receive a single premium or a series of premiums in the short future, but the payments will be made in far future. This can be very risky, since the inflation rate in the far future is not easy to predict as well as the mortality rate\footnote{The mortality rate in long term can be affected by war or scientific reasons.}.
+In other words, the insurer will receive a single premium or a series of premiums in the short future, but the payments will be made in far future. This can be very risky, since the inflation rate in the far future is not easy to predict as well as the mortality rate\footnote{The mortality rate in long term can be affected by war or scientific reasons.}.
 
-Let us start from the simplest one, the single premium deferred(SPDA) annuity. In this chapter, we are going to explore how will a company price the annuity for people with different age, gender and smoking habit.
+Let us start from the simplest one, the single premium deferred annuity (SPDA). In this chapter, we are going to explore how a company will price the annuity for people with different age, gender and smoking habit.
 
 
 \subsection{Preliminaries}
 
+% This doesn't make sense.
 The calculation for premium may not allow for the insurer's expense, then it is called net premium. But if the calculation include the deduction of expense, the premium will be called gross premium.
 
 
@@ -350,10 +352,10 @@ As mentioned earlier, the present value of expenses is calculated by accumulatin
 
 Same method applied to present value of future payments:
 \[
-\text{PV of fure payments }= \sum_{t=10}^{\infty} S * (1 + c )^{t-10} * v^t 
+\text{PV of future payments }= \sum_{t=10}^{\infty} S * (1 + c )^{t-10} * v^t 
 \]
 
-For whole life annuity, the insurer will make the payments till the annuitant's death occurs. Statistically the death can never happen with a very small probability, in this case the insurer will pay forever. But in real world, everyone dies, the life expectancy in UK is 80 \footnote{Life expectancy at birth for male is 78, female is 82 in UK.}. This means the probability for people survive after their 80th will be small. Therefore when we calculate the expected present value(EPV) of expenses we need to count another factor in, the survival rate $_tp_x$ \footnote{$_tp_x$ stands for the probability of selected life aged $x$ survival $t$ years to age $x+t$.}, that the probability annuitant is still alive to receive the payment that year.
+For a whole life annuity, the insurer will make the payments till the annuitant's death occurs. Statistically the death can never happen with a very small probability, in this case the insurer will pay forever. But in real world, everyone dies, the life expectancy in UK is 80 \footnote{Life expectancy at birth for male is 78, female is 82 in UK.}. This means the probability for people survive after their 80th will be small. Therefore when we calculate the expected present value(EPV) of expenses we need to count another factor in, the survival rate $_tp_x$ \footnote{$_tp_x$ stands for the probability of selected life aged $x$ survival $t$ years to age $x+t$.}, that the probability annuitant is still alive to receive the payment that year.
 
 \begin{align}
         \text{EPV of renewal expense}&= R  * \sum_{t=1}^{\infty}(1 + c )^{t-1} * _tp_{[x]}* v^t,\\
@@ -365,17 +367,18 @@ Now the equations for both EPV of renewal expense and future payments had been o
 
 \subsection{Mortality rate and select life table}
 
-The target annuitants are aged from 55 to 60 accross genders with different smoking habit. Each factor has a small effection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be weathier, then the lower mortalty rate they will have.} than the national rates.
+The target annuitants are aged from 55 to 60 across genders with different smoking habit. Each factor has a small effection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be weathier, then the lower mortalty rate they will have.} than the national rates.
 
 
 
-And another assumption is that all the lives will cease before age 120, in other words, the mortality rate $_{120-x}q_{x}=1$ \footnote{The mortality rate $_tq_{x}$ stands for the probability of a selected life age $x$ will die at age $x+t$. Therefore $_tp_{x} = 1- _tq{x}$.}. Besides that, we assume that the annuitant will have a health check before entering the contract, this is because the annuitant will want to make sure he/she is healthy enough to take the contract at that moment\footnote{If the health check shows the annuitant has a serious issue which may cause short death, the annuitant will not willing to enter the contract any more.}. But there is a validating period for the health check, normally 2 to 5 years, whcih means in this time period the survival rate for the annuitant will be slightly higher than who has not taken the health check. The 2-year or 5-year are called select period, in our model, we are going to use 2-year select life table, where the mortality rate is denoted as $_kq_{[x-t]}$ \footnote{[x-t] means the life was selected at age $x-t$}. The mortality rate for select period is called select mortality rate, after the select period is called ultimate moratality rate.
+And another assumption is that all the lives will cease before age 120, in other words, the mortality rate $_{120-x}q_{x}=1$ \footnote{The mortality rate $_tq_{x}$ stands for the probability of a selected life age $x$ will die at age $x+t$. Therefore $_tp_{x} = 1- _tq{x}$.}. Besides that, we assume that the annuitant will have a health check before entering the contract, this is because the annuitant will want to make sure he/she is healthy enough to take the contract at that moment\footnote{If the health check shows the annuitant has a serious issue which may cause short death, the annuitant will not willing to enter the contract any more.}. But there is a validating period for the health check, normally 2 to 5 years, which means in this time period the survival rate for the annuitant will be slightly higher than who has not taken the health check. The 2-year or 5-year are called select period, in our model, we are going to use 2-year select life table, where the mortality rate is denoted as $_kq_{[x-t]}$ \footnote{[x-t] means the life was selected at age $x-t$}. The mortality rate for select period is called select mortality rate, after the select period is called ultimate moratality rate.
 
 Hear we show a part of select mortality table for female non-smokers\footnote{Full tables will be attached in the appendix.}:
 
 
 
 \begin{figure}[H]
+    \centering
 \begin{tabular}{p{2cm}p{2cm}p{2cm}p{2cm}}
 Age              & Duration 0 & Duration 1 & Duration 2+    \\
 \hline
@@ -437,6 +440,18 @@ Then the expected present value of the payments is :
         \ddot{a}_x&= \sum_{k=0}^{\infty} v^k*_kp_x = \frac{1-A_x}{d}
 \end{align}
 where $d=\frac{i}{(1+i)}$
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig1.png}
+    \caption{Caption}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig2.png}
+    \caption{Caption}
+\end{figure}
 
 
 \section{Pricing}
@@ -567,6 +582,7 @@ From all the assumptions, cash flow tables for both the policy holder and insure
 
 
 \begin{figure}[H]
+    \centering
 \begin{tabular}{p{1cm} p{1.5cm} p{1.5cm} p{2cm} p{1.5cm} p{2cm} p{1.5cm} p{1.5cm} }
 \toprule
 \multicolumn{8}{c}{Cash flow for policy holder's account} \\
@@ -619,6 +635,7 @@ Table \ref{determ-insurer} is showing the insurer's account cash flow for \textb
 
 \begin{figure}[H]
 \hfill
+    \centering
 \begin{tabular}{p{0.8cm} p{1.5cm} p{1.5cm} p{1.2cm} p{1cm} p{2cm}p{1.5cm} p{1.5cm} p{1.5cm} }
 \toprule
 \multicolumn{9}{c}{Cash flow for insurer's account} \\
@@ -665,6 +682,7 @@ From the third year, the probability for the contract to be in force will be $p_
 
 
 \begin{figure}[H]
+    \centering
 \begin{tabular}{|l|l|}
   \hline
   \multicolumn{2}{|c|}{probability in force} \\
@@ -711,7 +729,9 @@ and the profit margin will be
 \text{Profit\ Margin} =  \frac{NPV}{P \ddot{a}_x} = 1.24\%
 \]
 
-where $\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$  = \frac{489.59}{5200 \times 7.619285226
+where $\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$
+read from table ?!?!?!? and $v=\frac{1}{1+0.05}$  = $\frac{489.59}{5200 \times
+7.619285226}$
 
 Since in the very beginning, we used conservative assumptions, e.g. expenses, mortality rate, interest rate for the insurer's fund. So if in reality the expense and mortality rate are lower than modelled and the interest rate is higher, then the insurer will obtain more profit. A sensitivity test can be used here to show how the profit changes with according to different factors. 
 
@@ -728,6 +748,7 @@ The initial expense deduction changed from 13\% to 10\%, and the renewal changed
 
 \begin{figure}[H]
 \hfill
+    \centering
 \begin{tabular}{p{0.8cm} p{1.5cm} p{1.5cm} p{1.2cm} p{1cm} p{2cm}p{1.5cm} p{1.5cm} p{1.5cm} }
 \toprule
 \multicolumn{9}{c}{Cash flow for insurer's account} \\
@@ -781,6 +802,7 @@ Constant mortality rate change from 0.006 to 0.005.
 
 \begin{figure}[H]
 \hfill
+    \centering
 \begin{tabular}{p{0.8cm} p{1.5cm} p{1.5cm} p{1.2cm} p{1cm} p{2cm}p{1.5cm} p{1.5cm} p{1.5cm} }
 \toprule
 \multicolumn{9}{c}{Cash flow for insurer's account} \\
@@ -830,6 +852,7 @@ Interest rate change from 8\% to 9\%.
 
 
 \begin{figure}[H]
+    \centering
 \begin{tabular}{p{1cm} p{1.5cm} p{2cm} p{2cm} p{1cm} p{1.5cm} p{1.5cm} p{1.5cm} }
 \toprule
 \multicolumn{8}{c}{Cash flow for policy holder and insurer's account} \\
@@ -919,6 +942,7 @@ Here is an example we get from the program. \footnote{To curious readers, this i
 
 
 \begin{figure}[H]
+    \centering
 \begin{tabular}{p{0.5cm} p{1.5cm} p{1.3cm} p{1cm} p{1.5cm} p{1.2cm} p{1.3cm} p{1.3cm}p{1.3cm}p{1.3cm}p{1.3cm} }
 \toprule
 \multicolumn{10}{c}{Cash flow for policy holder and insurer's fund} \\
@@ -962,6 +986,7 @@ NPV=\pounds 1,011.86\ \ \ \   \   \& \    \ \ \ \       Profit \  margin = 2.6\%
 Now showing another example from the 1,000 which is not that ideal for the insurer.
 
 \begin{figure}[H]
+    \centering
 \begin{tabular}{p{0.5cm} p{1.5cm} p{1.3cm} p{1cm} p{1.5cm} p{1.2cm} p{1.3cm} p{1.3cm}p{1.6cm}p{1.5cm}p{1.3cm} }
 \toprule
 \multicolumn{10}{c}{Cash flow for policy holder and insurer's fund} \\
