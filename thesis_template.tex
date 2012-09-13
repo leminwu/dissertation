@@ -424,7 +424,7 @@ Now the unknown parameter has obtained, but before we proceed to the next stage,
 
 Then the expected present value of the benefit is:
 \begin{align}
-A_x = \text{E}[v^{K_x+1}] = \sum_{k=0}^{\infty} v^{k+1}*_{k\mid} q_x  
+A_x = \text{E}[v^{K_x+1}] = \sum_{k=0}^{\infty} v^{k+1}*_{k\mid} q_x  \nonumber 
 \end{align}
 
 $_{k\mid} q_x$ stands for the probability that a life aged $x$ survived $k$ years, now $x+k$ years old, will die in the next subsequent year.
@@ -440,11 +440,11 @@ $_{k\mid} q_x$ stands for the probability that a life aged $x$ survived $k$ year
 
 Then the expected present value of the payments is :
 \begin{align}
-        \ddot{a}_x&= 1 + vp_x +v^2_2p_x +v^3_3p_x+ \dots
+        \ddot{a}_x&= 1 + vp_x +v^2_2p_x +v^3_3p_x+ \dots\nonumber 
 \end{align}
 \text{that is} 
 \begin{align}
-        \ddot{a}_x&= \sum_{k=0}^{\infty} v^k*_kp_x = \frac{1-A_x}{d}
+        \ddot{a}_x&= \sum_{k=0}^{\infty} v^k*_kp_x = \frac{1-A_x}{d} \nonumber 
 \end{align}
 where $d=\frac{i}{(1+i)}$
 
@@ -478,13 +478,13 @@ Let us start from calculate the EPV of renewal expenses
 Recall equation (1.2)
 
 \begin{align}
-        \text{EPV of renewal expense}&= R  * \sum_{t=1}^{\infty}(1 + c )^{t-1} * _tp_{[x]}* v^t\\
-        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} (1 + c )^t * _tp_{[x]} * v^t\\
-        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} [(1 + c )*v]^t * _tp_{[x]} \\
-\text{given $v$ = $\frac{1}{(1+i)} $}\\
-        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} \left(\frac{1+c}{1+i}\right)^t * _tp_{[x]} \\
-\text{let $v_j = \frac{1+c}{1+i}$, now we have}\\
-        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} v_j^t * _tp_{[x]}\\
+        \text{EPV of renewal expense}&= R  * \sum_{t=1}^{\infty}(1 + c )^{t-1} * _tp_{[x]}* v^t \nonumber \\
+        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} (1 + c )^t * _tp_{[x]} * v^t \nonumber \\
+        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} [(1 + c )*v]^t * _tp_{[x]} \nonumber \\
+\text{given $v$ = $\frac{1}{(1+i)} $}\nonumber \\
+        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} \left(\frac{1+c}{1+i}\right)^t * _tp_{[x]} \nonumber \\
+\text{let $v_j = \frac{1+c}{1+i}$, now we have}\nonumber \\
+        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} v_j^t * _tp_{[x]} \\
         &= \frac{R}{(1+c)} * (\ddot{a}_{[x]j}-1)
 \end{align}
 
@@ -496,7 +496,7 @@ Recall equation (1.2)
 
 \subsubsection{EPV of future payments}
 \begin{align}
-        \text{EPV of future payments} &= S * \sum_{t=10}^{\infty} (1 + c )^{t-10} * _tp_{[x]} * v^t\\
+        \text{EPV of future payments} &= S * \sum_{t=10}^{\infty} (1 + c )^{t-10} * _tp_{[x]} * v^t \nonumber \\
          &= \frac{S}{(1+c)^{10}}* \sum_{t=10}^{\infty} (1 + c )^{t} * _tp_{[x]} * v^t \nonumber \\
          &= \frac{S}{(1+c)^{10}} * \sum_{t=10}^{\infty} v_j^t * _tp_{[x]}
 \end{align}
@@ -505,6 +505,15 @@ Recall equation (1.2)
 \begin{itemize}
 \item For both of the expected present value of expenses and future payments, the summation will be up till $120-x$ instead of $\infty$ when we model them, this is based on our assumption that all lives will cease before age 120. 
 \end{itemize}
+
+
+
+To calculate both equation (1.4) and (1.6), the easiest way is to use a program. Here I use C++ \footnote{Codes will be included in appendix}.  
+
+
+
+
+
 
 
 \section{Sensitivity test}
