@@ -367,7 +367,14 @@ Now the equations for both EPV of renewal expense and future payments had been o
 
 \subsection{Mortality rate and select life table}
 
+<<<<<<< HEAD
 The target annuitants are aged from 55 to 60 across genders with different smoking habit. Each factor has a small effection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be weathier, then the lower mortalty rate they will have.} than the national rates.
+=======
+From the previous section, we had equations (1.1), (1.2) and (1.3) been obtained to calculate the single premium, and now the only unknown parameter is the survival rate $_tp_{[x]}$. In this section, the select life table will be used to obtain the values for $_tp_{[x]}$ and then introduce some actuarial notations. 
+
+
+The target annuitants are aged from 55 to 60 accross genders with different smoking habit. Each factor has a small effection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be weathier, then the lower mortalty rate they will have.} than the national rates.
+>>>>>>> thx Antony!
 
 
 
@@ -404,7 +411,7 @@ Age              & Duration 0 & Duration 1 & Duration 2+    \\
 
 
 \subsection{$\ddot{a_x}$ and $A_x$}. 
-Now the last parameter has obtained, but before proceeding to the next stage, there are some actuarial notations to introduce \cite{bib:def-for-annuity-assurance}.
+Now the unknown parameter has obtained, but before we proceed to the next stage, there are some actuarial notations to introduce \cite{bib:def-for-annuity-assurance}.
 
 \textbf{Whole life assurance:} Denoted $A_x$. For discrete whole life insurance with \pounds1 benefit payable annually, the time line graph is showing as below, assume the policy holder will die between year $K_x$ and $K_x+1$:
 
@@ -456,52 +463,48 @@ where $d=\frac{i}{(1+i)}$
 
 \section{Pricing}
 
-From the previous section, the equations (1.1), (1.2) and (1.3) had been obtained to calculate the single premium, and now the only unknown parameter is the survival rate $_tp_{[x]}$. In this chapter, the select life table will be used to obtain the value for $_tp_{[x]}$ and then calculate the expected present value of renewal expense and future payments. 
-
 
 
 Now the last unknown parameter has obtained, we can proceed to the next step, calculating expected present value of renewal expenses and future payments.
 
 
 
-\subsection{$\ddot{a_x}$ and $A_x$}
-
-Recall from last section, the single premium P equals the liabilities will meet in the future, which including three parts, initial expense, the EPV of renewal expenses and EPV of future payments.
+Recall from last section, the single premium $P$ equals to the liabilities in the future, which including three parts: initial expense, the EPV of renewal expenses and EPV of future payments.
 
 
-Before we start calculating, 
-
-
-Let us first start with the EPV of renewal expenses
+Let us start from calculate the EPV of renewal expenses
 \subsubsection{EPV of renewal expenses}
 
 Recall equation (1.2)
 
 \begin{align}
         \text{EPV of renewal expense}&= R  * \sum_{t=1}^{\infty}(1 + c )^{t-1} * _tp_{[x]}* v^t\\
-        &= \frac{R}{(1+c)} * \sum_{t=10}^{\infty} (1 + c )^t * _tp_{[x]} * v^t\\
-        &= \frac{R}{(1+c)} * \sum_{t=10}^{\infty} [(1 + c )*v]^t * _tp_{[x]} \\
+        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} (1 + c )^t * _tp_{[x]} * v^t\\
+        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} [(1 + c )*v]^t * _tp_{[x]} \\
 \text{given $v$ = $\frac{1}{(1+i)} $}\\
-        &= \frac{R}{(1+c)} * \sum_{t=10}^{\infty} \left(\frac{1+c}{1+i}\right)^t * _tp_{[x]} \\
-\text{let $j = \frac{1+c}{1+i}$, now we have}\\
-        &= \frac{R}{(1+c)} * \sum_{t=10}^{\infty} j^t * _tp_{[x]}\\
+        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} \left(\frac{1+c}{1+i}\right)^t * _tp_{[x]} \\
+\text{let $v_j = \frac{1+c}{1+i}$, now we have}\\
+        &= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} v_j^t * _tp_{[x]}\\
         &= \frac{R}{(1+c)} * (\ddot{a}_{[x]j}-1)
 \end{align}
 
 \textbf{Notes:}
+\begin{itemize}
+\item $\ddot{a}_{[x]j}$ is the annuity with changed discount rate from $v$ to $j$,  $\ddot{a}_{[x]j} = \sum_{t=0}^{\infty} v_j^t * _tp_{[x]}$
+\item We have $\ddot{a}_{[x]j} - 1$ here is because the renewal expense will not be applied in the first year.
+\end{itemize}
 
+\subsubsection{EPV of future payments}
+\begin{align}
+        \text{EPV of future payments} &= S * \sum_{t=10}^{\infty} (1 + c )^{t-10} * _tp_{[x]} * v^t\\
+         &= \frac{S}{(1+c)^{10}}* \sum_{t=10}^{\infty} (1 + c )^{t} * _tp_{[x]} * v^t \nonumber \\
+         &= \frac{S}{(1+c)^{10}} * \sum_{t=10}^{\infty} v_j^t * _tp_{[x]}
+\end{align}
 
-
-
-
-
-
-
-
-
-
-
-
+\textbf{Note:}
+\begin{itemize}
+\item For both of the expected present value of expenses and future payments, the summation will be up till $120-x$ instead of $\infty$ when we model them, this is based on our assumption that all lives will cease before age 120. 
+\end{itemize}
 
 
 \section{Sensitivity test}
@@ -729,9 +732,13 @@ and the profit margin will be
 \text{Profit\ Margin} =  \frac{NPV}{P \ddot{a}_x} = 1.24\%
 \]
 
+<<<<<<< HEAD
 where $\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$
 read from table ?!?!?!? and $v=\frac{1}{1+0.05}$  = $\frac{489.59}{5200 \times
 7.619285226}$
+=======
+where $\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$  = $\frac{489.59}{5200} \times 7.619285226$
+>>>>>>> thx Antony!
 
 Since in the very beginning, we used conservative assumptions, e.g. expenses, mortality rate, interest rate for the insurer's fund. So if in reality the expense and mortality rate are lower than modelled and the interest rate is higher, then the insurer will obtain more profit. A sensitivity test can be used here to show how the profit changes with according to different factors. 
 
