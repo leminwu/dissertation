@@ -138,7 +138,7 @@ int main(int argc, char** argv) {
     boost::variate_generator<boost::mt19937&, boost::uniform_int<> > smoker(generator, boolean);
     boost::variate_generator<boost::mt19937&, boost::uniform_real<> > age(generator, agedistribution);
 
-    for(int i=0; i<100; i++) {
+    for(int i=0; i<1000; i++) {
         float personage = age();
         bool persongender = gender();
         bool personsmoker = smoker();

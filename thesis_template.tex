@@ -36,7 +36,7 @@
 \vspace{1.5in}%{2.0in}
 
 \begin{center}
-    Thesis submitted at the University of Leicester \\
+    Dissertation submitted at the University of Leicester \\
     in partial fulfilment of the requirements for \\ 
     the MSc degree in Financial Mathematics and Computation \\
 \end{center}
@@ -171,11 +171,14 @@ and Hilbert \cite{bib:Hilbert1} on the subject of the title.
 
 The following variables are used though out the project
 
-$\ddot{a}$\\
-$\ddot{A}$\\
+$\ddot{a_x}$\\
+$A_x$\\
 $\ddot{A}^{(m)}_{[x]}$\\
 $\ddot{a}^{(m)}_{[x]}$\\
 $_t p_x$\\
+$S$\\
+$v$
+$d$
 
 \section*{Notation}
 
@@ -223,46 +226,271 @@ $_t p_x$\\
 
 
 
+
+
+
+
+
+
+
 \chapter{Annuity and Assurance}    \label{annuity}
 
-<<<<<<< HEAD
-An annuity offers a series of payment to the policy holders, if it is conditioned on the survival of the policy holder (sometimes called annuitant), then it is called a life annuity. If the annuity is payed for a fixed period, it is called term annuity, but if it continous till the death.
-=======
-An annuity offers a series of payment to the policy holders, if it is conditioned on the survival of the annuitant \footnote{The person who bought the annuity}, then it is called a life annuity. If the annuity is payed for a fixed period, it is called term annuity, but if it continous till the death of the annuitant, then it is a whole life annuity.
-Annuity is popular in older age group, since they want to receive an income after retirement. This is a very important factor, because the mortality rate for this certain age group is different from other group and has a few special ways to model. 
-
-In this chapter we are going to explore how will a insurance company\footnote{Insurance company is also called insurer.} price a term annuity contract for different age, gender and smoking habit annuitant.
->>>>>>> ggg
+An annuity offers a series of payment to the annuitant\footnote{The person who bought the annuity}; if it is conditioned on the survival of the annuitant, then it is called a life annuity. If the annuity is paid for a fixed period, it is called the term annuity, but if it continuouse untill the death of the annuitant, then it is a whole life annuity.
 
 
+Annuities is popular in older age group, since they want to receive an income after the retirement. This is a very important factor, because the mortality rate for this age group is different from other groups and there are a few different ways to model it. 
 
-
-<<<<<<< HEAD
-In this chapter we are going to explore how will the insurance company gathers all the available information.
-=======
->>>>>>> ggg
 
 \section{Background}
 
+The life annuity is a contract between a insurance company(the insurer) and an annuitant\cite{bib:annuity-def}, which indicates that the insurer will make a series of payments in the future in return of a immediate premium(the single premium deferred annuity) or a series of advanced regular payments(the regular premium deferred annuity). 
+
+
+There are some other special annuities, such as joint life annuity and last survivor annuity etc.. For joint life annuity, there are two annuitant in the contract, and the payment from the insurer will stop on the first death of the two. Similar to the joint life annuity, last survivor annuity payment will not stop untill the second death of the annuitants. Other annuities are all similar, the differences are the premium(s) receiving time and when the payments cease. 
+
+
+In another word, the insurer will receive a single premium or a series of premiums in the short future, but the payments will be made in far future. This can be very risky, since the inflation rate in the far future is not easy to predict as well as the mortality rate\footnote{The mortality rate in long term can be affected by war or scientific reasons.}.
+
+Let us start from the simplest one, the single premium deferred(SPDA) annuity. In this chapter, we are going to explore how will a company price the annuity for people with different age, gender and smoking habit.
+
+
+\subsection{Preliminaries}
+
+The calculation for premium may not allow for the insurer's expense, then it is called net premium. But if the calculation include the deduction of expense, the premium will be called gross premium.
+
+
+
+
+
 \section{Methodology}
 
-\subsection{Equivalence priciple}
-\subsection{Annuity and assurance factors}
+
+For a group of target customers, their expenses for each year will be close, then their expected guaranteed payment from the annuity will be the same. The insurer will need to find out how much premium they should to get from each annuitant to pay off the future liability, contract related expenses and cover the future risk.
+
 \subsection{Some assumptions}
 
-\section{Mortality rate}
+Before constructing the model, we need some assumptions for the target customer and some company expenses.
 
-\subsection{Gomperzt's law}
-\subsection{Life table}
+An insurance company is going to issue a single premium deferred annuity to selected group of people aged from 55 to 60 across genders with different smoking habits. The first payment will be on the 10$^{th}$ year from issue, and the payments will be annually.
 
-\subsection{}
+For this targeted customers, the first annuity payment will be \pounds 50,000 a year. The initial expense is \pounds500, and the renewal expense is \pounds30 each year. Interest rate 5\%. The expense and annuity payments will increase each year at the compound rate of 2.8\% every year, which is paid to hedge against inflation.
+
+Based on the company's previous experiance, 1,000 contract will be sold in the first year. 
+
+We are going to use the following parameters to denote different assumptions above:
+
+\textbf{P = the single premium}
+
+\textbf{S = the first payment on 10$^{th}$ year, \pounds50,000}
+
+\textbf{i = interest rate, 5\%}
+
+\textbf{I = initial expense, \pounds500}
+
+\textbf{R = renewal expense, \pounds30}
+
+\textbf{c = compound rate, 2.8\%}
+
+
+Now we are going to introduce the equivalence priciple which will help the insurer find out the gross premium value for each annuitant in this case.
+
+
+
+\subsection{Loss random variable and equivalence priciple}
+
+The future loss random variable for gross profit is defined as 
+\[
+\text{present value outgo + present of expenses- present value income}
+\]
+denoted as
+\[
+\textbf{$L_0^g$} = \textbf{PV of benefit outgo + PV of expenses - PV of gross premium income}
+\]
+
+\textbf{Notes:}
+
+The present value of benefit outgo is calculated by the accumulation of discounted benefits \footnote{Discounted benefit calculated using benefit payable at time t multiply a discount factor $v^t$, $S_t \times v^t$ where $v$ = $\frac{1}{1+i}$ where $i$ is the annual interest rate} payable to the policy holder, or annuitant in this case. Same to PV of expenses and PV of gross premium income. This means the profit(or loss) will be calculated using present time.
+
+ \
+
+
+
+The equivalence principle for gross premium is simplely set the expected present value(EPV) of the gross loss random variable equal to zero. Which is
+\[
+E[L_0^g] = 0
+\]
+Or it writen it as
+\[
+\textbf{EPV\ of\ future\ payments + EPV\ of\ expenses - EPV\ of\ gross\ premium = 0}
+\]
+
+In our case, the annuitant is going to pay a single premium when entering the contract, the time insurer will receive the premium will be present, then 
+\[
+\text{EPV of gross premium = premium}
+\]
+
+Therefore the least premium the insurer is going to offer to the annuitants will be calculated by:
+\begin{align}
+\textbf{Single premium P} &= \textbf{Initial expense} + \textbf{EPV of renewal expense}  \nonumber \\
+ &\qquad {} \textbf{EPV of future payments}
+\end{align}
+
+
+This means the expected single premium will equal to the liability will meet in the future.
+
+
+
+
+\subsection{EPV of expenses and future payments}
+
+As mentioned earlier, the present value of expenses is calculated by accumulating the discounted expense in each year, where  $R *(1 + c )^{t-1}$ is the expense in year t with a compound rate c.
+\[
+\text{PV of renewal expenses} = \sum_{t=1}^{\infty} R *(1 + c )^{t-1} *v^t
+\]
+
+Same method applied to present value of future payments:
+\[
+\text{PV of fure payments }= \sum_{t=10}^{\infty} S * (1 + c )^{t-10} * v^t 
+\]
+
+For whole life annuity, the insurer will make the payments till the annuitant's death occurs. Statistically the death can never happen with a very small probability, in this case the insurer will pay forever. But in real world, everyone dies, the life expectancy in UK is 80 \footnote{Life expectancy at birth for male is 78, female is 82 in UK.}. This means the probability for people survive after their 80th will be small. Therefore when we calculate the expected present value(EPV) of expenses we need to count another factor in, the survival rate $_tp_x$ \footnote{$_tp_x$ stands for the probability of selected life aged $x$ survival $t$ years to age $x+t$.}, that the probability annuitant is still alive to receive the payment that year.
+
+\begin{align}
+        \text{EPV of renewal expense}&= R  * \sum_{t=1}^{\infty}(1 + c )^{t-1} * _tp_{[x]}* v^t,\\
+        \text{EPV of future payments}&= S * \sum_{t=10}^{\infty} (1 + c )^{t-10} * _tp_{[x]} * v^t
+\end{align}
+
+
+Now the equations for both EPV of renewal expense and future payments had been obtained. But there is an unknow parameter, the survival rate $_tp_{[x]}$, which is not from our assumption. In the next section, we are going to obtain $_tp_{[x]}$ from select life mortality table published in \textsl{Continuous Mortality Investigation Reports Number 23, 2009} \cite{bib:mortality-report}, and calculate the single premium.
+
+\subsection{Mortality rate and select life table}
+
+The target annuitants are aged from 55 to 60 accross genders with different smoking habit. Each factor has a small effection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be weathier, then the lower mortalty rate they will have.} than the national rates.
+
+
+
+And another assumption is that all the lives will cease before age 120, in other words, the mortality rate $_{120-x}q_{x}=1$ \footnote{The mortality rate $_tq_{x}$ stands for the probability of a selected life age $x$ will die at age $x+t$. Therefore $_tp_{x} = 1- _tq{x}$.}. Besides that, we assume that the annuitant will have a health check before entering the contract, this is because the annuitant will want to make sure he/she is healthy enough to take the contract at that moment\footnote{If the health check shows the annuitant has a serious issue which may cause short death, the annuitant will not willing to enter the contract any more.}. But there is a validating period for the health check, normally 2 to 5 years, whcih means in this time period the survival rate for the annuitant will be slightly higher than who has not taken the health check. The 2-year or 5-year are called select period, in our model, we are going to use 2-year select life table, where the mortality rate is denoted as $_kq_{[x-t]}$ \footnote{[x-t] means the life was selected at age $x-t$}. The mortality rate for select period is called select mortality rate, after the select period is called ultimate moratality rate.
+
+Hear we show a part of select mortality table for female non-smokers\footnote{Full tables will be attached in the appendix.}:
+
+
+
+\begin{figure}[H]
+\begin{tabular}{p{2cm}p{2cm}p{2cm}p{2cm}}
+Age              & Duration 0 & Duration 1 & Duration 2+    \\
+\hline
+55&0.001118&0.001789&0.002022    \\
+56&0.001252&0.001996&0.002246  \\
+57&0.001401&0.002229&0.002497\\
+58&0.001569&0.00249&0.002779\\
+59&0.001757&0.002784&0.003096\\
+60&0.001969&0.003115&0.003453\\
+\dots
+\end{tabular}
+\caption{CMI mortality rate $q_{[x-t]+t}$ for female non-smokers}
+\end{figure}
+
+\textbf{Notes:}
+
+\textbf{Duration 0:} This is the mortality rate on the year when the life enter the contract.
+
+\textbf{Duration 1:} This is the mortality rate $q_{[x-1]+1}$ which means the life is not age $x$ but he/she was selected at age $x-1$.
+
+\textbf{Duration 2+:} After 2 years, the mortality rate will takes value of ultimate mortality rate $q_x$.
+
+
+
+\subsection{$\ddot{a_x}$ and $A_x$}. 
+Now the last parameter has obtained, but before proceeding to the next stage, there are some actuarial notations to introduce \cite{bib:def-for-annuity-assurance}.
+
+\textbf{Whole life assurance:} Denoted $A_x$. For discrete whole life insurance with \pounds1 benefit payable annually, the time line graph is showing as below, assume the policy holder will die between year $K_x$ and $K_x+1$:
+
+
+
+
+
+
+
+
+Then the expected present value of the benefit is:
+\begin{align}
+A_x = \text{E}[v^{K_x+1}] = \sum_{k=0}^{\infty} v^{k+1}*_{k\mid} q_x  
+\end{align}
+
+$_{k\mid} q_x$ stands for the probability that a life aged $x$ survived $k$ years, now $x+k$ years old, will die in the next subsequent year.
+
+\textbf{Whole life annuity-due}: Denoted $\ddot{a}_x$. Consider a whole life annuity with \pounds1 payable yearly in advanece to an annuitant aged $x$, and the annuitant dies between year $K_x$ and $K_x+1$, see the chart below
+
+
+
+
+
+
+
+
+Then the expected present value of the payments is :
+\begin{align}
+        \ddot{a}_x&= 1 + vp_x +v^2_2p_x +v^3_3p_x+ \dots
+\end{align}
+\text{that is} 
+\begin{align}
+        \ddot{a}_x&= \sum_{k=0}^{\infty} v^k*_kp_x = \frac{1-A_x}{d}
+\end{align}
+where $d=\frac{i}{(1+i)}$
+
 
 \section{Pricing}
 
-\section{Reserving}
+From the previous section, the equations (1.1), (1.2) and (1.3) had been obtained to calculate the single premium, and now the only unknown parameter is the survival rate $_tp_{[x]}$. In this chapter, the select life table will be used to obtain the value for $_tp_{[x]}$ and then calculate the expected present value of renewal expense and future payments. 
+
+
+
+Now the last unknown parameter has obtained, we can proceed to the next step, calculating expected present value of renewal expenses and future payments.
+
+
+
+\subsection{$\ddot{a_x}$ and $A_x$}
+
+Recall from last section, the single premium P equals the liabilities will meet in the future, which including three parts, initial expense, the EPV of renewal expenses and EPV of future payments.
+
+
+Before we start calculating, 
+
+
+Let us first start with the EPV of renewal expenses
+\subsubsection{EPV of renewal expenses}
+
+Recall equation (1.2)
+
+\begin{align}
+        \text{EPV of renewal expense}&= R  * \sum_{t=1}^{\infty}(1 + c )^{t-1} * _tp_{[x]}* v^t\\
+        &= \frac{R}{(1+c)} * \sum_{t=10}^{\infty} (1 + c )^t * _tp_{[x]} * v^t\\
+        &= \frac{R}{(1+c)} * \sum_{t=10}^{\infty} [(1 + c )*v]^t * _tp_{[x]} \\
+\text{given $v$ = $\frac{1}{(1+i)} $}\\
+        &= \frac{R}{(1+c)} * \sum_{t=10}^{\infty} \left(\frac{1+c}{1+i}\right)^t * _tp_{[x]} \\
+\text{let $j = \frac{1+c}{1+i}$, now we have}\\
+        &= \frac{R}{(1+c)} * \sum_{t=10}^{\infty} j^t * _tp_{[x]}\\
+        &= \frac{R}{(1+c)} * (\ddot{a}_{[x]j}-1)
+\end{align}
+
+\textbf{Notes:}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \section{Sensitivity test}
+ 
 
 
 
@@ -292,39 +520,20 @@ In this chapter we are going to explore how will the insurance company gathers a
 
 \chapter{Unit-linked insurance}     \label{unit-linked}
 
-%In \cite{bib:Hilbert1} Hilbert considered these questions from a
-%more abstract point of view. He proved the following result.
-
-%\begin{ttt}[Hilbert]      \label{Hilbert'sTheorem}
-%Some even more profound result.
-%\end{ttt}
-
-%In Chapter \ref{chapter-on-Gauss}
-%a special case of Theorem \ref{Hilbert'sTheorem} was proved.
-%We can prove an even more general result.
-
-%\begin{ttt}    \label{mytheorem}
-%An extremely profound result.
-%\end{ttt}
-
-%\begin{pf} As any fool can plainly see, it's true! 
-%\end{pf}
 
 
-%In the previous chapter we used different method to obtain mortality rate
-
-In this chapter we are going to introduce the unit-linked insurance contract. Starting from some assumptions to construct a deterministic pricing model, and demonstrate that the deterministic pricing test is not accurate enough for this contract.
+In this chapter we are going to introduce the unit-linked insurance contract. Starting from some assumptions to construct a deterministic pricing model, we demonstrate that the deterministic pricing test is not accurate enough for this contract.
 % Do not understand.
 This is because the uncertainty, or in other words risk, in the investment is not diversifiable.  
 
-To solve this problem, a stochastic pricing test will be considered, with the future return on the investment modelled as a random variable, then sensitivity test will be used again to find the best assumption for this contract and determine the reserve. 
+To solve this problem, a stochastic pricing test will be considered, with the future return on the investment modelled as a random variable, and then a sensitivity test will be used again to find the best assumption for this contract and determine the reserve. 
 
 
 \section{Background}
 
-In some countries unit-linked contract is also called equity-linked contract, it is because the single or regular premium paid by the policy holder will be invested on units of Equity or bonds on their own behalf. Once the insurer receives the premium, it will be payed into policy holder's fund after deduction of expenses and management costs in that year, and the deduction goes to insurer's account. In UK, there is an un-allocated percentage, which is another agreed regular deduction from policy holder's fund to insurer's account.
+In some countries the unit-linked contract is also called an equity-linked contract. This is because the single or regular premium paid by the policy holder will be invested on units of equity or bonds on their behalf. Once the insurer receives the premium, it will be paid into the policy holder's fund after deduction of expenses and management costs in that year, and the deduction goes to insurer's account. In UK, there is an un-allocated percentage, which is another agreed regular deduction from the policy holder's fund to insurer's account.
 
-If the policy holder survival to the maturity date, they will receive the greater value between accumulated premiums payed and the fund in policy holder's account. This is called guranteed minimum maturity benefit (GMMB) \cite{bib:GMMB}. But the if the death happens first, there is a guaranteed minimum death benefit, which allows policy holder's estate to receive the policy holder's fund with an extra amount, eg. 10\% extra of the policy holder's fund. 
+If the policy holder survives to the maturity date, they will receive the greater value between accumulated premiums paid and the fund in policy holder's account. This is called guaranteed minimum maturity benefit (GMMB) \cite{bib:GMMB}. But the if the death happens first, there is a guaranteed minimum death benefit, which allows policy holder's estate to receive the policy holder's fund with an extra amount, e.g. 10\% extra of the policy holder's fund. 
 
 
 \subsection{Some assumptions}  \label{unit-link-basic-assumptions}
@@ -332,13 +541,13 @@ If the policy holder survival to the maturity date, they will receive the greate
 Before we establish the model, we need some assumptions, the following are some ideas from  \cite{bib:unitlinkeg} book {\em Actuarial Mathematics for Life Contingent Risks,} and some online sources \cite{bib:unitlinkedonline}. 
 
 
-A company is going to issue a new 10 year unit-linked contract to people aged 55 to 60. In the contract, it stated that the annual premium is \textsterling 5200, with an un-allocated rate of 5\% in the first year and 1\% in the subsequent years, this will be deducted immediately after receive the premium. Expenses occurs the same time as the premium payed in, which is 13\% (including commision) and 0.7\% repectively. At the end of each year, there is a further management charge of 0.8\%  discounted from policy holder's fund. The deductions from policy holder's account will be transferred to insurer's account.
+A company is going to issue a new 10 year unit-linked contract to people aged 55 to 60. In the contract, it stated that the annual premium is \textsterling 5200, with an un-allocated rate of 5\% in the first year and 1\% in the subsequent years. This will be deducted immediately after the insurer receives the premium. Expenses occurs the same time as the premium is paid in, which is 13\% (including commission) and 0.7\% respectively. At the end of each year, there is a further management charge of 0.8\%  discounted from the policy holder's fund. The deductions from the policy holder's account will be transferred to the insurer's account.
 
-When the contract matures, the policy holder can received the greater value between policy holder's fund and accumulation of premiums payed. But if the death happens before the mature date, policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer's account.
+When the contract matures, the policy holder can receive the greater value between policy holder's fund and accumulation of premiums paid. But if the death happens before the maturity date, the policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from the insurer's account.
 
-The insurance company is also prepared to have 10\% of policy holders surrender the contract in the first year and 5\% in the second year, but no more in the subsequent years. The policy holders who surrender the contract will received their premium(s) after deducted management cost at the end of the year.
+The insurance company is also prepared to have 10\% of policy holders surrender the contract in the first year and 5\% in the second year, but no more in the subsequent years. The policy holders who surrender the contract will receive their premium(s) after the deducted management cost at the end of the year.
 
-In the Chapter \ref{annuity}, we had introduce different methods to calculate the mortality rate, but here we are going to use a constant force of mortality, $\mu_x=2.2218$, for people aged 55 to 60, which means the mortality rate of policy holders is $q_x=0.006$ \footnote{$q_x$= exp $\left\{-\int_0^1 \mu_{x+s}ds\right\}$} in each year. The reason we set the mortality rate to a constant will be explained later in this chapter.  
+In the Chapter \ref{annuity}, we introduced different methods to calculate the mortality rate, but here we are going to use a constant force of mortality, $\mu_x=2.2218$, for people aged 55 to 60, which means the mortality rate of policy holders is $q_x=0.006$ in each year\footnote{$q_x$= exp $\left\{-\int_0^1 \mu_{x+s}ds\right\}$}. The reason we set the mortality rate to a constant will be explained later in this chapter.  
 
 
 
@@ -347,13 +556,13 @@ In the Chapter \ref{annuity}, we had introduce different methods to calculate th
 \section{Deterministic pricing and reserving}
 
 % Needs rephrasing
-Last section we introduce the unit-linked contract, and have some assumptions to construct the model. But here is something has not been counted in, the uncertainty in the investment return in policy holder's account and insurer's account. 
+In the previous section we introduced the unit-linked contract, and gave some assumptions to construct the model. But there is something has not been counted in: the uncertainty in the investment return in policy holder's account and insurer's account. 
 
-For deterministic pricing, we used conservative interest rates for both accounts, 8\% for policy holder's account and 5\% for insurer's account, and assume no reserve holds in this case. Since the mortality rate is a constant, as well as the conservative interest rates, the cash flow for different policy holders will be exactly the same. Here is one example.
+For deterministic pricing, we used conservative interest rates for both accounts, 8\% for the policy holder's account and 5\% for the insurer's account, and assume no reserve holds in this case. Since the mortality rate is a constant, as well as the conservative interest rates, the cash flow for different policy holders will be exactly the same. Here is one example.
 
 \subsection{Cash flow}
 
-From all the assumptions, cash flow tables for both policy holder and insurer's account for the  10 years term can be easily construct. Let us explore the policy holder's account first. 
+From all the assumptions, cash flow tables for both the policy holder and insurer's account for the  10 year term can be easily constructed. Let us explore the policy holder's account first. 
 
 
 
@@ -384,11 +593,9 @@ Year t & Annual premium & Allocated premium & Fund brought forward & Interest & 
 
 
 
-\textbf{Notes:} Here is how the cash flow table been calculated
+\textbf{Notes:} Here is how the cash flow table been calculated.
 
-\textbf{Allocated premium:} For the first year, the allocated premium in the policy holder's fund will be (1-5\%) of the total premium payed, and the other 5\% is the agreed un-allocated premium which will be payed into insurer's account. For the subsequent years, the un-allocated rate decrease to 1\%, hence there will be 99\% premium payed into policy holder's fund.
-
-Simon!! CAN YOU PLEASE LINE UP THE TWO EQUATIONS BELOW? THX!!
+\textbf{Allocated premium:} For the first year, the allocated premium in the policy holder's fund will be (1-5\%) of the total premium paid, and the other 5\% is the agreed un-allocated premium which will be paid into insurer's account. For the subsequent years, the un-allocated rate decrease to 1\%, hence there will be 99\% premium paid into policy holder's fund.
 
 
 First year allocated premium:                5,200 $\times$ 0.95 = 4,940
@@ -396,18 +603,18 @@ First year allocated premium:                5,200 $\times$ 0.95 = 4,940
 Subsequent years allocated premium:   5,200 $\times$ 0.99 = 5,148
 
 
-\textbf{Interest:} It is the 8\% interest policy holder obtain from the the accumulation of premium payed in at the beginning of the year and fund brought forward from last year.
+\textbf{Interest:} This is the 8\% interest that the policy holder obtains from the accumulation of the premium paid in at the beginning of the year and fund brought forward from last year.
 
-eg.  year t=5, interest = (5,148 + 24263.21) $\times$ 0.08 = 2,352.89
+e.g.  year t=5, interest = (5,148 + 24263.21) $\times$ 0.08 = 2,352.89
 
-\textbf{Fund at time $t^-$:} It is the fund in policy holder's account after interest payed in.
+\textbf{Fund at time $t^-$:} This is the fund in policy holder's account after interest paid in.
 
 \textbf{Management cost:} In our assumption, the management cost is 0.08\% of the policy holder's fund, which is the fund at time $t^-$ in our case. 
 
-\textbf{Fund bring forward:} It is the fund left in policy holder's account after deduction of management cost. 
+\textbf{Fund bring forward:} This is the fund left in policy holder's account after deduction of management cost. 
 
 
-Table \ref{determ-insurer} is showing the insurer's account cash flow for \textbf{one} policy holder\footnote{If there are $N$ numbers of policy holders exist, then the numbers in the table times $N$ will be the cash flow for insurer in 10 years}. 
+Table \ref{determ-insurer} is showing the insurer's account cash flow for \textbf{one} policy holder\footnote{If there are $N$ policy holders, then the numbers in the table times $N$ will be the cash flow for the insurer in 10 years}. 
 
 
 \begin{figure}[H]
@@ -440,21 +647,21 @@ Year t & Annual premium & Un-allocated premium & Expenses & Interest &Management
 
 \textbf{Notes:}
 
-In insurer's account, un-allocated premium, expense, interest and management cost are calculated in the same way as in policy holder's account. You may notice there is an extra row in the table, year 0 in insurer's cash flow, it is the acquisition expense which will always occur before insurer receive premium, eg. commision, renting, employees' salary etc..
+In insurer's account, un-allocated premium, expense, interest and management cost are calculated in the same way as in policy holder's account. You may notice there is an extra row in the table, year 0 in insurer's cash flow, this is the acquisition expense which will always occur before the insurer receives the premium, e.g. commission, renting, employees.
 
 For expected death benefit, profit and profit signature are calculated as below:
 
-\textbf{Expected death benefit:} If the death occurs before the contract mature, the policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer account. The death benefit we calculate here is the 10\% from insurer's account. 
+\textbf{Expected death benefit:} If the death occurs before the contract matures, the policy holder's estate will receive 110\% of the policy holder's fund where the extra 10\% is from insurer account. The death benefit we calculate here is the 10\% from the insurer's account. 
 
-\textbf{At time 0}, there policy holder just enter the contract, so the probability for the contract in force is 1.
+\textbf{At time 0}, the policy holder has just entered the contract and so the probability for the contract to be in force is 1.
 
-\textbf{In year 1}, policy holders pay the first premium right after sign the contract, so the probability for the contract in force is still 1. 
+\textbf{In year 1}, policy holders pay the first premium right after they sign the contract, so the probability for the contract to be in force is still 1. 
 
-\textbf{During the first year}, by our assumption, there will be 10\% policy holders surender the contract, and the mortality rate for the other 90\% is 0.006. Therefore, at the beginning of the second calandar year, insurer will be expecting $p_2=$ (1-0.006) $\times$(1-0.1) =0.8946 of policy holders to renew their contracts. 
+\textbf{During the first year}, by our assumption, 10\% policy holders surrender the contract, and the mortality rate for the other 90\% is 0.006. Therefore, at the beginning of the second calendar year, insurer will be expecting $p_2= (1-0.006) \times(1-0.1)$ =0.8946 of policy holders to renew their contracts. 
 
-\textbf{Beginning of third year}, the insurer will be expecting $p_3$= (1-0.006-0.5) $\times$$p_2$= 0.8445024 of policy holders come to renew the contract, since by assumption there are 5\% policy holder will surender during the second year.
+\textbf{At the beginning of third year}, the insurer will be expecting $p_3= (1-0.006-0.5) \times p_2$= 0.8445024 of policy holders renew the contract, since by assumption 5\% of policy holder will surrender during the second year.
 
-From the third year, the probability for the contract in force will be $p_t$ = (1-0.006) $\times$ $p_{t-1}$. (Showing in table \ref{determ-prob-in-force}.)
+From the third year, the probability for the contract to be in force will be $p_t = (1-0.006) \times p_{t-1}$. (Showing in table \ref{determ-prob-in-force}.)
 
 
 \begin{figure}[H]
@@ -482,29 +689,31 @@ t=	& $_t p_x$\\
 \end{figure}
 
 
-\textbf{Profit:} For each year, profit is calculated by the fomula
+\textbf{Profit:} For each year, profit is calculated by the formula
 
 Profit = Un-allocated premium - Expenses + Interest + Management cost - Death benefit
 
-\textbf{Profit signature:} This is profit the insurer can make with probality that the contracts are still in force, which is defined as $\Pi_t = p_x \times$ Profit$_t$
+\textbf{Profit signature:} This is profit the insurer can make with probability that the contracts are still in force, which is defined as $\Pi_t = p_x \times Profit_t$
 
 
 \subsection{Profitability}
 
 
-From the table \ref{determ-PHcashflow}, it is obviously a ascending trend on policy holder's fund, and on the contract mature date, it reaches \pounds 76,279, which is approximately 1.47 times of the accumulation of all premiums. This means, if the policy holder survive to the mature date, he/she will withdraw the policy holder's fund since it will always be the greater one compares to the accumulation of all the premiums. \footnote{GMMB policy: on the mature date policy holders can withdraw the greater value between policy holder's fund and the accumulation of all the premiums payed.} This means the insurer will have the probability of 0.81 \footnote{the probability of this contract in force till the mature date, table \ref{determ-prob-in-force}} to make profit of \pounds 585.77 on each policy holder. And if we discount the profit signature with the risk discount rate of interest, 15\%, the net present value of the profit will be 
+From the figure \ref{determ-PHcashflow}, there is obviously an ascending trend on the policy holder's fund, and on the contract maturity date, it reaches \pounds 76,279, which is approximately 1.47 times of the accumulation of all premiums. This means, if the policy holder survives to the maturity date, he/she will withdraw the policy holder's fund since it will always be the greater one compared to the accumulation of all the premiums. \footnote{GMMB policy: on the maturity date policy holders can withdraw the greater value between policy holder's fund and the accumulation of all the premiums paid.} This means the insurer will have a probability of 0.81 \footnote{The probability that this contract is in force until the maturity date is showing in figure\ref{determ-prob-in-force}.} to make profit of \pounds 585.77 on each policy holder. And if we discount the profit signature with the risk discount rate of interest of 15\%, the net present value of the profit will be 
 \[
  NPV=\sum_{i=1}^{10} \Pi_t \times (1+0.15)^{-t} = \pounds 489.59
 \]
  
-And the profit margin will be
+and the profit margin will be
 
 
 \[
-Profit\ Margin =  \frac{NPV}{P \ddot{a}_x}\footnote{$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$}  = \frac{489.59}{5200 \times 7.619285226} = 1.24\%
+\text{Profit\ Margin} =  \frac{NPV}{P \ddot{a}_x} = 1.24\%
 \]
 
-Since in the very beginning, we used conservative assumption, eg. expenses, mortality rate, interest rate for insurer's fund, so if in reality the expense and mortality rate are lower than modelled and interest rate is higher, then more profit that the insurer will obtain. Sensitivity test can be used to here to how will the profit change with changing in different factors. 
+where $\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$}  = \frac{489.59}{5200 \times 7.619285226
+
+Since in the very beginning, we used conservative assumptions, e.g. expenses, mortality rate, interest rate for the insurer's fund. So if in reality the expense and mortality rate are lower than modelled and the interest rate is higher, then the insurer will obtain more profit. A sensitivity test can be used here to show how the profit changes with according to different factors. 
 
 \subsection{Sensitivity test}
 
@@ -541,11 +750,11 @@ Year t & Annual premium & Un-allocated premium & Expenses & Interest &Management
 
 \bottomrule
 \end{tabular}
-\caption{Sensitivity test for lower expense rate}
+\caption{Sensitivity test for a lower expense rate}
 \label{determ-sensi-expense}
 \end{figure}
 
-The table shows the profit increased about \pounds 10 the mature date, and the new NPV of profit becomes 
+The table shows the profit increased about \pounds 10 on the maturity date, and the new NPV of profit becomes 
 
 \[
  NPV=\sum_{i=1}^{10} \Pi_t \times (1+0.15)^{-t} = \pounds693.24 
@@ -554,11 +763,12 @@ The table shows the profit increased about \pounds 10 the mature date, and the n
 and the profit margin is:
 
 \[
-Profit\ Margin =  \frac{NPV}{P \ddot{a}_x}\footnote{$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$}  = \frac{693.24 }{5200 \times 7.619285226} = 1.7\%
+\text{Profit Margin} =  \frac{NPV}{P \ddot{a}_x}= \frac{693.24 }{5200 \times 7.619285226} = 1.7\%
 \]
 
+$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$ 
 
-This shows if we can lower the cost in the company, the more profit we can make, but in reality, this is really hard to achieve, since some certain cost is unavoidable, eg. renting, salary etc..
+This shows if we can lower the cost in the company, then more profit can be made, However, in reality, this is really hard to achieve, since some certain costs are unavoidable, e.g. renting, salary.
 
 
 
@@ -596,7 +806,7 @@ Year t & Annual premium & Un-allocated premium & Expenses & Interest &Management
 \label{determ-sensi-morta}
 \end{figure}
 
-Here are the new net present value of profit and profit margin obtianed from the new cash flow:
+Here are the new net present values of profit and profit margin obtained from the new cash flow:
 \[
  NPV=\sum_{i=1}^{10} \Pi_t \times (1+0.15)^{-t} = \pounds 491.43
 \]
@@ -604,10 +814,13 @@ Here are the new net present value of profit and profit margin obtianed from the
 
 
 \[
-Profit\ Margin =  \frac{NPV}{P \ddot{a}_x}\footnote{$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$}  = \frac{491.43}{5200 \times 7.619285226} = 1.24\%
+\text{Profit Margin} =  \frac{NPV}{P \ddot{a}_x}= \frac{491.43}{5200 \times 7.619285226} = 1.24\%
 \]
 
-The lower mortality rate will only affect the insurer's account. The table shows that the profit will increase from \pounds585.77 to \pounds 593.40, the raise in net present value of the profit is less than \pounds2, and the profit margin will not change. This means the change in mortality rate is not sensitive, and should not be count as a important factor in our model, so a constant assumption for the mortality rate is acceptable.
+$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$
+
+
+The lower mortality rate will only affect the insurer's account. The table shows that the profit will increase from \pounds585.77 to \pounds 593.40, the raise in net present value of the profit is less than \pounds2, and the profit margin will not change. This means the change in mortality rate is not sensitive, and should not be counted as an important factor in our model, so a constant assumption for the mortality rate is acceptable.
 
 
 
@@ -642,7 +855,7 @@ Year t & Interest &Fund at time $t^-$ & Management cost  & Fund bring forward & 
 \end{figure}
 
 
-In the table, it shows that once interest change 1\%, the fund in the policy holder's account will increase about 4.6\% every year, the profit for insurer will increase 5.3\% on the date of mature. And the new net present value of profit and will be:
+In the table, it shows that once the interest increases by 1\%, the fund in the policy holder's account will increase by about 4.6\% every year, the profit for insurer will increase 5.3\% on the date of maturity. In addition, the new net present value of profit and will be:
 
 \[
  NPV=\sum_{i=1}^{10} \Pi_t \times (1+0.15)^{-t} = \pounds522.72
@@ -663,7 +876,7 @@ There is a big raise in both NPV of profit and profit margin. NPV of profit incr
 
 
 \subsection{Little summary for deterministic test}
-So far everything looks fine, but is this a good model for unit-linked contract? The answer will be no, from our sensitivity test, we can see that the interest rate change will lead to a huge fluctuate in profit, so the asssumption of constant interest rate is not good enough in this case. This is because the constant interest rate does not contain  enough information when modelling, since the uncertainty of investment on equity and bond is not diversifiable. By law, we do not have an arbitrage market, no one can make profit without risk, and the interest on return will be affected by a few different factors, \cite{bib:riskfactor} eg. inflation, quality of information, governmental policy, change in bond market or equity market etc.. And once the factors affecting the market at the same time, the risk will be non-diversifiable. So now we should consider to model the interest rate non-linearly, eg. as a random variable. 
+So far everything looks fine, but is this a good model for unit-linked contract? The answer will be no, from our sensitivity test, we can see that the interest rate change will lead to a huge fluctuate in profit, so the asssumption of constant interest rate is not good enough in this case. This is because the constant interest rate does not contain  enough information when modelling, since the uncertainty of investment on equity and bond is not diversifiable. By law, we do not have an arbitrage market, no one can make profit without risk, and the interest on return will be affected by a few different factors, \cite{bib:riskfactor} e.g. inflation, quality of information, governmental policy, change in bond market or equity market etc.. And once the factors affecting the market at the same time, the risk will be non-diversifiable. So now we should consider to model the interest rate non-linearly, e.g. as a random variable. 
 
 
 
@@ -787,7 +1000,7 @@ The profit showing in row $10^*$ is the profit in year 10 before the deduction, 
 
 
 
-Now there are two examples for both situation, making profit and lossing, it will be really important for the company to know the statistic numbers, eg. how many contracts have negative NPV of profit, how much profit can the company make, what is the probability for the company to lose etc..
+Now there are two examples for both situation, making profit and lossing, it will be really important for the company to know the statistic numbers, e.g. how many contracts have negative NPV of profit, how much profit can the company make, what is the probability for the company to lose etc..
 
 \subsection{Statistic analysis}
 
@@ -985,8 +1198,29 @@ Once the stochastic model has been found, the insurer will be interested to know
 \begin{thebibliography}{99}             %Any other two digit number will do
 \addcontentsline{toc}{chapter}{\hspace{0.2in}Bibliography}
 
-\bibitem{bib:Gauss} Gauss, C.F.,
-    ``Disquisitiones Arithmeticae'', Leipzig, 1801.
+\bibitem{bib:annuity-def}  David C. M. Dickson, Mary R. Hardy and Howard R. Waters,
+    3rd edition, 2011, 
+    {\em Actuarial Mathematics for Life Contingent Risks,}
+    page 11.
+
+
+\bibitem{bib:mortality-report} Institute of Actuaries and the Faculty of Actuaries,
+2009,
+{\em Continuous Mortality Investigation Reports Number 23}
+
+
+\bibitem{bib:def-for-annuity-assurance}  David C. M. Dickson, Mary R. Hardy and Howard R. Waters,
+    3rd edition, 2011, 
+    {\em Actuarial Mathematics for Life Contingent Risks,}
+    page 77,109.
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%
+
 
 \bibitem{bib:GMMB}  David C. M. Dickson, Mary R. Hardy and Howard R. Waters,
     3rd edition, 2011, 
