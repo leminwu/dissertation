@@ -135,8 +135,9 @@ Date:
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{\hspace{0.2in}Abstract}
 
-A summary of the thesis in about 200 words.
+Before issuing a new contract, the insurance company will model the future liability and expenses in order to find a precise and competitive premium for the protential policy holders or annuitants. At the same time, they will want to know about the future risk in order to get prepared. There are many factors that affect the pricing model in various ways. For different contracts, the insurer will need to find the most sensitive factors and take them into serious account. 
 
+In this dissertation, the two of the most popular contracts will be introduced: Annuity and Unit-linked. And we are going to explore how will an insurance company price the contracts realistically using different approaches.  In addition, some sensitive test will be taken to develop the model and help the insure to make any decisions.
 
 
 
@@ -149,9 +150,6 @@ A summary of the thesis in about 200 words.
 
 \pagenumbering{arabic}
 \addcontentsline{toc}{chapter}{\hspace{0.2in}Background}
-
-In this thesis we consider the work of Gauss \cite[ch 2]{bib:Gauss}
-and Hilbert \cite{bib:Hilbert1} on the subject of the title.
 
 
 
@@ -235,7 +233,7 @@ $d$
 
 
 
-\chapter{Annuity and Assurance}    \label{annuity}
+\chapter{Annuity}    \label{annuity}
 
 An annuity offers a series of payments to the annuitant\footnote{The person who 
 bought the annuity}; if it is conditioned on the survival of the annuitant, 
@@ -407,6 +405,7 @@ and calculate the single premium.
 \subsection{Mortality rate and select life table}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 The target annuitants are aged from 55 to 60 across genders with different 
 smoking habit. Each factor has a small effection on the mortality rate each 
 year. But in long term, the difference will be considerable. In this case, 4 
@@ -418,11 +417,15 @@ lower \footnote{The reason is because people who intend to buy insurance or
 annuity are likely to be weathier, then the lower mortalty rate they will 
 have.} than the national rates.
 =======
+=======
+The target annuitants are aged from 55 to 60 across genders with different smoking habit. Each factor has a small effection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be weathier, then the lower mortalty rate they will have.} than the national rates.
+
+
+>>>>>>> tired
 From the previous section, we had equations (1.1), (1.2) and (1.3) been obtained to calculate the single premium, and now the only unknown parameter is the survival rate $_tp_{[x]}$. In this section, the select life table will be used to obtain the values for $_tp_{[x]}$ and then introduce some actuarial notations. 
 
 
 The target annuitants are aged from 55 to 60 accross genders with different smoking habit. Each factor has a small effection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be weathier, then the lower mortalty rate they will have.} than the national rates.
->>>>>>> thx Antony!
 
 
 
@@ -463,7 +466,11 @@ Now the unknown parameter has obtained, but before we proceed to the next stage,
 
 \textbf{Whole life assurance:} Denoted $A_x$. For discrete whole life insurance with \pounds1 benefit payable annually, the time line graph is showing as below, assume the policy holder will die between year $K_x$ and $K_x+1$:
 
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{fig1.png}
+    \caption{Discrete whole life insurance}
+\end{figure}
 
 
 
@@ -481,9 +488,14 @@ $_{k\mid} q_x$ stands for the probability that a life aged $x$ survived $k$ year
 
 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{fig2.png}
+    \caption{Whole life annuity-due}
+\end{figure}
 
 
-
+\section{Pricing}
 
 
 Then the expected present value of the payments is :
@@ -496,20 +508,7 @@ Then the expected present value of the payments is :
 \end{align}
 where $d=\frac{i}{(1+i)}$
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.9\linewidth]{fig1.png}
-    \caption{Caption}
-\end{figure}
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.9\linewidth]{fig2.png}
-    \caption{Caption}
-\end{figure}
-
-
-\section{Pricing}
 
 
 
@@ -556,20 +555,72 @@ Recall equation (1.2)
 
 
 
-To calculate both equation (1.4) and (1.6), the easiest way is to use a program. Here I use C++ \footnote{Codes will be included in appendix}.  
+To calculate both equation (1.4) and (1.6), the easiest way is programming. Here I use C++ \footnote{Codes will be included in appendix} generated 1,000 pseudo random numbers between 55 and 60 reprensent the age of the anntuitant, F or M represent the gender and Y or N represent smoking habit. For each of them in the group the single premium will be calculated using different mortality rate tables depend on the three factors. We set a non-smoking female annuitant age 55 as a example.
+\begin{align}
+        \text{EPV of renewal expense}&= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} v_j^t * _tp_{[x]} \nonumber \\
+         &= \frac{30}{(1+0.028)} * \sum_{t=1}^{\infty} 0.98^t * _tp_{[55]} \nonumber\\
+         &= 539.88\nonumber\\
+        \text{EPV of future payments} &= \frac{50,000}{(1+0.028)^{10}} * \sum_{t=10}^{\infty} 0.98^t * _tp_{[55]} \nonumber\\ 
+         &=549,941.32 \nonumber
+\end{align}
 
+Therefore, the single premium for a $55$ non-smoking female annuitant will be 
+\begin{align}
+500 + 539.88 +549,491.32= \pounds550,981.2 \nonumber
+\end{align}
 
+For the 1,000 annuitant, the accumulated single premiums insurer can obtain is 606,029,320.
 
+\subsection{Profitablity}
 
+In the last section, we had obtained the premium for the target annuitants, now the insurer would want to know the probability that the company can make profit on the contract and the probability the loss will exceed a certain amount.
 
+Continue on the previous example, we use the loss random variable again to denote the loss at year t:
+
+\[
+ L_0(t) =
+  \begin{cases}
+   -P + 500 + \frac{30}{(1+0.028)} * \sum_{t=1}^{\infty} 0.98^t * _tp_{[55]} & \text{for } t= 0,1, \dots, 9 \\
+   -P +500 +539.88 +  50,000*v^{10}*\ddot{a}_{x-9,j}  & \text{for }  t = 10, 11\dots
+  \end{cases}
+\]
+
+where $j= \frac{1+0.05}{(1+0.028)}-1=0.0214$
+
+The expected present value of the profit will be positive if $L_0(t) < 0$, therefore
+ \begin{align*}
+   -550,981.2 +500+ 539.88 + 50,000*v^{10}*\ddot{a}_{x-9,j}  &< 0 \\
+   50,000*v^{10}*\ddot{a}_{x-9,j} &< 549,941.32 \\
+   \ddot{a}_{x-9,j} &< 17.92 \\
+\text{Rewrite } \ddot{a}_{x-9,j} = \frac{1-v^{t-9}_j}{d_j} \text{ where } d_j =\frac{j}{1+j}\\
+\text{rearrange we will obtain}\\
+v^{t-9}_j &> 1-d_j\times 17.92\\
+v^{t-9}_j &> 0.625\\
+\text{we have } v_j = exp\{-\delta_j\} \text{and } \delta_j =log(1+j),\text{therefore}\\
+t-9&< \frac{-log(0.625)}{\delta_j}\\
+\text{and } t &< 31.2
+\end{align*}
+
+In another words, if the select 55-year-old female non-smoking annuitant survive no more than 31 years, this company will make profit. 
+
+For risk management, the company would like to know the probability that the loss exceed \pounds50,000 and \pounds100,000. We can use the same loss random variable to achieve this:
+
+ \begin{align*}
+   -550,981.2 +500+ 539.88 + 50,000*v^{10}*\ddot{a}_{x-9,j}  &< 50,000 \\
+\text{and}\\
+-550,981.2 +500+ 539.88 + 50,000*v^{10}*\ddot{a}_{x-9,j}  &< 100,000 
+\end{align*}
+
+Following the same steps, we can obtain that for loss exceed \pounds50,000, the annuitant will have to survive to age 88 years old with probability $_{33}p_{[55]} = 0.42$, and for loss exceed \pounds100,000 the annuitant will have to survive at least 36 years to 91 with probability $_{36}p_{[55]} = 0.37$. 
 
 
 \section{Sensitivity test}
- 
+
+\subsection{Change in mortality rate}
 
 
 
-
+\subsection{Change in inflation rate}
 
 
 
@@ -1417,11 +1468,92 @@ money they are going to make.
 \end{thebibliography}
 
 
+<<<<<<< HEAD
 \appendix
 \chapter{Annuity pricing program}
 
 \lstset{breaklines=true}
 \lstinputlisting{programs/annuity_price.cc}
+=======
+\chapter*{Appendix 1: Codes for unit-linked contract}
+\addcontentsline{toc}{chapter}{\hspace{0.2in}Appendix 1: Optional Extra}
+
+\begin{center}
+   {\Large A PROGRAM TO COMPUTE EIGENVALUES}
+\end{center}
+
+\begin{verbatim}    
+100 GOTO 200
+200 END
+\end{verbatim}    
+
+\chapter*{Appendix 2: Codes for annuity}
+\addcontentsline{toc}{chapter}{\hspace{0.2in}Appendix 2: More Extra}
+
+
+%
+% Symbol Entry for Math Symbol Tables
+%
+\newcommand{\X}[1]{$#1$&\texttt{\string#1}\hspace*{1ex}}
+\newsavebox{\symbbox}
+\newenvironment{symbols}[1]%
+{\par\vspace*{2ex}
+\begin{lrbox}{\symbbox}
+\hspace*{4ex}\begin{tabular}{@{}#1@{}}}%
+{\end{tabular}\end{lrbox}\makebox[\textwidth]{\usebox{\symbbox}}\par\medskip}
+
+
+
+\begin{table}[!h]
+\caption{Lowercase Greek Letters.}
+\begin{symbols}{*4{cl}}
+ \X{\alpha}     & \X{\theta}     & \X{o}          & \X{\upsilon}  \\
+ \X{\beta}      & \X{\vartheta}  & \X{\pi}        & \X{\phi}      \\
+ \X{\gamma}     & \X{\iota}      & \X{\varpi}     & \X{\varphi}   \\
+ \X{\delta}     & \X{\kappa}     & \X{\rho}       & \X{\chi}      \\
+ \X{\epsilon}   & \X{\lambda}    & \X{\varrho}    & \X{\psi}      \\
+ \X{\varepsilon}& \X{\mu}        & \X{\sigma}     & \X{\omega}    \\
+ \X{\zeta}      & \X{\nu}        & \X{\varsigma}  & &             \\
+ \X{\eta}       & \X{\xi}        & \X{\tau} 
+\end{symbols}
+\end{table}
+
+\begin{table}[!h]
+\caption{Uppercase Greek Letters.}
+\begin{symbols}{*4{cl}}
+ \X{\Gamma}     & \X{\Lambda}    & \X{\Sigma}     & \X{\Psi}      \\
+ \X{\Delta}     & \X{\Xi}        & \X{\Upsilon}   & \X{\Omega}    \\
+ \X{\Theta}     & \X{\Pi}        & \X{\Phi} 
+\end{symbols}
+\end{table}
+
+
+\begin{table}[!tbp]
+\caption{Math Alphabets.}
+\begin{symbols}{@{}*3l@{}}
+Example& Command &Required package\\
+\hline
+\rule{0pt}{1.05em}$\mathrm{ABCDE abcde 1234}$
+        & \verb|\mathrm{ABCDE abcde 1234}|
+        &       \\
+$\mathit{ABCDE abcde 1234}$
+        & \verb|\mathit{ABCDE abcde 1234}|
+        &       \\
+$\mathnormal{ABCDE abcde 1234}$
+        & \verb|\mathnormal{ABCDE abcde 1234}|
+        &  \\
+$\mathcal{ABCDE abcde 1234}$
+        & \verb|\mathcal{ABCDE abcde 1234}|
+        &  \\
+$\mathfrak{ABCDE abcde 1234}$
+        & \verb|\mathfrak{ABCDE abcde 1234}|
+        &\textsf{amsfonts}  or \textsf{amssymb}  \\
+$\mathbb{ABCDE abcde 1234}$
+        & \verb|\mathbb{ABCDE abcde 1234}|
+        &\textsf{amsfonts}  or \textsf{amssymb} \\
+\end{symbols}
+\end{table}
+>>>>>>> tired
 
 \chapter{Stochastic pricing program}
 
