@@ -15,6 +15,7 @@
 \usepackage{courier}
 \usepackage{setspace} 
 \usepackage{graphicx}
+\usepackage{listings}
 
 %\usepackage[notcite,notref]{showkeys} 
 %Use the showkeys package to view labels. For draft version only!
@@ -1416,86 +1417,16 @@ money they are going to make.
 \end{thebibliography}
 
 
-\chapter*{Appendix 1: Optional Extra}
-\addcontentsline{toc}{chapter}{\hspace{0.2in}Appendix 1: Optional Extra}
+\appendix
+\chapter{Annuity pricing program}
 
-\begin{center}
-   {\Large A PROGRAM TO COMPUTE EIGENVALUES}
-\end{center}
+\lstset{breaklines=true}
+\lstinputlisting{programs/annuity_price.cc}
 
-\begin{verbatim}    
-100 GOTO 200
-200 END
-\end{verbatim}    
+\chapter{Stochastic pricing program}
 
-\chapter*{Appendix 2: More Extra}
-\addcontentsline{toc}{chapter}{\hspace{0.2in}Appendix 2: More Extra}
-
-
-%
-% Symbol Entry for Math Symbol Tables
-%
-\newcommand{\X}[1]{$#1$&\texttt{\string#1}\hspace*{1ex}}
-\newsavebox{\symbbox}
-\newenvironment{symbols}[1]%
-{\par\vspace*{2ex}
-\begin{lrbox}{\symbbox}
-\hspace*{4ex}\begin{tabular}{@{}#1@{}}}%
-{\end{tabular}\end{lrbox}\makebox[\textwidth]{\usebox{\symbbox}}\par\medskip}
-
-
-
-\begin{table}[!h]
-\caption{Lowercase Greek Letters.}
-\begin{symbols}{*4{cl}}
- \X{\alpha}     & \X{\theta}     & \X{o}          & \X{\upsilon}  \\
- \X{\beta}      & \X{\vartheta}  & \X{\pi}        & \X{\phi}      \\
- \X{\gamma}     & \X{\iota}      & \X{\varpi}     & \X{\varphi}   \\
- \X{\delta}     & \X{\kappa}     & \X{\rho}       & \X{\chi}      \\
- \X{\epsilon}   & \X{\lambda}    & \X{\varrho}    & \X{\psi}      \\
- \X{\varepsilon}& \X{\mu}        & \X{\sigma}     & \X{\omega}    \\
- \X{\zeta}      & \X{\nu}        & \X{\varsigma}  & &             \\
- \X{\eta}       & \X{\xi}        & \X{\tau} 
-\end{symbols}
-\end{table}
-
-\begin{table}[!h]
-\caption{Uppercase Greek Letters.}
-\begin{symbols}{*4{cl}}
- \X{\Gamma}     & \X{\Lambda}    & \X{\Sigma}     & \X{\Psi}      \\
- \X{\Delta}     & \X{\Xi}        & \X{\Upsilon}   & \X{\Omega}    \\
- \X{\Theta}     & \X{\Pi}        & \X{\Phi} 
-\end{symbols}
-\end{table}
-
-
-\begin{table}[!tbp]
-\caption{Math Alphabets.}
-\begin{symbols}{@{}*3l@{}}
-Example& Command &Required package\\
-\hline
-\rule{0pt}{1.05em}$\mathrm{ABCDE abcde 1234}$
-        & \verb|\mathrm{ABCDE abcde 1234}|
-        &       \\
-$\mathit{ABCDE abcde 1234}$
-        & \verb|\mathit{ABCDE abcde 1234}|
-        &       \\
-$\mathnormal{ABCDE abcde 1234}$
-        & \verb|\mathnormal{ABCDE abcde 1234}|
-        &  \\
-$\mathcal{ABCDE abcde 1234}$
-        & \verb|\mathcal{ABCDE abcde 1234}|
-        &  \\
-$\mathfrak{ABCDE abcde 1234}$
-        & \verb|\mathfrak{ABCDE abcde 1234}|
-        &\textsf{amsfonts}  or \textsf{amssymb}  \\
-$\mathbb{ABCDE abcde 1234}$
-        & \verb|\mathbb{ABCDE abcde 1234}|
-        &\textsf{amsfonts}  or \textsf{amssymb} \\
-\end{symbols}
-\end{table}
-
-
+\lstset{breaklines=true}
+\lstinputlisting{programs/stochastic_pricing.cc}
 
 \end{document} 
  
