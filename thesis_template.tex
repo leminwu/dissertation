@@ -1098,7 +1098,11 @@ Increase the premium from \pounds5,200 to \pounds5,400
 \par}
 
 
-There is an increase on the NPV sample mean and median but the number of negative NPV of profit did not change, and there is a decrease on $5^{th}$ percentile. This is because when we increase the premium, we increase the guaranteed minimum maturity benefit (GMMB) as well, which means we increase the liability on the mature date of the contract.
+There is an increase on the NPV sample mean and median but the number of 
+negative NPV of profit did not change, and there is a decrease on $5^{th}$ 
+percentile. This is because when we increase the premium, we increase the 
+guaranteed minimum maturity benefit (GMMB) as well, which means we increase the 
+liability on the maturity date of the contract.
 
 
 \textbf{Scenario 2: Increase the expenses deduction}
@@ -1151,7 +1155,8 @@ In the above two sensitivity tests, we can see a growth in the sample mean and m
 
 \textbf{Scenario 4: Lower the GMMB}
 
-The guaranteed minimum maturity benefit decrease from 100\% to 91\% premiums paid.
+The guaranteed minimum maturity benefit decreases from 100\% to 91\% premiums 
+paid.
 
 \texttt{NPV median = 677.337}
 
@@ -1170,15 +1175,25 @@ The guaranteed minimum maturity benefit decrease from 100\% to 91\% premiums pai
 \texttt{95\% CI for NPV = (588.028,647.627)}
 \par}
 
-In this scenario, we lowered the guaranteed minimum maturity benefit in order to decrease the liability to meet on the date of mature. The new assumption will enable the insurer to have 5\% probability to lose, and the $5^{th}$ percentile becomes positive. 
+In this scenario, we lowered the guaranteed minimum maturity benefit in order 
+to decrease the liability to meet on the date of maturity. The new assumption 
+will enable the insurer to have 5\% probability to lose, and the $5^{th}$ 
+percentile becomes positive. 
 
-This is an ideal contract for the insuer, but may not be ideal for the policy holders because of the decrement on maturity benefit. In order to be more competitive, the insurer can hedge partial risk in the financial market at the same time lower the  GMMB.
+This is an ideal contract for the insurer, but may not be ideal for the policy 
+holders because of the decrement on maturity benefit. In order to be more 
+competitive, the insurer can hedge partial risk in the financial market at the 
+same time as lowering the  GMMB.
 
 
 \subsection{Reserving}
 
 
-From the scenario test 4 in last section, we have a model which enables the insurer to have less risk to make a profit on the contract. But even the risk is much lower, if the number of contracts issued is large, the insurer may still have a probability to lose. In this case, the insurer may have the following solutions\cite{bib:reserve}:
+From scenario test 4 in the previous section, we have a model which enables the 
+insurer to have less risk to make a profit on the contract. But even though the 
+risk is much lower, if the number of contracts issued is large, the insurer may 
+still have a probability to lose. In this case, the insurer may have the 
+following solutions~\cite{bib:reserve}:
 
 1. Hedge the risk in the financial market.
 
@@ -1186,34 +1201,56 @@ From the scenario test 4 in last section, we have a model which enables the insu
 
 3. Reserving.
 
-In this section, we are going to disscuss the third option, reserving. To calculate the reserve for the contract, the non-diversifiable risk should be taken into account, the methodology which enable us to do this is risk measure\cite{bib:VaR}, one popular type is called Value at Risk, it is defined in terms of a parameter $\alpha$ which is the probability that the loss $L$ will not exceed $\ell$. Therefore, we have
+In this section, we are going to discuss the third option, reserving. To 
+calculate the reserve for the contract, the non-diversifiable risk should be 
+taken into account. The methodology which enables us to do this is risk 
+measure~\cite{bib:VaR}; one popular type is called Value at Risk, which is 
+defined in terms of a parameter $\alpha$ which is the probability that the loss 
+$L$ will not exceed $\ell$. Therefore, we have
 
 \[
 P[L\leq \ell] = \alpha
 \]
 
-Continue on scenario 4, set $\alpha$ = 0.95, the reserve $_tV$ at time t = 0 will equal to the $95^{th}$ percentile\footnote{if the $95^{th}$ percentile is negative, the reserve will be set to zero.} of the distribution of $L_i$ where
+Continuing with scenario 4, set $\alpha$ = 0.95, the reserve $_tV$ at time t = 
+0 will be equal to the $95^{th}$ percentile\footnote{If the $95^{th}$ 
+percentile is negative, the reserve will be set to zero.} of the distribution 
+of $L_i$, where
 
 \[
 L_i = - \sum_{\textbf{t=1}}^{10}\frac{_{t-1}p_x Pr_{t,i}}{(1+j)^t}
 \]
 
-It is calculated similar to NPV of profit, but with different discount rate $j = 0.05$ and the first acquisition cost will not be included.
+It is calculated similarly to NPV of profit, but with the different discount 
+rate $j = 0.05$ and the first acquisition cost will not be included.
 
 \[
 _0V = \pounds 1,552.99
 \]
+%TODO: Explain what the above equation is!
 
-
-In practice, the insurer may review the reserve annually, and make adjustment based on changes in that year. 
+In practice, the insurer may review the reserve annually, and make adjustments 
+based on changes in that year. 
 
 
 
 \section{Deterministic VS Stochastic test}
 
-For unit-linked contract, the mortality rate is diversifiable and using simple assumption will save the insurer money in terms of time and cost\footnote{Of course you can use more accurate mortality rate, but it is not that important comparing with the investment risk factor.}. But there is an uncertainty factor on the investment performance, then risk on interest rate is non-diversifiable. In this case, the simple deterministic test will not be able to model the profit realistically. Therefore, the stochastic model should be used. 
+For the unit-linked contract, the mortality rate is diversifiable and using 
+simple assumptions will save the insurer money in terms of time and 
+cost\footnote{Of course you can use more accurate mortality rate, but it is not 
+that important comparing with the investment risk factor.}. But there is an 
+uncertainty factor on the investment performance, then risk on interest rate is 
+non-diversifiable.  In this case, the simple deterministic test will not be 
+able to model the profit realistically. Therefore, the stochastic model should 
+be used. 
 
-Once the stochastic model has been found, the insurer will be interested to know the statistical numbers which reflect the protential risk, and then try different test to reduce or even eliminate the risk. None of these can not be achieved by deterministic pricing, so in unit-linked contract, the stochastic test is very essential! The better model the insurer can find, the more money they are going to make.
+Once the stochastic model has been found, the insurer will be interested to 
+know the statistical numbers which reflect the potential risk, and then try 
+different tests to reduce or even eliminate the risk. None of these can be 
+achieved by deterministic pricing, so in the unit-linked contract, the 
+stochastic test is essential! The better model the insurer can find, the more 
+money they are going to make.
 
 
 
