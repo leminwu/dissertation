@@ -137,19 +137,15 @@ Date:
 \pagenumbering{arabic}
 \addcontentsline{toc}{chapter}{\hspace{0.2in}Copyright Statement}
 
-I would like to show my gratitude to Dr. Steve Hales for his guidance and support throughout my dissertation. Besides I would like to thank my old coursemates Simon Horlick and Antony Chui for their computational help and proofreading. I am sure it would have not been possible for me to finish this dissertation without their helps.
+I would like to show my gratitude to Dr. Steve Hales, Dominic Cortis and Junxi Li for their guidance and support throughout my dissertation. Besides I would like to thank my old course mates, Simon Horlick and Antony Chui, for their computational help and proofreading.  I am sure it would have not been possible for me to finish this dissertation without their helps. 
 
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{\hspace{0.2in}Abstract}
 
-Before issuing a new contract, the insurance company will model the future
-liability and expenses in order to find a precise and competitive premium for
-the potential policy holders or annuitants. At the same time, they will want to
-know about the future risk in order to get prepared. There are many factors
-that affect the pricing model in various ways. For different contracts, the
-insurer will need to find the most sensitive factors and take them into serious
-account. 
+
+Before issuing a new contract, the insurance company will model the future liability and expenses in order to find a precise and competitive premium for the potential policy holders or annuitants. At the same time, they will want to know about the future risk in order to get prepared. There are many factors that affect the pricing model in various ways. For different contracts, the insurer will need to find the most sensitive factors and take them into serious account. 
+
 
 In this dissertation, two of the most popular contracts will be introduced:
 Annuity and Unit-linked. We are going to explore how an insurance
@@ -167,6 +163,7 @@ insurer to make any decisions.
 \pagenumbering{arabic}
 \addcontentsline{toc}{chapter}{\hspace{0.2in}Overview}
 
+<<<<<<< HEAD
 Thanks to vast increases in computation development, life insurance has
 undergone huge changes in the past 20 years. Additionally in the mathematical
 finance field, Fischer Black, Myron Scholes and Robert C Merton had developed
@@ -188,24 +185,7 @@ inflation and mortality factors are going to be introduced and stressed to
 compare with the base model.
 
 
-Then we proceed to the second contract: unit-linked insurance. This contract is
-slightly different from a traditional insurance since the premiums paid by the
-policy holder will be invested on units of equity or bond on their own behalf.
-This will benefit the survived policy holders with a guaranteed minimum
-maturity benefit(GMMB) on the maturity date or if the policy holder's death
-happens first, a guaranteed minimum death benefit will be paid to the policy
-holder's estate. In this case, we first model the cash flow using two different
-approaches: deterministic pricing and stochastic pricing, then compare the
-result. The sensitivity test in this case will be done by statistical analysis
-based on the better model.
-
-
-
-
-3. what have I achieve\\
-4. what work can be done in extension\\
-
-
+Then we proceed to the second contract: unit-linked insurance. This contract is slightly different from a traditional insurance since the premiums paid by the policy holder will be invested on units of equity or bond on their own behalf. This will benefit the survived policy holders with a guaranteed minimum maturity benefit(GMMB) on the maturity date or if the policy holder's death happens first, a guaranteed minimum death benefit will be paid to the policy holder's estate. In this case, we first model the cash flow using two different approaches: deterministic pricing and stochastic pricing, then compare the result. The sensitivity test in this case will be done by statistical analysis based on the better model.
 
 
 
@@ -249,7 +229,7 @@ Annuities are popular in older age groups, since they want to receive an income 
 The life annuity is a contract between a insurance company(the insurer) and an annuitant\cite{bib:annuity-def}, which indicates that the insurer will make a series of payments in the future in return of a immediate premium(the single premium deferred annuity) or a series of advanced regular premiums(the regular premium deferred annuity). 
 
 
-There are some other special annuities, such as joint life annuity and last survivor annuity etc.. For joint life annuity, there are two annuitant in the contract, and the payment from the insurer will stop on the first death of the two. Similar to the joint life annuity, last survivor annuity payment will not stop untill the second death of the annuitants. Other annuities are all similar, the differences are the premium(s) receiving time and when the payments cease. 
+There are some other special annuities, such as joint life annuity and last survivor annuity etc.. For joint life annuity, there are two annuitant in the contract, and the payment from the insurer will stop on the first death of the two. Similar to the joint life annuity, last survivor annuity payment will not stop until the second death of the annuitants. Other annuities are all similar, the differences are the premium(s) receiving time and when the payments cease. 
 
 
 In other words, the insurer will receive a single premium or a series of premiums in the short future, but the payments will be made in far future. This can be very risky, since the inflation rate in the far future is not easy to predict as well as the mortality rate\footnote{The mortality rate in long term can be affected by war or scientific reasons.}.
@@ -269,7 +249,7 @@ The calculation for premium may not allow for the insurer's expense, then it is 
 \section{Methodology}
 
 
-For a group of target customers, their expenses for each year will be close, then their expected guaranteed payment from the annuity will be the same. The insurer will need to find out how much premium they should to get from each annuitant to pay off the future liability, contract related expenses and cover the future risk.
+For a group of target customers, their expenses for each year will be close, then the expected guaranteed payment from the annuity will be the same. The insurer will need to find out how much premium they should to get from each annuitant to pay off the future liability, contract related expenses and cover the future risk.
 
 \subsection{Some assumptions}
 
@@ -279,7 +259,7 @@ An insurance company is going to issue a single premium deferred annuity to sele
 
 For this targeted customers, the first annuity payment will be \pounds 50,000 a year. The initial expense is \pounds500, and the renewal expense is \pounds30 each year. Interest rate 5\%. The expense and annuity payments will increase each year at the compound rate of 2.8\% every year, which is paid to hedge against inflation.
 
-Based on the company's previous experiance, 1,000 contract will be sold in the first year. 
+Based on the company's previous experience, 1,000 contract will be sold in the first year. 
 
 We are going to use the following parameters to denote different assumptions above:
 
@@ -296,11 +276,11 @@ We are going to use the following parameters to denote different assumptions abo
 \textbf{c = compound rate, 2.8\%}
 
 
-Now we are going to introduce the equivalence priciple which will help the insurer find out the gross premium value for each annuitant in this case.
+Now we are going to introduce the equivalence principle which will help the insurer find out the gross premium value for each annuitant in this case.
 
 
 
-\subsection{Loss random variable and equivalence priciple}
+\subsection{Loss random variable and equivalence principle}
 
 The future loss random variable for gross profit is defined as 
 \[
@@ -319,11 +299,11 @@ The present value of benefit outgo is calculated by the accumulation of discount
 
 
 
-The equivalence principle for gross premium is simplely set the expected present value(EPV) of the gross loss random variable equal to zero. Which is
+The equivalence principle for gross premium is simply set the expected present value(EPV) of the gross loss random variable equal to zero. Which is
 \[
 E[L_0^g] = 0
 \]
-Or it writen it as
+Or it written it as
 \[
 \textbf{EPV\ of\ future\ payments + EPV\ of\ expenses - EPV\ of\ gross\ premium = 0}
 \]
@@ -369,17 +349,17 @@ Now the equations for both EPV of renewal expense and future payments had been o
 
 \subsection{Mortality rate and select life table}
 
-The target annuitants are aged from 55 to 60 across genders with different smoking habit. Each factor has a small effection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be weathier, then the lower mortalty rate they will have.} than the national rates.
+The target annuitants are aged from 55 to 60 across genders with different smoking habit. Each factor has a small affection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be wealthier, then the lower mortality rate they will have.} than the national rates.
 
 
 From the previous section, we had equations (1.1), (1.2) and (1.3) been obtained to calculate the single premium, and now the only unknown parameter is the survival rate $_tp_{[x]}$. In this section, the select life table will be used to obtain the values for $_tp_{[x]}$ and then introduce some actuarial notations. 
 
 
-The target annuitants are aged from 55 to 60 accross genders with different smoking habit. Each factor has a small effection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be weathier, then the lower mortalty rate they will have.} than the national rates.
+The target annuitants are aged from 55 to 60 across genders with different smoking habit. Each factor has a small affection on the mortality rate each year. But in long term, the difference will be considerable. In this case, 4 mortality tables will be used, female non-smoking, female smoking, male smoking and male non-smoking. Additionally, instead of using national mortality tables, we use CMI mortality tables instead. This is because CMI tables only collect data from policy holders or annuitants, which the mortality rates are slightly lower \footnote{The reason is because people who intend to buy insurance or annuity are likely to be wealthier, then the lower mortality rate they will have.} than the national rates.
 
 
 
-And another assumption is that all the lives will cease before age 120, in other words, the mortality rate $_{120-x}q_{x}=1$ \footnote{The mortality rate $_tq_{x}$ stands for the probability of a selected life age $x$ will die at age $x+t$. Therefore $_tp_{x} = 1- _tq{x}$.}. Besides that, we assume that the annuitant will have a health check before entering the contract, this is because the annuitant will want to make sure he/she is healthy enough to take the contract at that moment\footnote{If the health check shows the annuitant has a serious issue which may cause short death, the annuitant will not willing to enter the contract any more.}. But there is a validating period for the health check, normally 2 to 5 years, which means in this time period the survival rate for the annuitant will be slightly higher than who has not taken the health check. The 2-year or 5-year are called select period, in our model, we are going to use 2-year select life table, where the mortality rate is denoted as $_kq_{[x-t]}$ \footnote{[x-t] means the life was selected at age $x-t$}. The mortality rate for select period is called select mortality rate, after the select period is called ultimate moratality rate.
+And another assumption is that all the lives will cease before age 120, in other words, the mortality rate $_{120-x}q_{x}=1$ \footnote{The mortality rate $_tq_{x}$ stands for the probability of a selected life age $x$ will die at age $x+t$. Therefore $_tp_{x} = 1- _tq{x}$.}. Besides that, we assume that the annuitant will have a health check before entering the contract, this is because the annuitant will want to make sure he/she is healthy enough to take the contract at that moment\footnote{If the health check shows the annuitant has a serious issue which may cause short death, the annuitant will not willing to enter the contract any more.}. But there is a validating period for the health check, normally 2 to 5 years, which means in this time period the survival rate for the annuitant will be slightly higher than who has not taken the health check. The 2-year or 5-year are called select period, in our model, we are going to use 2-year select life table, where the mortality rate is denoted as $_kq_{[x-t]}$ \footnote{[x-t] means the life was selected at age $x-t$}. The mortality rate for select period is called select mortality rate, after the select period is called ultimate mortality rate.
 
 Hear we show a part of select mortality table for female non-smokers\footnote{Full tables will be attached in the appendix.}:
 
@@ -434,7 +414,7 @@ A_x = \text{E}[v^{K_x+1}] = \sum_{k=0}^{\infty} v^{k+1}*_{k\mid} q_x  \nonumber
 
 $_{k\mid} q_x$ stands for the probability that a life aged $x$ survived $k$ years, now $x+k$ years old, will die in the next subsequent year.
 
-\textbf{Whole life annuity-due}: Denoted $\ddot{a}_x$. Consider a whole life annuity with \pounds1 payable yearly in advanece to an annuitant aged $x$, and the annuitant dies between year $K_x$ and $K_x+1$, see the chart below
+\textbf{Whole life annuity-due}: Denoted $\ddot{a}_x$. Consider a whole life annuity with \pounds1 payable yearly in advance to an annuitant aged $x$, and the annuitant dies between year $K_x$ and $K_x+1$, see the chart below
 
 
 
@@ -505,7 +485,7 @@ Recall equation (1.2)
 
 
 
-To calculate both equation (1.4) and (1.6), the easiest way is programming. Here I use C++ \footnote{Codes will be included in appendix} generated 1,000 pseudo random numbers between 55 and 60 reprensent the age of the anntuitant, F or M represent the gender and Y or N represent smoking habit. For each of them in the group the single premium will be calculated using different mortality rate tables depend on the three factors. We set a non-smoking female annuitant age 55 as a example.
+To calculate both equation (1.4) and (1.6), the easiest way is programming. Here I use C++ \footnote{Codes will be included in appendix} generated 1,000 pseudo random numbers between 55 and 60 represent the age of the annuitant, F or M represent the gender and Y or N represent smoking habit. For each of them in the group the single premium will be calculated using different mortality rate tables depend on the three factors. We set a non-smoking female annuitant age 55 as a example.
 \begin{align}
         \text{EPV of renewal expense}&= \frac{R}{(1+c)} * \sum_{t=1}^{\infty} v_j^t * _tp_{[x]} \nonumber \\
          &= \frac{30}{(1+0.028)} * \sum_{t=1}^{\infty} 0.98^t * _tp_{[55]} \nonumber\\
@@ -521,7 +501,7 @@ Therefore, the single premium for a $55$ non-smoking female annuitant will be
 
 For the 1,000 annuitant, the accumulated single premiums insurer can obtain is 606,029,320.
 
-\subsection{Profitablity}
+\subsection{Profitability}
 
 In the last section, we had obtained the premium for the target annuitants, now the insurer would want to know the probability that the company can make profit on the contract and the probability the loss will exceed a certain amount.
 
@@ -571,7 +551,7 @@ Now we had obtained the premiums for each of the annuitants, but since the payme
 
 \subsection{Lower the mortality rate}
 
-Continue the example from the previous section, additionally we annuitants' lives are extended $1.05$ times with some science descovery. Then our new survival rate $_tp'_x = 1.05\times _tp_x$. Now we can obtain the new premium by 
+Continue the example from the previous section, additionally we annuitants' lives are extended $1.05$ times with some science discovery. Then our new survival rate $_tp'_x = 1.05\times _tp_x$. Now we can obtain the new premium by 
 
 \begin{align}
         \text{EPV of renewal expense1}&= \frac{R*1.05}{(1+c)} * \sum_{t=1}^{\infty} v_j^t * _tp_{[x]} \nonumber \\
@@ -621,13 +601,6 @@ Which means if the annuitant survives more than 23.1 years from now, the company
 From the previous section, we can see that the most important factor for annuity is mortality rate, a small change in the mortality rate will have a huge impact, which means a good mortality model may save a company's life. 
 
 So far, there are a few different ways to obtain the mortality rate depend on the age group, such as Gomperzt's law of mortality\footnote{We will talk about this later in the last chapter.} At the same time, choose the right target customer is important, since the mortality rate depends on age, gender and smoking habit at the same time.
-
-
-
-
-
-
-
 
 
 
@@ -830,16 +803,15 @@ and the profit margin will be
 
 
 \[
-\text{Profit\ Margin} =  \frac{NPV}{P \ddot{a}_x} = 1.24\%
+\text{Profit\ Margin} =  \frac{NPV}{P \ddot{a}_x}
+= \frac{489.59}{5200 \times 7.619285226}  = 1.24\%
 \]
 
-<<<<<<< HEAD
+
 where $\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$
-read from table ?!?!?!? and $v=\frac{1}{1+0.05}$  = $\frac{489.59}{5200 \times
-7.619285226}$
-=======
-where $\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$  = $\frac{489.59}{5200} \times 7.619285226$
->>>>>>> thx Antony!
+read from table \ref{determ-prob-in-force} and $v=\frac{1}{1+0.05}$  
+
+
 
 Since in the very beginning, we used conservative assumptions, e.g. expenses, mortality rate, interest rate for the insurer's fund. So if in reality the expense and mortality rate are lower than modelled and the interest rate is higher, then the insurer will obtain more profit. A sensitivity test can be used here to show how the profit changes with according to different factors. 
 
@@ -895,7 +867,7 @@ and the profit margin is:
 \text{Profit Margin} =  \frac{NPV}{P \ddot{a}_x}= \frac{693.24 }{5200 \times 7.619285226} = 1.7\%
 \]
 
-$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table ?!?!?!? and $v=\frac{1}{1+0.05}$ 
+$\ddot{a}_x$=$\sum_{i=1}^{10} v^t {_tp_x}$=7.619285226, where $_tp_x$ read from table \ref{determ-prob-in-force} and $v=\frac{1}{1+0.05}$ 
 
 This shows if we can lower the cost in the company, then more profit can be made, However, in reality, this is really hard to achieve, since some certain costs are unavoidable, e.g. renting, salary.
 
@@ -1043,7 +1015,7 @@ I_t=exp\{\xi_t\}
 
 \subsection{Modelling}
 
-Now we assume there are 1,000 policy holders \footnote{The larger number the better statistic result we will get, here we just set 1,000 as an example.} purchased unit-linked contract with different portfolios. Using the generated random variable from the Standard Normal distribution, we can construct our new cash flow tables. I used C++ to help me with constructing the tables \footnote{codes will be included in the appendix}. Since there are 1,000 policy holdders and interest rate will be different from year to year for all of them. Therefore, 10,000  $\xi'_t$ need to be generated from the Standard Normal distribution.
+Now we assume there are 1,000 policy holders \footnote{The larger number the better statistic result we will get, here we just set 1,000 as an example.} purchased unit-linked contract with different portfolios. Using the generated random variable from the Standard Normal distribution, we can construct our new cash flow tables. I used C++ to help me with constructing the tables \footnote{codes will be included in the appendix}. Since there are 1,000 policy holders and interest rate will be different from year to year for all of them. Therefore, 10,000  $\xi'_t$ need to be generated from the Standard Normal distribution.
 
 
 Here is an example we get from the program. \footnote{To curious readers, this is the 1st cash flow table we get from the program.}
@@ -1085,7 +1057,7 @@ Year t & $\xi_t$ &$R_t$ & Prem-ium & Alloc-ated Premium & Fund at $t^-$ &Manage-
 \textbf{Other columns in the table:} The table was calculated using the same method in deterministic cash flow, the only difference is the interest rate had changed.
 
 
-From the table \ref{stoch-cashflow} we can see that, the annual accumulation factor is sometimes less than one, which indecates that annual interest $r_t = R_t - 1$ is negative, then there is a loss in the policy holder's fund in that year. But for the insurer in this case, the net present value of profit and profit margin\footnote{Profit margin is calculated using risk discount factor 15\%.} are ideal: 
+From the table \ref{stoch-cashflow} we can see that, the annual accumulation factor is sometimes less than one, which indicates that annual interest $r_t = R_t - 1$ is negative, then there is a loss in the policy holder's fund in that year. But for the insurer in this case, the net present value of profit and profit margin\footnote{Profit margin is calculated using risk discount factor 15\%.} are ideal: 
 
 \[
 NPV=\pounds 1,011.86\ \ \ \   \   \& \    \ \ \ \       Profit \  margin = 2.6\%
@@ -1125,19 +1097,19 @@ Year t & $\xi_t$ &$R_t$ & Prem-ium & Alloc-ated Premium & Fund at $t^-$ &Manage-
 \textbf{Note:}
 
 
-\textbf{Row 10$^*$ \& 10:} It is showing that the fund in policy holder's account at the mature date, \pounds 4,4575, is less than the accumalation of 10 premiums, \pounds 52,000, therefore the difference will be deducted to pay off the insurer's liability with probability 0.994\footnote{The probability that the contract is still in force from year 9, table \ref{determ-prob-in-force}.}. 
+\textbf{Row 10$^*$ \& 10:} It is showing that the fund in policy holder's account at the maturity date, \pounds 4,4575, is less than the accumulation of 10 premiums, \pounds 52,000, therefore the difference will be deducted to pay off the insurer's liability with probability 0.994\footnote{The probability that the contract is still in force from year 9, table \ref{determ-prob-in-force}.}. 
 \[
 (52,000- 44,575)\times 0.994= \pounds 7,380.45 
 \]
-The profit showing in row $10^*$ is the profit in year 10 before the deduction, the actual profit the insurer obtaind at the mature date is \pounds349.11 - \pounds7,380.45 = -\pounds 7031.3 showing in row 10. And the NPV of the profit in this case is -\pounds995.422, and the profit margin is $-2.5\%$.
+The profit showing in row $10^*$ is the profit in year 10 before the deduction, the actual profit the insurer obtained at the maturity date is \pounds349.11 - \pounds7,380.45 = -\pounds 7031.3 showing in row 10. And the NPV of the profit in this case is -\pounds995.422, and the profit margin is $-2.5\%$.
 
 
 
-Now there are two examples for both situation, making profit and lossing, it will be really important for the company to know the statistic numbers, e.g. how many contracts have negative NPV of profit, how much profit can the company make, what is the probability for the company to lose etc..
+Now there are two examples for both situations, making profit and a loss, it will be really important for the company to know the statistics, e.g. how many contracts have negative NPV of profit, how much the company can make, what is the probability that the company makes a loss.
 
-\subsection{Statistic analysis}
+\subsection{Statistical analysis}
 
-In the C$^{++}$ program, the NPV can be sorted in order, and counted how many negative values are there, the table below showing the statistic results. 
+In the C++ program, the NPV can be sorted in order, and the number of negative values counted. The table below shows the statistical results. 
 
 \texttt{NPV median = 677.104}
 
@@ -1174,14 +1146,14 @@ In the C$^{++}$ program, the NPV can be sorted in order, and counted how many ne
 \textbf{95\% CI for NPV:} The 95\% of all NPV of profit will drop in this interval.
 
 
-There are 85 negative NPV of profit out of 1,000, which means the probability for this company to lose on this contract is 8.5\%, which is considerablely high. And the 5$^{th}$ percentile, ${-\pounds927.485}$, is a very large lose as well. In conclusion, this contract has a high probability of losing a large amount of money, which should not be issued in reality. This is caused by the gauranteed benefit increased the risk for insurer. In the next section we are going to disscuss how to lower the risk and make a profit.
+There are 85 negative NPV of profit out of 1,000, which means the probability for this company to lose on this contract is 8.5\%, which is considerably high. And the 5$^{th}$ percentile, ${-\pounds927.485}$, is a very large loss as well. In conclusion, this contract has a high probability of losing a large amount of money, which should not be issued in reality. This is caused by the guaranteed benefit which increases the risk for the insurer. In the next section we are going to discuss how to lower the risk and make a profit.
 
 
 \subsection{Stochastic pricing}
 
-Recall in Chapter \ref{annuity}, the equivalence principle were used to find the premium, but it can not be used in this unit-linked contract since there is a non-diversifiable risk. But instead, we can use stochastic simulation with quantile premium principle\cite{bib:quantile-premium}. 
+Recall in Chapter \ref{annuity}, the equivalence principle was used to find the premium, but it cannot be used in this unit-linked contract since there is a non-diversifiable risk. But instead, we can use stochastic simulation with quantile premium principle\cite{bib:quantile-premium}. 
 
-For quantile premium principle, the idea is to obtain a profit with a certain probability. If the $5^{th}$ percentile is positive and probability of loss is no greater than 5\% then it is a good model and can be taken to practice. Based on the previous model, changing in some assumptions may let us achieve this target. 
+For quantile premium principle, the idea is to obtain a profit with a certain probability. If the $5^{th}$ percentile is positive and the probability of loss is no greater than 5\% then it is a good model and can be taken to practice. Based on the previous model, changing in some assumptions may let us achieve this target. 
 
 \textbf{Scenario 1: Increase the premium}
 
@@ -1280,7 +1252,7 @@ The guaranteed minimum maturity benefit decrease from 100\% to 91\% premiums pai
 
 In this scenario, we lowered the guaranteed minimum maturity benefit in order to decrease the liability to meet on the date of mature. The new assumption will enable the insurer to have 5\% probability to lose, and the $5^{th}$ percentile becomes positive. 
 
-This is an ideal contract for the insuer, but may not be ideal for the policy holders because of the decrement on maturity benefit. In order to be more competitive, the insurer can hedge partial risk in the financial market at the same time lower the  GMMB.
+This is an ideal contract for the issuer, but may not be ideal for the policy holders because of the decrement on maturity benefit. In order to be more competitive, the insurer can hedge partial risk in the financial market at the same time lower the  GMMB.
 
 
 \subsection{Reserving}
@@ -1294,7 +1266,7 @@ From the scenario test 4 in last section, we have a model which enables the insu
 
 3. Reserving.
 
-In this section, we are going to disscuss the third option, reserving. To calculate the reserve for the contract, the non-diversifiable risk should be taken into account, the methodology which enable us to do this is risk measure\cite{bib:VaR}, one popular type is called Value at Risk, it is defined in terms of a parameter $\alpha$ which is the probability that the loss $L$ will not exceed $\ell$. Therefore, we have
+In this section, we are going to discuss the third option, reserving. To calculate the reserve for the contract, the non-diversifiable risk should be taken into account, the methodology which enable us to do this is risk measure\cite{bib:VaR}, one popular type is called Value at Risk, it is defined in terms of a parameter $\alpha$ which is the probability that the loss $L$ will not exceed $\ell$. Therefore, we have
 
 \[
 P[L\leq \ell] = \alpha
@@ -1306,7 +1278,7 @@ Continue on scenario 4, set $\alpha$ = 0.95, the reserve $_tV$ at time t = 0 wil
 L_i = - \sum_{\textbf{t=1}}^{10}\frac{_{t-1}p_x Pr_{t,i}}{(1+j)^t}
 \]
 
-It is calculated similar to NPV of profit, but with different discount rate $j = 0.05$ and the first acquisition cost will not be included.
+It is calculated similar to NPV of profit, but with different discount rate $j = 0.05$ and the first acquisition cost will not be included. Let $_0V$ denote the reserve the insurer has to prepare in the first year.
 
 \[
 _0V = \pounds 1,552.99
@@ -1319,19 +1291,32 @@ In practice, the insurer may review the reserve annually, and make adjustment ba
 
 \section{Deterministic VS Stochastic test}
 
-For unit-linked contract, the mortality rate is diversifiable and using simple assumption will save the insurer money in terms of time and cost\footnote{Of course you can use more accurate mortality rate, but it is not that important comparing with the investment risk factor.}. But there is an uncertainty factor on the investment performance, then risk on interest rate is non-diversifiable. In this case, the simple deterministic test will not be able to model the profit realistically. Therefore, the stochastic model should be used. 
+For unit-linked contract, the mortality rate is diversifiable and using simple assumption will save the insurer money in terms of time and cost\footnote{Of course you can use more accurate mortality rate, but it is not that important comparing with the investment risk factor.}. But there is an uncertainty factor on the investment performance: the risk on interest rate is non-diversifiable. In this case, the simple deterministic test will not be able to model the profit realistically. Therefore, the stochastic model should be used. 
 
-Once the stochastic model has been found, the insurer will be interested to know the statistical numbers which reflect the protential risk, and then try different test to reduce or even eliminate the risk. None of these can not be achieved by deterministic pricing, so in unit-linked contract, the stochastic test is very essential! The better model the insurer can find, the more money they are going to make.
+Once the stochastic model has been found, the insurer will be interested to know the statistical numbers which reflect the potential risk, and then try different test to reduce or even eliminate the risk. None of these can not be achieved by deterministic pricing, so in unit-linked contract, the stochastic test is very essential! The better model the insurer can find, the more money they are going to make.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 \chapter{Further work}    
 
-In chapter \ref{annuity} and chapter \ref{unit-linked} we modelled the annuity and unit-linked insurance contract using different approaches. From the sensitivity test for annuity, we can see that the inflation and mortality rate change will have a considerable impact on the profitability, the higher inflation rate or lower mortality rate will risk the insurer with a lower profit or even a loss. But for unit-linked contract, the mortality rate will be count as a diversifiable factor, which does not have a markable influrence on either NPV of profit or profit margin. Instead, the uncertainty on the performance in the financial market is a far more important factor here, this is because the risk on the interest return is non-diversifiable and is different to any two policy holders in any year depends on the portfolio of investment they choose.
+In chapter \ref{annuity} and chapter \ref{unit-linked} we modelled the annuity and unit-linked insurance contract using different approaches. From the sensitivity test for annuity, we can see that the inflation and mortality rate change will have a considerable impact on the profitability, the higher inflation rate or lower mortality rate will risk the insurer with a lower profit or even a loss. But for unit-linked contract, the mortality rate will be count as a diversifiable factor, which does not have a markable influence on either NPV of profit or profit margin. Instead, the uncertainty on the performance in the financial market is a far more important factor here, this is because the risk on the interest return is non-diversifiable and is different to any two policy holders in any year depends on the portfolio of investment they choose.
 
 
-In conclusion, when an insurer trying to model the annuity contracts, the better model for mortality rate is essential. In the chapter \ref{annuity}, I used the CMI life tables published by Institute of {\em Actuaries and the Faculty of Actuaries, 2009}. But for different companies with different target customer, they might create their own life tables based on the data they have, and instead of using annual payment assumption, the monthly payment assumption can be used. For example, a life enter the contract at age 55.25, and he dies on 76.5, the annuity payment is monthly. From any published life tables, the mortality rate is only on integer ages, so it may not be as acurate as a fractional life table. But here is something we can do.
+In conclusion, when an insurer trying to model the annuity contracts, the better model for mortality rate is essential. In the chapter \ref{annuity}, I used the CMI life tables published by Institute of {\em Actuaries and the Faculty of Actuaries, 2009}. But for different companies with different target customer, they might create their own life tables based on the data they have, and instead of using annual payment assumption, the monthly payment assumption can be used. For example, a life enter the contract at age 55.25, and he dies on 76.5, the annuity payment is monthly. From any published life tables, the mortality rate is only on integer ages, so it may not be as accurate as a fractional life table. But here is something we can do.
 
 Using the Gomperzt's law\footnote{ This is a mortality model which has been proved proving a good fit for older age group.} for force of mortality rate $\mu_x$, where $\mu_x=Bc^x$ with B, c constants. The survival rate can be worked out by
 \[
@@ -1344,6 +1329,18 @@ Or instead, we can use Woolhouse formula to obtain the mthly annuity and assuran
 \[
 \ddot{a}_x^(m) = \ddot{a}_x  -\frac{m-1}{2m}-\frac{m^2-1}{12m^2}(	\delta +\mu_x)
 \]
+
+Because of the limitation of the author's computational skills, the fractional life table have not been developed. And in respect of time and cost, the numerical method to compute the fractional life table does not have any advantage, that is one reason it has not been used in most of the insurance companies. 
+
+But for unit-linked contract, the stochastic pricing and tests are very important, and this is the best method so far to construct a realistically cash flow table for the insurance company. The larger data set will enable the insurer have a more accurate statistical results.
+
+
+
+
+
+
+
+
 
 
 
@@ -1366,12 +1363,6 @@ Or instead, we can use Woolhouse formula to obtain the mthly annuity and assuran
     {\em Actuarial Mathematics for Life Contingent Risks,}
     page 77,109.
 
-
-
-
-
-
-%%%%%%%%%%%%%%%%%
 
 
 \bibitem{bib:GMMB}  David C. M. Dickson, Mary R. Hardy and Howard R. Waters,
@@ -1434,13 +1425,9 @@ Or instead, we can use Woolhouse formula to obtain the mthly annuity and assuran
 
 
 
-
-
-
-
-
-
 \end{thebibliography}
+
+
 
 
 \chapter*{Appendix 1: Codes for unit-linked contract}
@@ -1477,8 +1464,11 @@ bool negative(float i) { return i < 0.0f; }
 void write_header() {
     cout << "t,zt,rt,P,Allocated P,Fund at t-,Management,Fund at t,Profit,pit,NPV\n";
 }
-void write_row(int t, float zt, float rt, float P, float allocP, float fundTminus, float management, float fundT, float profit, float pit, float NPV) {
-    cout << t << ',' << zt << ',' << rt << ',' << P << ',' << allocP << ',' << fundTminus << ',' << management << ',' << fundT << ',' << profit << ',' << pit << ',' << NPV << '\n';
+void write_row(int t, float zt, float rt, float P, float allocP, float fundTminus, 
+float management, float fundT, float profit, float pit, float NPV) {
+    cout << t << ',' << zt << ',' << rt << ',' << P << ',' << allocP << ','
+    << fundTminus << ',' << management << ',' << fundT << ',' << profit 
+    << ',' << pit << ',' << NPV << '\n';
 }
 
 float whatevs(std::vector<float>& x) {
@@ -1493,13 +1483,15 @@ float whatevs(std::vector<float>& x) {
 int main(int argc, const char *argv[]) {
     boost::mt19937 generator;
     boost::normal_distribution<> distribution;
-    boost::variate_generator<boost::mt19937&, boost::normal_distribution<> > generate(generator, distribution);
+    boost::variate_generator<boost::mt19937&, 
+    boost::normal_distribution<> > generate(generator, distribution);
 
     vector<float> npvs;
 
     for(int i=0; i<1000; i++) {
         write_header();
-        write_row(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, -(0.13f*5200.0f), -(0.13f*5200.0f), -(0.13f*5200.0f));
+        write_row(0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, -(0.13f*5200.0f), 
+       -(0.13f*5200.0f), -(0.13f*5200.0f));
         float lastFund = 0.0f;
         float NPV = -520.0f; //initial expense change
         for(int t=1; t<=10; t++) {
@@ -1514,7 +1506,8 @@ int main(int argc, const char *argv[]) {
             // 0.3 is because expense is 0.7%P, and unallocated premium is 1%P
             float two2nine = (t > 1) ? 0.3f : 1.0f;
             //add ii, the interest rate for insurer, which equal 0.06 for now
-            float profit = (P - allocP) * (1.0f+0.05f) * two2nine + management - fundT*0.006f*0.1f; //expected death benefit
+            float profit = (P - allocP) * (1.0f+0.05f) * two2nine + 
+                                management - fundT*0.006f*0.1f; //expected death benefit
             float oldprofit = profit;
             if(t == 10) {
                 profit -= 0.994f * (max(52000.0f - fundT, 0.0f));
@@ -1575,7 +1568,8 @@ double SurvivalRateUltimate(double A, double B, double c, int k, double age) {
     //cout << "ak = " << ak << endl;
     //cout << "inner = " << inner << endl;
     float result = exp(inner);
-    cout << "SurvivalRateUltimate(int k="<<k<<", int age="<<age<<", double A="<<A<<", double B="<<B<<", double c="<<c<<") = " << result << endl;
+    cout << "SurvivalRateUltimate(int k="<<k<<", int age="<<age<<", 
+double A="<<A<<", double B="<<B<<", double c="<<c<<") = " << result << endl;
 	return result;
 }
 
@@ -1617,14 +1611,16 @@ double SmallA(double A, double B, double c, double age, double j, vector<float> 
     return sum;
 }
 
-double Expense(double A, double B, double c, int renewal, double indexFactor, double age, double j, vector<float> dur[3]) {
+double Expense(double A, double B, double c, int renewal, double 
+indexFactor, double age, double j, vector<float> dur[3]) {
     clog << "Calculating Expense(age="<<age<<")" << endl;
     double small_a = SmallA(A, B, c, age, j, dur);
     clog << "  small_a = " << small_a << endl;
     return (renewal / (1.0 + indexFactor)) * (small_a - 1.0);
 }
 
-double Annuity(double A, double B, double c, double indexFactor, double S, double j, double age, vector<float> dur[3]) {
+double Annuity(double A, double B, double c, double indexFactor, 
+double S, double j, double age, vector<float> dur[3]) {
     cout << "Calculate Annuity(age="<<age<<", j="<<j<<")" << endl;
     double sum = 0.0;
     for(int i=10; i<120-age; i++) {
@@ -1638,7 +1634,8 @@ double Annuity(double A, double B, double c, double indexFactor, double S, doubl
     return coefficient * sum;
 }
 
-double Premium(double A, double B, double c, int I, double S, int renewal, double indexFactor, double age, double j, vector<float> dur[3]) {
+double Premium(double A, double B, double c, int I, double S, int renewal, 
+double indexFactor, double age, double j, vector<float> dur[3]) {
     clog << "Calculating Premium(age="<<age<<", j="<<j<<")"<<endl;
     double expense = Expense(A, B, c, renewal, indexFactor, age, j, dur);
     double annuity = Annuity(A, B, c, indexFactor, S, j, age, dur);
@@ -1699,7 +1696,8 @@ int main(int argc, char** argv) {
         float personage = age();
         bool persongender = gender();
         bool personsmoker = smoker();
-        cout << Premium(A, B, c, I, S, renewal, indexFactor, personage, j, dur[persongender][personsmoker]) << endl;
+        cout << Premium(A, B, c, I, S, renewal, indexFactor, 
+        personage, j, dur[persongender][personsmoker]) << endl;
     }
 	return 0;
 }
